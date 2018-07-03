@@ -1,5 +1,5 @@
 {
-  "name": "eslint-plugin-jsx-a11y",
+  "name": "eslint-plugin-react-native-a11y",
   "version": "6.0.2",
   "description": "Static AST checker for accessibility rules on JSX elements.",
   "keywords": [

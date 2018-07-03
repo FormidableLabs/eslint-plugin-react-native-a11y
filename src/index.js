@@ -2,7 +2,6 @@
 
 module.exports = {
   rules: {
-    'accessible-emoji': require('./rules/accessible-emoji'),
     'accessible-touchable': require('./rules/accessible-touchable'),
   },
   configs: {
@@ -13,7 +12,6 @@ module.exports = {
         },
       },
       rules: {
-        'jsx-a11y/accessible-emoji': 'error',
         'jsx-a11y/accessible-touchable': 'error',
       },
     },
@@ -24,7 +22,7 @@ module.exports = {
         },
       },
       rules: {
-        'jsx-a11y/accessible-emoji': 'error',
+        'jsx-a11y/accessible-touchable': 'error',
       },
     },
   },
