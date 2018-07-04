@@ -12,7 +12,7 @@ module.exports = {
         },
       },
       rules: {
-        'jsx-a11y/accessible-touchable': 'error',
+        'react-native-a11y/accessible-touchable': 'error',
       },
     },
     strict: {
@@ -22,7 +22,7 @@ module.exports = {
         },
       },
       rules: {
-        'jsx-a11y/accessible-touchable': 'error',
+        'react-native-a11y/accessible-touchable': 'error',
       },
     },
   },
