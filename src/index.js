@@ -3,7 +3,7 @@
 module.exports = {
   rules: {
     'accessible-touchable': require('./rules/accessible-touchable'),
-    'accessibility-label': require('./rules/accessible-touchable'),
+    'accessibility-label': require('./rules/accessibility-label'),
   },
   configs: {
     recommended: {
@@ -13,8 +13,8 @@ module.exports = {
         },
       },
       rules: {
-        'jsx-a11y/accessible-touchable': 'error',
-        'jsx-a11y/accessibility-label': 'error',
+        'react-native-a11y/accessible-touchable': 'error',
+        'react-native-a11y/accessibility-label': 'error',
       },
     },
     strict: {
@@ -24,8 +24,8 @@ module.exports = {
         },
       },
       rules: {
-        'jsx-a11y/accessible-touchable': 'error',
-        'jsx-a11y/accessibility-label': 'error',
+        'react-native-a11y/accessible-touchable': 'error',
+        'react-native-a11y/accessibility-label': 'error',
       },
     },
   },
