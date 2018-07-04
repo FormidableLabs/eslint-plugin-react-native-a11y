@@ -12,6 +12,7 @@ import type { JSXOpeningElement } from 'ast-types-flow';
 import { hasEveryProp, elementType } from 'jsx-ast-utils';
 import type { ESLintContext } from '../../flow/eslint';
 import { generateObjSchema } from '../util/schemas';
+import isOneOf from '../util/isOneOf';
 
 const errorMessage = '<Touchable*> components must have both the accessibilityTraits and accessibilityComponentType prop';
 
@@ -34,11 +35,7 @@ module.exports = {
 
   create: (context: ESLintContext) => ({
     JSXOpeningElement: (node: JSXOpeningElement) => {
-      const { name } = node;
-      if (
-        name.type === 'JSXIdentifier'
-        && new RegExp(`^(${touchables.join('|')})$`).test(elementType(node))
-      ) {
+      if (isOneOf(elementType(node), touchables)) {
         if (!hasEveryProp(node.attributes, reqProps)) {
           context.report({
             node,
