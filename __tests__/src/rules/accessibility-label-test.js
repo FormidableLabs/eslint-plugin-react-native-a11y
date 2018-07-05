@@ -27,21 +27,31 @@ const expectedError = {
 ruleTester.run('accessibility-label', rule, {
   valid: [
     {
-      code:
-        '<TouchableOpacity accessible={true} accessibilityLabel={"Tap me!"}/>',
+      code: '<View accessible={true} accessibilityLabel={"Tap me!"}/>',
+    },
+    {
+      code: '<View accessible={true} accessibilityLabel="Tap me!"/>',
     },
   ].map(parserOptionsMapper),
   invalid: [
     {
-      code: '<TouchableOpacity accessible={true} />',
+      code: '<View accessible={true} />',
       errors: [expectedError],
     },
     {
-      code: '<TouchableOpacity accessible={true} accessibilityLabel/>',
+      code: '<View accessible={true} accessibilityLabel/>',
       errors: [expectedError],
     },
     {
-      code: '<TouchableOpacity accessible={true} accessibilityLabel=""/>',
+      code: '<View accessible={true} accessibilityLabel=""/>',
+      errors: [expectedError],
+    },
+    {
+      code: '<View accessible={true} accessibilityLabel={""}/>',
+      errors: [expectedError],
+    },
+    {
+      code: '<View accessible={true} />',
       errors: [expectedError],
     },
   ].map(parserOptionsMapper),
