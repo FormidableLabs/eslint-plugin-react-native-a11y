@@ -1,12 +1,11 @@
-/**
- * Revursively searches for an child element within a
- * JSXOpeningElement that matches the condition specificed in
- * `callback`
- * @flow
- */
-
+// @flow
 import type { JSXOpeningElement, JSXElement } from 'ast-types-flow';
 
+/**
+ * Recursively searches for an child element within a
+ * JSXOpeningElement that matches the condition specificed in
+ * `callback`
+ */
 export default function findChild(
   node: JSXElement,
   callback: (child: JSXOpeningElement) => boolean,
@@ -21,7 +20,10 @@ export default function findChild(
           return child.openingElement;
         }
       }
-      findChild(child, callback);
+      const foundChild = findChild(child, callback);
+      if (foundChild) {
+        return foundChild;
+      }
     }
   }
   return null;
