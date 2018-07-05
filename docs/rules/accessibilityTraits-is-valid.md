@@ -7,7 +7,7 @@ Values may be one of the following:
 - none
 - button
 - link
-  header
+- header
 - search
 - image
 - selected
