@@ -1,21 +1,42 @@
 # no-nested-clickables
 
-Write a useful explanation here!
+<Touchable*> or <Button /> will not work inside an accessible element. Any element that has the accessible={true} property (along with the accessibleLabel property) must therefore not contain any <Touchable*> or <Button /> elements.
 
 ### References
 
-  1.
+1.  https://facebook.github.io/react-native/docs/accessibility.html
 
 ## Rule details
 
 This rule takes no arguments.
 
 ### Succeed
+
 ```jsx
-<div />
+<TouchableOpacity
+  accessibilityTraits="button"
+  accessibilityComponentType="button"
+  accessibilityLabel="Tap Me!"
+  accessible={true}
+>
+  <Text>submit</Text>
+  <View>
+    <Text>cancel</Text>
+  </View>
+</TouchableOpacity>
 ```
 
 ### Fail
-```jsx
 
+```jsx
+<TouchableOpacity
+  accessibilityTraits="button"
+  accessibilityComponentType="button"
+  accessibilityLabel="Tap Me!"
+  accessible={true}
+>
+  <View>
+    <Button />
+  </View>
+</TouchableOpacity>
 ```
