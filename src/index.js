@@ -3,7 +3,7 @@
 module.exports = {
   rules: {
     'touchable-has-props': require('./rules/touchable-has-props'),
-    'touchable-props-are-valid': require('./rules/touchable-props-are-valid'),
+    'accessibilityTraits-is-valid': require('./rules/accessibilityTraits-is-valid'),
   },
   configs: {
     recommended: {
@@ -14,7 +14,7 @@ module.exports = {
       },
       rules: {
         'react-native-a11y/touchable-has-props': 'error',
-        'react-native-a11y/touchable-props-are-valid': 'error',
+        'react-native-a11y/accessibilityTraits-is-valid': 'error',
       },
     },
     strict: {

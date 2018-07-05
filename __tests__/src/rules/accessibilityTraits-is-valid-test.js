@@ -10,7 +10,7 @@
 
 import { RuleTester } from 'eslint';
 import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import rule from '../../../src/rules/touchable-props-are-valid';
+import rule from '../../../src/rules/accessibilityTraits-is-valid';
 
 // -----------------------------------------------------------------------------
 // Tests
@@ -23,7 +23,7 @@ const expectedError = {
   type: 'JSXAttribute',
 };
 
-ruleTester.run('touchable-props-are-valid', rule, {
+ruleTester.run('accessibilityTraits-is-valid', rule, {
   valid: [
     { code: '<TouchableOpacity accessibilityTraits="none" />;' },
     { code: '<TouchableOpacity accessibilityTraits="button" />;' },
@@ -60,7 +60,7 @@ ruleTester.run('touchable-props-are-valid', rule, {
       errors: [expectedError],
     },
     {
-      code: '<TouchableOpacity accessibilityTraits="nonebutton" />',
+      code: '<TouchableOpacity accessibilityTraits="primary-button" />',
       errors: [expectedError],
     },
   ].map(parserOptionsMapper),

@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enfore accessibilityTraits and accessibilityComponentType prop values must be valid
+ * @fileoverview Enforce accessibilityTraits and accessibilityComponentType prop values must be valid
  * @author Alex Saunders
  * @flow
  */
