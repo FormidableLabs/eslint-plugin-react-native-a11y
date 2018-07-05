@@ -27,23 +27,50 @@ const expectedError = {
 ruleTester.run('no-nested-clickables', rule, {
   valid: [
     {
-      code:
-        '<TouchableOpacity accessible={true} accessibilityLabel="Tap Me!"/>',
+      code: `<TouchableOpacity
+      accessibilityTraits="button"
+      accessibilityComponentType="button"
+      accessibilityLabel="Tap Me!"
+      accessible={true}
+    />`,
     },
     {
-      code:
-        '<TouchableOpacity accessible={true} accessibilityLabel="Tap Me!"><Text>submit</Text><View><Text>cancel</Text></View></TouchableOpacity>',
+      code: `<TouchableOpacity
+      accessibilityTraits="button"
+      accessibilityComponentType="button"
+      accessibilityLabel="Tap Me!"
+      accessible={true}
+    ><Text>submit</Text><View><Text>cancel</Text></View></TouchableOpacity>`,
     },
   ].map(parserOptionsMapper),
   invalid: [
     {
-      code:
-        '<TouchableOpacity accessible={true} accessibilityLabel="Tap Me!"><Button /></TouchableOpacity>',
+      code: `<TouchableOpacity
+                accessibilityTraits="button"
+                accessibilityComponentType="button"
+                accessibilityLabel="Tap Me!"
+                accessible={true}
+              >
+                <Button />
+              </TouchableOpacity>`,
       errors: [expectedError],
     },
     {
-      code:
-        '<TouchableOpacity accessible={true} accessibilityLabel="Tap Me!"><TouchableOpacity><Text>Nested</Text></TouchableOpacity></TouchableOpacity>',
+      code: `<TouchableOpacity
+  accessibilityTraits="button"
+  accessibilityComponentType="button"
+  accessibilityLabel="Tap Me!"
+  accessible={true}
+>><View><Text><Button>button</Button></Text></View></TouchableOpacity>`,
+      errors: [expectedError],
+    },
+    {
+      code: `<TouchableOpacity
+  accessibilityTraits="button"
+  accessibilityComponentType="button"
+  accessibilityLabel="Tap Me!"
+  accessible={true}
+>><TouchableOpacity><Text>Nested</Text></TouchableOpacity></TouchableOpacity>`,
       errors: [expectedError],
     },
   ].map(parserOptionsMapper),
