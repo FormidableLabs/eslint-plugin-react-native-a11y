@@ -7,5 +7,5 @@
 // should be expanded to work with more than just strings
 // as and when it's needed
 export default function isOneOf(toCheck: string = '', values: string[] = []) {
-  return new RegExp(`^(${values.join('|')})$`).test(toCheck);
+  return values.includes(toCheck);
 }

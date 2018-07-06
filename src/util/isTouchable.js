@@ -8,6 +8,7 @@ import type { JSXOpeningElement } from 'ast-types-flow';
 import { elementType } from 'jsx-ast-utils';
 
 const touchables = {
+  Touchable: true,
   TouchableOpacity: true,
   TouchableHighlight: true,
   TouchableWithoutFeedback: true,

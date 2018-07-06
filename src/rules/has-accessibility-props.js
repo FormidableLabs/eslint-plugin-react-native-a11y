@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Enforce all <Touchable*> components have accessibilityTraits and accessibilityComponentType props set
  * @author Alex Saunders
@@ -10,21 +9,14 @@
 // ----------------------------------------------------------------------------
 
 import type { JSXOpeningElement } from 'ast-types-flow';
-import { hasEveryProp, elementType } from 'jsx-ast-utils';
+import { hasEveryProp } from 'jsx-ast-utils';
 import type { ESLintContext } from '../../flow/eslint';
 import { generateObjSchema } from '../util/schemas';
-import isOneOf from '../util/isOneOf';
+import isTouchable from '../util/isTouchable';
 
 const errorMessage = '<Touchable*> components must have both the accessibilityTraits and accessibilityComponentType prop';
 
 const schema = generateObjSchema();
-
-const touchables = [
-  'TouchableOpacity',
-  'TouchableHighlight',
-  'TouchableWithoutFeedback',
-  'TouchableNativeFeedback',
-];
 
 const reqProps = ['accessibilityTraits', 'accessibilityComponentType'];
 
@@ -36,7 +28,7 @@ module.exports = {
 
   create: (context: ESLintContext) => ({
     JSXOpeningElement: (node: JSXOpeningElement) => {
-      if (isOneOf(elementType(node), touchables)) {
+      if (isTouchable(node)) {
         if (!hasEveryProp(node.attributes, reqProps)) {
           context.report({
             node,
