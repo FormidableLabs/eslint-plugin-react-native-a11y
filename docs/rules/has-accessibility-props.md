@@ -4,7 +4,14 @@
 
 The accessibilityTraits props tells VoiceOver on iOS what kind of element the user has selected. For android, the accessibilityComponentType prop serves a similar purpose, alerting the end user of the type of selected component.
 
-(Touchable components are one of: TouchableOpacity, TouchableHighlight, TouchableWithoutFeedback or TouchableNativeFeedback)
+Touchable components are one of:
+
+- TouchableOpacity
+- TouchableHighlight
+- TouchableWithoutFeedback
+- TouchableNativeFeedback
+- TouchableBounce
+- Touchable (from [react-native-platform-touchable](https://github.com/react-community/react-native-platform-touchable))
 
 ### References
 
