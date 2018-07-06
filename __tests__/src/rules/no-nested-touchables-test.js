@@ -10,7 +10,7 @@
 
 import { RuleTester } from 'eslint';
 import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import rule from '../../../src/rules/no-nested-clickables';
+import rule from '../../../src/rules/no-nested-touchables';
 
 // -----------------------------------------------------------------------------
 // Tests
@@ -24,7 +24,7 @@ const expectedError = {
   type: 'JSXOpeningElement',
 };
 
-ruleTester.run('no-nested-clickables', rule, {
+ruleTester.run('no-nested-touchables', rule, {
   valid: [
     {
       code: `<TouchableOpacity

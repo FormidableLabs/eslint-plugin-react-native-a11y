@@ -3,7 +3,7 @@
 module.exports = {
   rules: {
     'accessible-touchable': require('./rules/accessible-touchable'),
-    'no-nested-clickables': require('./rules/no-nested-clickables'),
+    'no-nested-touchables': require('./rules/no-nested-touchables'),
   },
   configs: {
     recommended: {
@@ -14,7 +14,7 @@ module.exports = {
       },
       rules: {
         'react-native-a11y/accessible-touchable': 'error',
-        'react-native-a11y/no-nested-clickables': 'error',
+        'react-native-a11y/no-nested-touchables': 'error',
       },
     },
     strict: {
