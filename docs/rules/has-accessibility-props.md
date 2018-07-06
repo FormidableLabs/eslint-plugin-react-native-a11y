@@ -1,4 +1,4 @@
-# touchable-has-props
+# has-accessibility-props
 
 <Touchable\*> components must have both the accessibilityTraits and accessibilityComponentType props in order to be fully accessibile.
 

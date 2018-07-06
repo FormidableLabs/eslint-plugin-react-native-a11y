@@ -10,7 +10,7 @@
 
 import { RuleTester } from 'eslint';
 import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import rule from '../../../src/rules/touchable-has-props';
+import rule from '../../../src/rules/has-accessibility-props';
 
 // -----------------------------------------------------------------------------
 // Tests
@@ -24,7 +24,7 @@ const expectedError = {
   type: 'JSXOpeningElement',
 };
 
-ruleTester.run('touchable-has-props', rule, {
+ruleTester.run('has-accessibility-props', rule, {
   valid: [
     { code: '<div />;' },
     { code: '<TouchableOpacit />;' },

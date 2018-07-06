@@ -1,4 +1,4 @@
-# accessibilityTraits-is-valid
+# has-valid-accessibility-traits
 
 the accessibilityTraits property is used to tell a person using VoiceOver what kind of element they have selected.
 
