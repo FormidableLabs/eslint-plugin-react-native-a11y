@@ -31,6 +31,10 @@ ruleTester.run('has-accessibility-props', rule, {
     { code: '<TouchableOpacitys />;' },
     {
       code:
+        '<Touchable accessibilityTraits="none" accessibilityComponentType="none"/>;',
+    },
+    {
+      code:
         '<TouchableOpacity accessibilityTraits="none" accessibilityComponentType="none"/>;',
     },
     {
@@ -51,6 +55,7 @@ ruleTester.run('has-accessibility-props', rule, {
     },
   ].map(parserOptionsMapper),
   invalid: [
+    { code: '<Touchable />;', errors: [expectedError] },
     { code: '<TouchableOpacity />;', errors: [expectedError] },
     {
       code: '<TouchableOpacity accessibilityTraits="none"/>;',

@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Enforce all <Touchable*> components have accessibilityTraits and accessibilityComponentType props set
  * @author Alex Saunders
