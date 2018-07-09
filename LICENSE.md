@@ -1,6 +1,8 @@
 The MIT License (MIT)
 
-Copyright (c) 2016-present, Formidable Labs. All rights reserved.
+Copyright (c) 2018 Formidable Labs, Inc.
+
+Copyright (c) 2016 Ethan Cohen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
