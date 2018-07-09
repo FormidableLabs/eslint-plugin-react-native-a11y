@@ -1,14 +1,6 @@
 # eslint-plugin-react-native-a11y
 
-React Native specific accessibility linting rules.
-
-## Why?
-
-TODO
-
-<!-- Ryan Florence built out this awesome runtime-analysis tool called [react-a11y](https://github.com/reactjs/react-a11y). It is super useful. However, since you're probably already using linting in your project, this plugin comes for free and closer to the actual development process. Pairing this plugin with an editor lint plugin, you can bake accessibility standards into your application in real-time.
-
-**Note**: This project does not _replace_ react-a11y, but can and should be used in conjunction with it. Static analysis tools cannot determine values of variables that are being placed in props before runtime, so linting will not fail if that value is undefined and/or does not pass the lint rule. -->
+Warns about React Native specific accessibility issues with your React elements.
 
 ## Installation
 
@@ -57,7 +49,7 @@ Then configure the rules you want to use under the rules section.
 Alternatively, you can enable all the recommended or strict rules at once.
 Add `plugin:react-native-a11y/recommended` or `plugin:react-native-a11y/strict` to the `extends` section of your `.eslintrc` configuration file:
 
-```json
+```js
 {
   "extends": [
     "plugin:react-native-a11y/recommended"
@@ -66,7 +58,14 @@ Add `plugin:react-native-a11y/recommended` or `plugin:react-native-a11y/strict` 
 }
 ```
 
+(Please note that at the moment, there are no differences between the `recommended` and `strict` ruleset)
+
 ## Supported Rules
+
+- [accessibility-label](docs/rules/accessibility-label.md): Enforce that views that have accessible={true}, also have an accessibilityLabel prop
+- [has-accessibility-props](docs/rules/has-accessibility-props.md): Enforce all <Touchable\*> components have accessibilityTraits and accessibilityComponentType props set
+- [has-valid-accessibility-traits](docs/rules/has-valid-accessibility-traits.md): Enforce accessibilityTraits and accessibilityComponentType prop values must be valid
+- [no-nested-touchables](docs/rules/no-nested-touchables.md): Enforce if a view has accessible={true}, that there are no clickable elements inside
 
 ### Difference between 'recommended' and 'strict' mode
 
