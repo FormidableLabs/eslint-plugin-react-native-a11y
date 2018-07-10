@@ -60,7 +60,9 @@ Alternatively, you can enable all the recommended rules at once by adding `plugi
 
 - [accessibility-label](docs/rules/accessibility-label.md): Enforce that views that have `accessible={true}`, also have an accessibilityLabel prop
 - [has-accessibility-props](docs/rules/has-accessibility-props.md): Enforce all `<Touchable\*>` components have `accessibilityTraits` and `accessibilityComponentType` props set
+- [has-valid-accessibility-component-type](docs/rules/has-valid-accessibility-component-type.md): Enforce `accessibilityComponentType` property value is valid
 - [has-valid-accessibility-traits](docs/rules/has-valid-accessibility-traits.md): Enforce `accessibilityTraits` and `accessibilityComponentType` prop values must be valid
+- [has-valid-important-for-accessibility](docs/rules/has-valid-important-for-accessibility.md): Enforce `importantForAccessibility` property value is valid
 - [no-nested-touchables](docs/rules/no-nested-touchables.md): Enforce if a view has `accessible={true}`, that there are no touchable elements inside
 
 ## Creating a new rule
