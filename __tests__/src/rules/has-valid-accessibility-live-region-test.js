@@ -48,7 +48,7 @@ ruleTester.run('has-valid-accessibility-live-region', rule, {
       errors: [expectedError],
     },
     {
-      code: '<Text accessibilityLiveRegion="button">Click Me</Text>',
+      code: '<Text accessibilityLiveRegion="rude">Click Me</Text>',
       errors: [expectedError],
     },
   ].map(parserOptionsMapper),
