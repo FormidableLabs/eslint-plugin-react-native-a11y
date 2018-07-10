@@ -8,15 +8,9 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import type { JSXAttribute } from 'ast-types-flow';
-import { elementType, getPropValue } from 'jsx-ast-utils';
-import type { ESLintContext } from '../../flow/eslint';
-import { generateObjSchema } from '../util/schemas';
-import isOneOf from '../util/isOneOf';
+import createValidPropRule from '../factory/valid-prop';
 
 const errorMessage = 'accessibilityComponentType must be one of defined values';
-
-const schema = generateObjSchema();
 
 const validValues = [
   'none',
@@ -25,24 +19,8 @@ const validValues = [
   'radiobutton_unchecked',
 ];
 
-module.exports = {
-  meta: {
-    docs: {},
-    schema: [schema],
-  },
-
-  create: (context: ESLintContext) => ({
-    JSXAttribute: (node: JSXAttribute) => {
-      const attrName = elementType(node);
-      if (isOneOf(attrName, ['accessibilityComponentType'])) {
-        const attrValue = getPropValue(node);
-        if (!isOneOf(attrValue, validValues)) {
-          context.report({
-            node,
-            message: errorMessage,
-          });
-        }
-      }
-    },
-  }),
-};
+module.exports = createValidPropRule(
+  'accessibilityComponentType',
+  validValues,
+  errorMessage,
+);
