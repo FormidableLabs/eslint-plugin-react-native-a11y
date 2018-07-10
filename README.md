@@ -46,30 +46,22 @@ Then configure the rules you want to use under the rules section.
 }
 ```
 
-Alternatively, you can enable all the recommended or strict rules at once.
-Add `plugin:react-native-a11y/recommended` or `plugin:react-native-a11y/strict` to the `extends` section of your `.eslintrc` configuration file:
+Alternatively, you can enable all the recommended rules at once by adding `plugin:react-native-a11y/recommended` to the `extends` section of your `.eslintrc` configuration file:
 
 ```js
 {
   "extends": [
     "plugin:react-native-a11y/recommended"
-    // or: "plugin:react-native-a11y/strict"
   ]
 }
 ```
 
-(Please note that at the moment, there are no differences between the `recommended` and `strict` ruleset)
-
 ## Supported Rules
 
-- [accessibility-label](docs/rules/accessibility-label.md): Enforce that views that have accessible={true}, also have an accessibilityLabel prop
-- [has-accessibility-props](docs/rules/has-accessibility-props.md): Enforce all <Touchable\*> components have accessibilityTraits and accessibilityComponentType props set
-- [has-valid-accessibility-traits](docs/rules/has-valid-accessibility-traits.md): Enforce accessibilityTraits and accessibilityComponentType prop values must be valid
-- [no-nested-touchables](docs/rules/no-nested-touchables.md): Enforce if a view has accessible={true}, that there are no clickable elements inside
-
-### Difference between 'recommended' and 'strict' mode
-
-No differences yet
+- [accessibility-label](docs/rules/accessibility-label.md): Enforce that views that have `accessible={true}`, also have an accessibilityLabel prop
+- [has-accessibility-props](docs/rules/has-accessibility-props.md): Enforce all `<Touchable\*>` components have `accessibilityTraits` and `accessibilityComponentType` props set
+- [has-valid-accessibility-traits](docs/rules/has-valid-accessibility-traits.md): Enforce `accessibilityTraits` and `accessibilityComponentType` prop values must be valid
+- [no-nested-touchables](docs/rules/no-nested-touchables.md): Enforce if a view has `accessible={true}`, that there are no touchable elements inside
 
 ## Creating a new rule
 
@@ -79,6 +71,10 @@ script to scaffold the new files.
 ```
 $ ./scripts/create-rule.js my-new-rule
 ```
+
+## Attribution
+
+This project started as a fork of [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) and a lot of the work was carried out by its [contributors](evcohen/eslint-plugin-jsx-a11y/graphs/contributors), to whom we owe a lot!
 
 ## License
 
