@@ -1,16 +1,16 @@
 {
   "name": "eslint-plugin-react-native-a11y",
-  "version": "6.0.2",
-  "description": "Static AST checker for accessibility rules on JSX elements.",
+  "version": "0.1.0",
+  "description": "React Native specific accessibility linting rules.",
   "keywords": [
     "eslint",
     "eslintplugin",
     "eslint-plugin",
     "a11y",
     "accessibility",
-    "jsx"
+    "react-native"
   ],
-  "author": "Ethan Cohen",
+  "author": "Formidable",
   "repository": {
     "type": "git",
     "url": "https://github.com/FormidableLabs/eslint-plugin-react-native-a11y"
