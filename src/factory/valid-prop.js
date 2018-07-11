@@ -1,6 +1,7 @@
 // @flow
+
 import type { JSXAttribute } from 'ast-types-flow';
-import { elementType, getPropValue } from 'jsx-ast-utils';
+import { elementType, getLiteralPropValue } from 'jsx-ast-utils';
 import { generateObjSchema } from '../util/schemas';
 import type { ESLintContext } from '../../flow/eslint';
 import isOneOf from '../util/isOneOf';
@@ -13,9 +14,9 @@ import isOneOf from '../util/isOneOf';
  * @param {string} errorMessage Error message to present if prop is not a valid value
  */
 const createValidPropRule = (
-  propName: string = '',
-  validValues: Array<string> = [],
-  errorMessage: string = '',
+  propName: string,
+  validValues: Array<string>,
+  errorMessage: string,
 ) => ({
   meta: {
     docs: {},
@@ -26,8 +27,9 @@ const createValidPropRule = (
     JSXAttribute: (node: JSXAttribute) => {
       const attrName = elementType(node);
       if (attrName === propName) {
-        const attrValue = getPropValue(node);
-        if (!isOneOf(attrValue, validValues)) {
+        // ensure we are only checking literal prop values
+        const attrValue = getLiteralPropValue(node);
+        if (attrValue && !isOneOf(attrValue, validValues)) {
           context.report({
             node,
             message: errorMessage,
