@@ -71,10 +71,8 @@ If you are developing new rules for this project, you can use the `create-rule`
 script to scaffold the new files.
 
 ```
-$ ./scripts/create-rule.js rule-name --author="Your name" --description="Description of the rule"
+$ ./scripts/create-rule.js my-new-rule
 ```
-
-For more detailed instructions, please see the [scripts directory](scripts).
 
 ## Attribution
 
