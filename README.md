@@ -75,11 +75,11 @@ The following options are available to customize the recommended rule set.
 
 ```js
 "react-native-a11y/has-accessibility-props": [
-      "error",
-      {
-        "touchables": ["TouchableCustom"]
-      }
-    ]
+  "error",
+  {
+    "touchables": ["TouchableCustom"]
+  }
+]
 ```
 
 ## Creating a new rule
