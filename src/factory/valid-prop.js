@@ -29,13 +29,12 @@ const createValidPropRule = (
       if (attrName === propName) {
         // ensure we are only checking literal prop values
         const attrValue = getLiteralPropValue(node);
-        if (attrValue && isOneOf(attrValue, validValues)) {
-          return;
+        if (!isOneOf(attrValue, validValues)) {
+          context.report({
+            node,
+            message: errorMessage,
+          });
         }
-        context.report({
-          node,
-          message: errorMessage,
-        });
       }
     },
   }),
