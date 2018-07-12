@@ -1,6 +1,7 @@
 /**
  * @fileoverview Enforce that views that have accessible={true}, also have an accessibilityLabel prop
  * @author Alex Saunders
+ * @flow
  */
 
 // ----------------------------------------------------------------------------
@@ -9,6 +10,8 @@
 
 import { getProp } from 'jsx-ast-utils';
 import getLiteralPropValue from 'jsx-ast-utils/lib/getPropValue';
+import type { JSXOpeningElement } from 'ast-types-flow';
+import type { ESLintContext } from '../../flow/eslint';
 import { generateObjSchema } from '../util/schemas';
 import findChild from '../util/findChild';
 
@@ -30,14 +33,15 @@ module.exports = {
     schema: [schema],
   },
 
-  create: context => ({
-    JSXOpeningElement: (node) => {
+  create: (context: ESLintContext) => ({
+    JSXOpeningElement: (node: JSXOpeningElement) => {
       const accessible = getProp(node.attributes, 'accessible');
       if (accessible) {
         const labelPropVal = getAccessibilityLabel(node);
         if (!labelPropVal) {
           let childWithLabel;
           if (node.parent) {
+            // $FlowFixMe
             childWithLabel = findChild(node.parent, (child) => {
               if (child.attributes) {
                 const childLabelValue = getAccessibilityLabel(child);
