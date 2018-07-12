@@ -67,7 +67,7 @@ Alternatively, you can enable all the recommended rules at once by adding `plugi
 
 ### Rule Options
 
-The following rules have extra options when in recommended mode:
+The following options are available to customize the recommended rule set.
 
 #### Custom Touchables
 
