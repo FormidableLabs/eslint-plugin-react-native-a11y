@@ -65,6 +65,23 @@ Alternatively, you can enable all the recommended rules at once by adding `plugi
 - [has-valid-important-for-accessibility](docs/rules/has-valid-important-for-accessibility.md): Enforce `importantForAccessibility` property value is valid
 - [no-nested-touchables](docs/rules/no-nested-touchables.md): Enforce if a view has `accessible={true}`, that there are no touchable elements inside
 
+### Rule Options
+
+The following rules have extra options when in recommended mode:
+
+#### Custom Touchables
+
+`react-native-a11y/has-accessibility-props` and `react-native-a11y/no-nested-touchables` allow you to define an array of names for custom components that you may have that conform to the same accessibility interfaces as Touchables. Each of these names must start with 'Touchable'.
+
+```js
+"react-native-a11y/has-accessibility-props": [
+      "error",
+      {
+        "touchables": ["TouchableCustom"]
+      }
+    ]
+```
+
 ## Creating a new rule
 
 If you are developing new rules for this project, you can use the `create-rule`

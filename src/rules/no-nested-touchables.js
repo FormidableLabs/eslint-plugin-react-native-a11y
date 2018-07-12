@@ -32,7 +32,7 @@ module.exports = {
       if (accessible) {
         const clickableChild = findChild(
           parent,
-          child => isTouchable(child) || elementType(child) === 'Button',
+          child => isTouchable(child, context) || elementType(child) === 'Button',
         );
         if (clickableChild) {
           context.report({
