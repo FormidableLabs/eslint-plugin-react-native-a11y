@@ -9,30 +9,40 @@
 // ----------------------------------------------------------------------------
 
 import type { JSXOpeningElement } from 'ast-types-flow';
-import { hasEveryProp } from 'jsx-ast-utils';
+import { hasEveryProp, elementType } from 'jsx-ast-utils';
 import type { ESLintContext } from '../../flow/eslint';
-import { generateObjSchema } from '../util/schemas';
 import isTouchable from '../util/isTouchable';
 
-const errorMessage = '<Touchable*> components must have both the accessibilityTraits and accessibilityComponentType prop';
-
-const schema = generateObjSchema();
+function errorMessage(touchable) {
+  return `<${touchable}> must have both the accessibilityTraits and accessibilityComponentType prop`;
+}
 
 const reqProps = ['accessibilityTraits', 'accessibilityComponentType'];
 
 module.exports = {
   meta: {
     docs: {},
-    schema: [schema],
+    schema: [
+      {
+        type: 'object',
+        additionalProperties: {
+          type: 'array',
+          items: {
+            type: 'string',
+          },
+          uniqueItems: true,
+        },
+      },
+    ],
   },
 
   create: (context: ESLintContext) => ({
     JSXOpeningElement: (node: JSXOpeningElement) => {
-      if (isTouchable(node)) {
+      if (isTouchable(node, context)) {
         if (!hasEveryProp(node.attributes, reqProps)) {
           context.report({
             node,
-            message: errorMessage,
+            message: errorMessage(elementType(node)),
           });
         }
       }
