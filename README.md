@@ -1,6 +1,6 @@
 # eslint-plugin-react-native-a11y
 
-Warns about React Native specific accessibility issues with your React elements.
+Eslint-plugin-react-native-a11y is a collection of React Native specific ESLint rules for identifying accessibility issues. Building upon the foundation set down by eslint-plugin-jsx-a11y, eslint-plugin-react-native-a11y detects a few of the most commonly made accessibility issues found in react native apps. These rules make it easier for your apps to be navigable by users with screen readers. 
 
 ## Installation
 
