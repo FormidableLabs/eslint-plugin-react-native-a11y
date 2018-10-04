@@ -18,11 +18,10 @@ import rule from '../../../src/rules/has-accessibility-props';
 
 const ruleTester = new RuleTester();
 
-const expectedError = {
-  message:
-    '<Touchable*> components must have both the accessibilityTraits and accessibilityComponentType prop',
+const expectedError = touchable => ({
+  message: `<${touchable}> must have both the accessibilityTraits and accessibilityComponentType prop`,
   type: 'JSXOpeningElement',
-};
+});
 
 ruleTester.run('has-accessibility-props', rule, {
   valid: [
@@ -55,43 +54,58 @@ ruleTester.run('has-accessibility-props', rule, {
     },
   ].map(parserOptionsMapper),
   invalid: [
-    { code: '<Touchable />;', errors: [expectedError] },
-    { code: '<TouchableOpacity />;', errors: [expectedError] },
+    { code: '<Touchable />;', errors: [expectedError('Touchable')] },
+    {
+      code: '<TouchableOpacity />;',
+      errors: [expectedError('TouchableOpacity')],
+    },
     {
       code: '<TouchableOpacity accessibilityTraits="none"/>;',
-      errors: [expectedError],
+      errors: [expectedError('TouchableOpacity')],
     },
     {
       code: '<TouchableOpacity accessibilityComponentType="none"/>;',
-      errors: [expectedError],
+      errors: [expectedError('TouchableOpacity')],
     },
-    { code: '<TouchableHighlight />;', errors: [expectedError] },
+    {
+      code: '<TouchableHighlight />;',
+      errors: [expectedError('TouchableHighlight')],
+    },
     {
       code: '<TouchableHighlight accessibilityComponentType="none"/>;',
-      errors: [expectedError],
+      errors: [expectedError('TouchableHighlight')],
     },
     {
       code: '<TouchableHighlight accessibilityComponentType="none"/>;',
-      errors: [expectedError],
+      errors: [expectedError('TouchableHighlight')],
     },
-    { code: '<TouchableWithoutFeedback />;', errors: [expectedError] },
+    {
+      code: '<TouchableWithoutFeedback />;',
+      errors: [expectedError('TouchableWithoutFeedback')],
+    },
     {
       code: '<TouchableWithoutFeedback accessibilityComponentType="none"/>;',
-      errors: [expectedError],
+      errors: [expectedError('TouchableWithoutFeedback')],
     },
     {
       code: '<TouchableWithoutFeedback accessibilityComponentType="none"/>;',
-      errors: [expectedError],
-    },
-    { code: '<TouchableNativeFeedback />;', errors: [expectedError] },
-    {
-      code: '<TouchableNativeFeedback accessibilityComponentType="none"/>;',
-      errors: [expectedError],
+      errors: [expectedError('TouchableWithoutFeedback')],
     },
     {
-      code: '<TouchableNativeFeedback accessibilityComponentType="none"/>;',
-      errors: [expectedError],
+      code: '<TouchableNativeFeedback />;',
+      errors: [expectedError('TouchableNativeFeedback')],
     },
-    { code: '<div><TouchableOpacity /></div>;', errors: [expectedError] },
+    {
+      code: '<TouchableNativeFeedback accessibilityComponentType="none"/>;',
+      errors: [expectedError('TouchableNativeFeedback')],
+    },
+    {
+      code: '<TouchableNativeFeedback accessibilityComponentType="none"/>;',
+      errors: [expectedError('TouchableNativeFeedback')],
+    },
+    {
+      code: '<div><TouchableOpacity /></div>;',
+      errors: [expectedError('TouchableOpacity')],
+    },
   ].map(parserOptionsMapper),
 });
