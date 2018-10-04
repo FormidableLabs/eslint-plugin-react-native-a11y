@@ -48,6 +48,7 @@
     "flow-bin": "^0.66.0",
     "in-publish": "^2.0.0",
     "jest": "^21.2.1",
+    "jscodeshift": "^0.5.1",
     "minimist": "^1.2.0",
     "object.assign": "^4.1.0",
     "rimraf": "^2.6.2",
