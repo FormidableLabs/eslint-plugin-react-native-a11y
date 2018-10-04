@@ -10,15 +10,8 @@ import createValidPropRule from '../factory/valid-prop';
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-const errorMessage = 'accessibilityState must be one or more of the defined values';
+const errorMessage = 'accessibilityState must be one or both of the defined values';
 
-const validValues = [
-  'selected',
-  'disabled',
-];
+const validValues = ['selected', 'disabled'];
 
-module.exports = createValidPropRule(
-  'accessibilityState',
-  validValues,
-  errorMessage,
-);
+module.exports = createValidPropRule('accessibilityState', validValues, errorMessage);

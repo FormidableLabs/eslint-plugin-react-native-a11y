@@ -13,31 +13,36 @@ import isOneOf from '../util/isOneOf';
  * @param {Array<string>} validValues Array of possible valid values
  * @param {string} errorMessage Error message to present if prop is not a valid value
  */
-const createValidPropRule = (
-  propName: string,
-  validValues: Array<string>,
-  errorMessage: string,
-) => ({
-  meta: {
-    docs: {},
-    schema: [generateObjSchema()],
-  },
+const createValidPropRule = (propName: string, validValues: Array<string>, errorMessage: string) => ({
+	meta: {
+		docs: {},
+		schema: [generateObjSchema()]
+	},
 
-  create: (context: ESLintContext) => ({
-    JSXAttribute: (node: JSXAttribute) => {
-      const attrName = elementType(node);
-      if (attrName === propName) {
-        // ensure we are only checking literal prop values
-        const attrValue = getLiteralPropValue(node);
-        if (!isOneOf(attrValue, validValues)) {
-          context.report({
-            node,
-            message: errorMessage,
-          });
-        }
-      }
-    },
-  }),
+	create: (context: ESLintContext) => ({
+		JSXAttribute: (node: JSXAttribute) => {
+			const attrName = elementType(node);
+			if (attrName === propName) {
+				// ensure we are only checking literal prop values
+				const attrValue = getLiteralPropValue(node);
+				let invalid = false;
+
+				if (Array.isArray(attrValue)) {
+					const validate = attrValue.map(strValue => isOneOf(strValue, validValues));
+					invalid = validate.indexOf(false) > -1;
+				} else {
+					invalid = !isOneOf(attrValue, validValues);
+				}
+
+				if (invalid) {
+					context.report({
+						node,
+						message: errorMessage
+					});
+				}
+			}
+		}
+	})
 });
 
 export default createValidPropRule;
