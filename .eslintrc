@@ -1,14 +1,15 @@
 {
-  extends: [
+  "extends": [
     "airbnb-base",
-    "plugin:flowtype/recommended"
+    "plugin:flowtype/recommended",
+    "prettier"
   ],
-  parser: "babel-eslint",
-  plugins: [
+  "parser": "babel-eslint",
+  "plugins": [
     "flowtype"
   ],
-  rules: {
-    'max-len': 'off',
-    'no-template-curly-in-string': 'off',
+  "rules": {
+    "max-len": "off",
+    "no-template-curly-in-string": "off"
   }
 }
