@@ -1,8 +1,8 @@
 # has-accessibility-props
 
-<Touchable\*> components must have both the accessibilityTraits and accessibilityComponentType props in order to be fully accessibile.
+<Touchable\*> components must have the accessibilityRole prop or both accessibilityTraits and accessibilityComponentType props in order to be fully accessible.
 
-The accessibilityTraits props tells VoiceOver on iOS what kind of element the user has selected. For android, the accessibilityComponentType prop serves a similar purpose, alerting the end user of the type of selected component.
+The accessibilityRole props tells VoiceOver on iOS what kind of element the user has selected.
 
 Touchable components are one of:
 
@@ -15,8 +15,9 @@ Touchable components are one of:
 
 ### References
 
-1.  https://facebook.github.io/react-native/docs/accessibility.html#accessibilitytraits-ios
-2.  https://facebook.github.io/react-native/docs/accessibility.html#accessibilitycomponenttype-android
+1.  https://facebook.github.io/react-native/docs/accessibility.html#accessibilityrole-ios-android
+2.  https://facebook.github.io/react-native/docs/accessibility.html#accessibilitytraits-ios
+3.  https://facebook.github.io/react-native/docs/accessibility.html#accessibilitycomponenttype-android
 
 ## Rule details
 
@@ -26,12 +27,22 @@ This rule takes no arguments.
 
 ```jsx
 <TouchableOpacity
+  accessibilityRole="none"
+/>
+```
+
+```jsx
+<TouchableOpacity
   accessibilityTraits="none"
   accessibilityComponentType="none"
 />
 ```
 
 ### Fail
+
+```jsx
+<TouchableOpacity />
+```
 
 ```jsx
 <TouchableOpacity accessibilityComponentType="none" />

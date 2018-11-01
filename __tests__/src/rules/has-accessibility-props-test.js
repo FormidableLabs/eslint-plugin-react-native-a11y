@@ -19,7 +19,7 @@ import rule from '../../../src/rules/has-accessibility-props';
 const ruleTester = new RuleTester();
 
 const expectedError = touchable => ({
-  message: `<${touchable}> must have both the accessibilityTraits and accessibilityComponentType prop`,
+  message: `<${touchable}> must have the accessibilityRole prop, or both accessibilityComponentType and accessibilityTraits`,
   type: 'JSXOpeningElement',
 });
 
@@ -51,6 +51,10 @@ ruleTester.run('has-accessibility-props', rule, {
     {
       code:
         '<div><TouchableNativeFeedback accessibilityTraits="none" accessibilityComponentType="none"/></div>;',
+    },
+    {
+      code:
+        '<div><TouchableNativeFeedback accessibilityRole="none"/></div>;',
     },
   ].map(parserOptionsMapper),
   invalid: [
