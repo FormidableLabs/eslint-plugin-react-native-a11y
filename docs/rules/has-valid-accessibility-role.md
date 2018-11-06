@@ -1,6 +1,6 @@
 # has-valid-accessibility-role
 
-*Note*: `accessibilityRole` and `accessibilityState` are meant to be a cross-platform solution to replace `accessibilityTraits` and `accessibilityComponentType`, which will soon be deprecated. When possible, use `accessibilityRole` and `accessibilityState` instead of `accessibilityTraits` and `accessibilityComponentType`.
+*Note*: `accessibilityRole` and `accessibilityStates` are meant to be a cross-platform solution to replace `accessibilityTraits` and `accessibilityComponentType`, which will soon be deprecated. When possible, use `accessibilityRole` and `accessibilityStates` instead of `accessibilityTraits` and `accessibilityComponentType`.
 
 The accessibilityRole property is used to tell Talkback or Voiceover the role of a UI Element.
 

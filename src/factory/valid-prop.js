@@ -13,10 +13,11 @@ import isOneOf from '../util/isOneOf';
  * @param {Array<string>} validValues Array of possible valid values
  * @param {string} errorMessage Error message to present if prop is not a valid value
  */
-const createValidPropRule = (propName: string, validValues: Array<string>, errorMessage: string) => ({
+const createValidPropRule = (propName: string, validValues: Array<string>, errorMessage: string, meta?: Object, create?: Object) => ({
 	meta: {
 		docs: {},
-		schema: [generateObjSchema()]
+		schema: [generateObjSchema()],
+		...meta,
 	},
 
 	create: (context: ESLintContext) => ({
@@ -41,7 +42,8 @@ const createValidPropRule = (propName: string, validValues: Array<string>, error
 					});
 				}
 			}
-		}
+		},
+		...create
 	})
 });
 

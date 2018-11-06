@@ -1,6 +1,6 @@
 # has-valid-accessibility-traits
 
-*Note*: `accessibilityTraits` will soon be deprecated. When possible, use `accessibilityRole` and `accessibilityState` instead of `accessibilityTraits` and `accessibilityComponentType`.
+*Note*: `accessibilityTraits` will soon be deprecated. When possible, use `accessibilityRole` and `accessibilityStates` instead of `accessibilityTraits` and `accessibilityComponentType`.
 
 The accessibilityTraits property is used to tell a person using VoiceOver what kind of element they have selected.
 
