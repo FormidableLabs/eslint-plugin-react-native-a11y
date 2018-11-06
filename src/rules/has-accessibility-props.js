@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce all <Touchable*> components have accessibilityTraits and accessibilityComponentType props set
+ * @fileoverview Enforce all <Touchable*> components have accessibilityRole or accessibilityTraits and accessibilityComponentType props set
  * @author Alex Saunders
  * @flow
  */
@@ -9,15 +9,15 @@
 // ----------------------------------------------------------------------------
 
 import type { JSXOpeningElement } from 'ast-types-flow';
-import { hasEveryProp, elementType } from 'jsx-ast-utils';
+import { hasProp, hasEveryProp, elementType } from 'jsx-ast-utils';
 import type { ESLintContext } from '../../flow/eslint';
 import isTouchable from '../util/isTouchable';
 
 function errorMessage(touchable) {
-  return `<${touchable}> must have both the accessibilityTraits and accessibilityComponentType prop`;
+  return `<${touchable}> must have the accessibilityRole prop, or both accessibilityComponentType and accessibilityTraits`;
 }
 
-const reqProps = ['accessibilityTraits', 'accessibilityComponentType'];
+const deprecatedProps = ['accessibilityTraits', 'accessibilityComponentType'];
 
 module.exports = {
   meta: {
@@ -39,7 +39,7 @@ module.exports = {
   create: (context: ESLintContext) => ({
     JSXOpeningElement: (node: JSXOpeningElement) => {
       if (isTouchable(node, context)) {
-        if (!hasEveryProp(node.attributes, reqProps)) {
+        if (!hasProp(node.attributes, 'accessibilityRole') && !hasEveryProp(node.attributes, deprecatedProps)) {
           context.report({
             node,
             message: errorMessage(elementType(node)),
