@@ -10,7 +10,7 @@ import createValidPropRule from '../factory/valid-prop';
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-const errorMessage = 'accessibilityStates must be one or both of the defined values';
+const errorMessage = 'accessibilityStates must be one, both, or neither of the defined values';
 
 const validValues = ['selected', 'disabled'];
 

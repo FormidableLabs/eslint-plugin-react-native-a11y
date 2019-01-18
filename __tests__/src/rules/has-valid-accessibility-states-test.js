@@ -19,7 +19,7 @@ import rule from '../../../src/rules/has-valid-accessibility-states';
 const ruleTester = new RuleTester();
 
 const expectedError = {
-	message: 'accessibilityStates must be one or both of the defined values',
+	message: 'accessibilityStates must be one, both, or neither of the defined values',
 	type: 'JSXAttribute'
 };
 
@@ -30,7 +30,9 @@ ruleTester.run('has-valid-accessibility-states', rule, {
 		{ code: '<TouchableOpacity accessibilityStates={["selected"]} />;' },
 		{ code: '<TouchableOpacity accessibilityStates={["disabled"]} />;' },
 		{ code: '<TouchableOpacity accessibilityStates={["selected", "disabled"]} />;' },
-		{ code: '<TouchableOpacity accessibilityStates={["disabled", "selected"]} />;' }
+		{ code: '<TouchableOpacity accessibilityStates={["disabled", "selected"]} />;' },
+		{ code: '<TouchableOpacity accessibilityStates={[""]} />;' },
+		{ code: '<TouchableOpacity accessibilityStates={[]} />;' }
 	].map(parserOptionsMapper),
 	invalid: [
 		{
