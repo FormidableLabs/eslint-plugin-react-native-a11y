@@ -27,6 +27,9 @@ const expectedError = {
 ruleTester.run('accessibility-label', rule, {
   valid: [
     {
+      code: '<View accessible accessibilityLabel={"Tap me!"}/>',
+    },
+    {
       code: '<View accessible={true} accessibilityLabel={"Tap me!"}/>',
     },
     {
@@ -44,8 +47,15 @@ ruleTester.run('accessibility-label', rule, {
           </View>
         </View>`,
     },
+    {
+      code: '<View accessible={false} />',
+    },
   ].map(parserOptionsMapper),
   invalid: [
+    {
+      code: '<View accessible />',
+      errors: [expectedError],
+    },
     {
       code: '<View accessible={true} />',
       errors: [expectedError],
