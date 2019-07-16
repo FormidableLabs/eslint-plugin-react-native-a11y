@@ -9,14 +9,14 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import createValidPropRule from '../factory/valid-prop';
+import createValidPropRule from "../factory/valid-prop";
 
-const errorMessage = 'accessibilityLiveRegion must be one of defined values';
+const errorMessage = "accessibilityLiveRegion must be one of defined values";
 
-const validValues = ['none', 'polite', 'assertive'];
+const validValues = ["none", "polite", "assertive"];
 
 module.exports = createValidPropRule(
-  'accessibilityLiveRegion',
+  "accessibilityLiveRegion",
   validValues,
-  errorMessage,
+  errorMessage
 );

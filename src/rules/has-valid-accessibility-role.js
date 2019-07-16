@@ -4,30 +4,30 @@
  * @flow
  */
 
-import createValidPropRule from '../factory/valid-prop';
+import createValidPropRule from "../factory/valid-prop";
 
 // ----------------------------------------------------------------------------
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-const errorMessage = 'accessibilityRole must be one of defined values';
+const errorMessage = "accessibilityRole must be one of defined values";
 
 const validValues = [
-  'adjustable',
-  'button',
-  'header',
-  'image',
-  'imagebutton',
-  'keyboardkey',
-  'link',
-  'none',
-  'search',
-  'summary',
-  'text',
+  "adjustable",
+  "button",
+  "header",
+  "image",
+  "imagebutton",
+  "keyboardkey",
+  "link",
+  "none",
+  "search",
+  "summary",
+  "text"
 ];
 
 module.exports = createValidPropRule(
-  'accessibilityRole',
+  "accessibilityRole",
   validValues,
-  errorMessage,
+  errorMessage
 );

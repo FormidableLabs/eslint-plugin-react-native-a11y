@@ -8,14 +8,14 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import createValidPropRule from '../factory/valid-prop';
+import createValidPropRule from "../factory/valid-prop";
 
-const errorMessage = 'importantForAccessibility must be one of defined values';
+const errorMessage = "importantForAccessibility must be one of defined values";
 
-const validValues = ['auto', 'yes', 'no', 'no-hide-descendants'];
+const validValues = ["auto", "yes", "no", "no-hide-descendants"];
 
 module.exports = createValidPropRule(
-  'importantForAccessibility',
+  "importantForAccessibility",
   validValues,
-  errorMessage,
+  errorMessage
 );

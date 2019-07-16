@@ -8,9 +8,9 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-import { RuleTester } from 'eslint';
-import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import rule from '../../../src/rules/has-valid-accessibility-role';
+import { RuleTester } from "eslint";
+import parserOptionsMapper from "../../__util__/parserOptionsMapper";
+import rule from "../../../src/rules/has-valid-accessibility-role";
 
 // -----------------------------------------------------------------------------
 // Tests
@@ -19,11 +19,11 @@ import rule from '../../../src/rules/has-valid-accessibility-role';
 const ruleTester = new RuleTester();
 
 const expectedError = {
-  message: 'accessibilityRole must be one of defined values',
-  type: 'JSXAttribute',
+  message: "accessibilityRole must be one of defined values",
+  type: "JSXAttribute"
 };
 
-ruleTester.run('has-valid-accessibility-role', rule, {
+ruleTester.run("has-valid-accessibility-role", rule, {
   valid: [
     { code: '<TouchableOpacity accessibilityRole="adjustable" />;' },
     { code: '<TouchableOpacity accessibilityRole="button" />;' },
@@ -35,24 +35,24 @@ ruleTester.run('has-valid-accessibility-role', rule, {
     { code: '<TouchableOpacity accessibilityRole="none" />;' },
     { code: '<TouchableOpacity accessibilityRole="search" />;' },
     { code: '<TouchableOpacity accessibilityRole="summary" />;' },
-    { code: '<TouchableOpacity accessibilityRole="text" />;' },
+    { code: '<TouchableOpacity accessibilityRole="text" />;' }
   ].map(parserOptionsMapper),
   invalid: [
     {
       code: '<TouchableOpacity accessibilityRole="duck" />',
-      errors: [expectedError],
+      errors: [expectedError]
     },
     {
       code: '<TouchableOpacity accessibilityRole="key" />;',
-      errors: [expectedError],
+      errors: [expectedError]
     },
     {
       code: '<TouchableOpacity accessibilityRole="nones" />;',
-      errors: [expectedError],
+      errors: [expectedError]
     },
     {
       code: '<TouchableOpacity accessibilityRole="primary-button" />',
-      errors: [expectedError],
-    },
-  ].map(parserOptionsMapper),
+      errors: [expectedError]
+    }
+  ].map(parserOptionsMapper)
 });

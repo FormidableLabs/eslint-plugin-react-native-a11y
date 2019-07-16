@@ -1,5 +1,5 @@
 // @flow
-import type { JSXOpeningElement, JSXElement } from 'ast-types-flow';
+import type { JSXOpeningElement, JSXElement } from "ast-types-flow";
 
 /**
  * Recursively searches for an child element within a
@@ -8,7 +8,7 @@ import type { JSXOpeningElement, JSXElement } from 'ast-types-flow';
  */
 export default function findChild(
   node: JSXElement,
-  callback: (child: JSXOpeningElement) => boolean,
+  callback: (child: JSXOpeningElement) => boolean
 ): ?JSXOpeningElement {
   const { children } = node;
   if (children && children.length > 0) {

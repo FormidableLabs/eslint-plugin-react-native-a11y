@@ -8,9 +8,9 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-import { RuleTester } from 'eslint';
-import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import rule from '../../../src/rules/has-valid-accessibility-component-type';
+import { RuleTester } from "eslint";
+import parserOptionsMapper from "../../__util__/parserOptionsMapper";
+import rule from "../../../src/rules/has-valid-accessibility-component-type";
 
 // -----------------------------------------------------------------------------
 // Tests
@@ -19,39 +19,39 @@ import rule from '../../../src/rules/has-valid-accessibility-component-type';
 const ruleTester = new RuleTester();
 
 const expectedError = {
-  message: 'accessibilityComponentType must be one of defined values',
-  type: 'JSXAttribute',
+  message: "accessibilityComponentType must be one of defined values",
+  type: "JSXAttribute"
 };
 
-ruleTester.run('has-valid-accessibility-component-type', rule, {
+ruleTester.run("has-valid-accessibility-component-type", rule, {
   valid: [
     { code: '<TouchableOpacity accessibilityComponentType="none" />;' },
     { code: '<TouchableOpacity accessibilityComponentType="button" />;' },
     {
       code:
-        '<TouchableOpacity accessibilityComponentType="radiobutton_checked" />;',
+        '<TouchableOpacity accessibilityComponentType="radiobutton_checked" />;'
     },
     {
       code:
-        '<TouchableOpacity accessibilityComponentType="radiobutton_unchecked" />;',
-    },
+        '<TouchableOpacity accessibilityComponentType="radiobutton_unchecked" />;'
+    }
   ].map(parserOptionsMapper),
   invalid: [
     {
       code: '<TouchableOpacity accessibilityComponentType="duck" />',
-      errors: [expectedError],
+      errors: [expectedError]
     },
     {
       code: '<TouchableOpacity accessibilityComponentType="non" />;',
-      errors: [expectedError],
+      errors: [expectedError]
     },
     {
       code: '<TouchableOpacity accessibilityComponentType="nones" />;',
-      errors: [expectedError],
+      errors: [expectedError]
     },
     {
       code: '<TouchableOpacity accessibilityComponentType="primary-button" />',
-      errors: [expectedError],
-    },
-  ].map(parserOptionsMapper),
+      errors: [expectedError]
+    }
+  ].map(parserOptionsMapper)
 });

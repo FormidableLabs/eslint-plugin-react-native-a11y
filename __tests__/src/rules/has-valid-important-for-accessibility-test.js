@@ -8,9 +8,9 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-import { RuleTester } from 'eslint';
-import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import rule from '../../../src/rules/has-valid-important-for-accessibility';
+import { RuleTester } from "eslint";
+import parserOptionsMapper from "../../__util__/parserOptionsMapper";
+import rule from "../../../src/rules/has-valid-important-for-accessibility";
 
 // -----------------------------------------------------------------------------
 // Tests
@@ -19,29 +19,29 @@ import rule from '../../../src/rules/has-valid-important-for-accessibility';
 const ruleTester = new RuleTester();
 
 const expectedError = {
-  message: 'importantForAccessibility must be one of defined values',
-  type: 'JSXAttribute',
+  message: "importantForAccessibility must be one of defined values",
+  type: "JSXAttribute"
 };
 
-ruleTester.run('has-valid-important-for-accessibility', rule, {
+ruleTester.run("has-valid-important-for-accessibility", rule, {
   valid: [
     { code: '<View importantForAccessibility="auto"/>' },
     { code: '<View importantForAccessibility="yes"/>' },
     { code: '<View importantForAccessibility="no"/>' },
-    { code: '<View importantForAccessibility="no-hide-descendants"/>' },
+    { code: '<View importantForAccessibility="no-hide-descendants"/>' }
   ].map(parserOptionsMapper),
   invalid: [
     {
       code: '<View importantForAccessibility="" />',
-      errors: [expectedError],
+      errors: [expectedError]
     },
     {
       code: '<View importantForAccessibility="aut" />',
-      errors: [expectedError],
+      errors: [expectedError]
     },
     {
       code: '<View importantForAccessibility="autoyes" />',
-      errors: [expectedError],
-    },
-  ].map(parserOptionsMapper),
+      errors: [expectedError]
+    }
+  ].map(parserOptionsMapper)
 });
