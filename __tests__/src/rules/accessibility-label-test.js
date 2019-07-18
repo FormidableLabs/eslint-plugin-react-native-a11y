@@ -8,9 +8,9 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-import { RuleTester } from "eslint";
-import parserOptionsMapper from "../../__util__/parserOptionsMapper";
-import rule from "../../../src/rules/accessibility-label";
+import { RuleTester } from 'eslint';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper';
+import rule from '../../../src/rules/accessibility-label';
 
 // -----------------------------------------------------------------------------
 // Tests
@@ -20,11 +20,11 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message:
-    "If an element adopts the accessible={true} prop, it (or at least one of its children) must also set the accessibilityLabel prop",
-  type: "JSXOpeningElement"
+    'If an element adopts the accessible={true} prop, it (or at least one of its children) must also set the accessibilityLabel prop',
+  type: 'JSXOpeningElement'
 };
 
-ruleTester.run("accessibility-label", rule, {
+ruleTester.run('accessibility-label', rule, {
   valid: [
     {
       code: '<View accessible={true} accessibilityLabel={"Tap me!"}/>'
@@ -47,11 +47,11 @@ ruleTester.run("accessibility-label", rule, {
   ].map(parserOptionsMapper),
   invalid: [
     {
-      code: "<View accessible={true} />",
+      code: '<View accessible={true} />',
       errors: [expectedError]
     },
     {
-      code: "<View accessible={true} accessibilityLabel/>",
+      code: '<View accessible={true} accessibilityLabel/>',
       errors: [expectedError]
     },
     {
@@ -63,7 +63,7 @@ ruleTester.run("accessibility-label", rule, {
       errors: [expectedError]
     },
     {
-      code: "<View accessible={true} />",
+      code: '<View accessible={true} />',
       errors: [expectedError]
     },
     {

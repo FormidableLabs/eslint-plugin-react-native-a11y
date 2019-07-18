@@ -8,19 +8,19 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import createValidPropRule from "../factory/valid-prop";
+import createValidPropRule from '../factory/valid-prop';
 
-const errorMessage = "accessibilityComponentType must be one of defined values";
+const errorMessage = 'accessibilityComponentType must be one of defined values';
 
 const validValues = [
-  "none",
-  "button",
-  "radiobutton_checked",
-  "radiobutton_unchecked"
+  'none',
+  'button',
+  'radiobutton_checked',
+  'radiobutton_unchecked'
 ];
 
 module.exports = createValidPropRule(
-  "accessibilityComponentType",
+  'accessibilityComponentType',
   validValues,
   errorMessage
 );

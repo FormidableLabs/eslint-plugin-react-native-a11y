@@ -4,21 +4,21 @@
  * @flow
  */
 
-import createValidPropRule from "../factory/valid-prop";
+import createValidPropRule from '../factory/valid-prop';
 
 // ----------------------------------------------------------------------------
 // Rule Definition
 // ----------------------------------------------------------------------------
 
 const errorMessage =
-  "accessibilityStates must be one or both of the defined values";
+  'accessibilityStates must be one or both of the defined values';
 
-const validValues = ["selected", "disabled"];
+const validValues = ['selected', 'disabled'];
 
 let deprecationHasBeenWarned = false;
 
 const rule = createValidPropRule(
-  "accessibilityStates",
+  'accessibilityStates',
   validValues,
   errorMessage,
   {
@@ -29,8 +29,8 @@ const rule = createValidPropRule(
       if (deprecationHasBeenWarned) return;
       // eslint-disable-next-line no-console
       console.log(
-        "The react-native-a11y/has-valid-accessibility-state rule is deprecated. " +
-          "Please use the react-native-a11y/has-valid-accessibility-states rule instead."
+        'The react-native-a11y/has-valid-accessibility-state rule is deprecated. ' +
+          'Please use the react-native-a11y/has-valid-accessibility-states rule instead.'
       );
       deprecationHasBeenWarned = true;
     }

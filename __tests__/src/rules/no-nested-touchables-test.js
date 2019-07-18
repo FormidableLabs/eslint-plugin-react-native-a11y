@@ -8,9 +8,9 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-import { RuleTester } from "eslint";
-import parserOptionsMapper from "../../__util__/parserOptionsMapper";
-import rule from "../../../src/rules/no-nested-touchables";
+import { RuleTester } from 'eslint';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper';
+import rule from '../../../src/rules/no-nested-touchables';
 
 // -----------------------------------------------------------------------------
 // Tests
@@ -20,11 +20,11 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message:
-    "Elements with accessible={true} must not have any clickable elements inside",
-  type: "JSXOpeningElement"
+    'Elements with accessible={true} must not have any clickable elements inside',
+  type: 'JSXOpeningElement'
 };
 
-ruleTester.run("no-nested-touchables", rule, {
+ruleTester.run('no-nested-touchables', rule, {
   valid: [
     {
       code: `<TouchableOpacity

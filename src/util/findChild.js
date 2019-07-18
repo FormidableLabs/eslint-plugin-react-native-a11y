@@ -1,5 +1,5 @@
 // @flow
-import type { JSXOpeningElement, JSXElement } from "ast-types-flow";
+import type { JSXOpeningElement, JSXElement } from 'ast-types-flow';
 
 /**
  * Recursively searches for an child element within a

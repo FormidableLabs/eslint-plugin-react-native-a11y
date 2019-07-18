@@ -4,19 +4,19 @@
  * @flow
  */
 
-import createValidPropRule from "../factory/valid-prop";
+import createValidPropRule from '../factory/valid-prop';
 
 // ----------------------------------------------------------------------------
 // Rule Definition
 // ----------------------------------------------------------------------------
 
 const errorMessage =
-  "accessibilityStates must be one or both of the defined values";
+  'accessibilityStates must be one or both of the defined values';
 
-const validValues = ["selected", "disabled"];
+const validValues = ['selected', 'disabled'];
 
 module.exports = createValidPropRule(
-  "accessibilityStates",
+  'accessibilityStates',
   validValues,
   errorMessage
 );

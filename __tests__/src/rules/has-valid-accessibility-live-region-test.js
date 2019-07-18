@@ -9,9 +9,9 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-import { RuleTester } from "eslint";
-import parserOptionsMapper from "../../__util__/parserOptionsMapper";
-import rule from "../../../src/rules/has-valid-accessibility-live-region";
+import { RuleTester } from 'eslint';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper';
+import rule from '../../../src/rules/has-valid-accessibility-live-region';
 
 // -----------------------------------------------------------------------------
 // Tests
@@ -20,11 +20,11 @@ import rule from "../../../src/rules/has-valid-accessibility-live-region";
 const ruleTester = new RuleTester();
 
 const expectedError = {
-  message: "accessibilityLiveRegion must be one of defined values",
-  type: "JSXAttribute"
+  message: 'accessibilityLiveRegion must be one of defined values',
+  type: 'JSXAttribute'
 };
 
-ruleTester.run("has-valid-accessibility-live-region", rule, {
+ruleTester.run('has-valid-accessibility-live-region', rule, {
   valid: [
     { code: '<Text accessibilityLiveRegion="none">Click Me</Text>' },
     { code: '<Text accessibilityLiveRegion="polite">Click Me</Text>' },
@@ -32,7 +32,7 @@ ruleTester.run("has-valid-accessibility-live-region", rule, {
   ].map(parserOptionsMapper),
   invalid: [
     {
-      code: "<Text accessibilityLiveRegion >Click Me</Text>",
+      code: '<Text accessibilityLiveRegion >Click Me</Text>',
       errors: [expectedError]
     },
     {

@@ -8,9 +8,9 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-import { RuleTester } from "eslint";
-import parserOptionsMapper from "../../__util__/parserOptionsMapper";
-import rule from "../../../src/rules/has-valid-accessibility-states";
+import { RuleTester } from 'eslint';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper';
+import rule from '../../../src/rules/has-valid-accessibility-states';
 
 // -----------------------------------------------------------------------------
 // Tests
@@ -19,11 +19,11 @@ import rule from "../../../src/rules/has-valid-accessibility-states";
 const ruleTester = new RuleTester();
 
 const expectedError = {
-  message: "accessibilityStates must be one or both of the defined values",
-  type: "JSXAttribute"
+  message: 'accessibilityStates must be one or both of the defined values',
+  type: 'JSXAttribute'
 };
 
-ruleTester.run("has-valid-accessibility-states", rule, {
+ruleTester.run('has-valid-accessibility-states', rule, {
   valid: [
     { code: '<TouchableOpacity accessibilityStates="selected" />;' },
     { code: '<TouchableOpacity accessibilityStates="disabled" />;' },

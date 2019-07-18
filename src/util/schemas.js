@@ -2,9 +2,9 @@
  * JSON schema to accept an array of unique strings
  */
 export const arraySchema = {
-  type: "array",
+  type: 'array',
   items: {
-    type: "string"
+    type: 'string'
   },
   uniqueItems: true,
   additionalItems: false
@@ -16,7 +16,7 @@ export const arraySchema = {
 export const enumArraySchema = (enumeratedList = [], minItems = 0) =>
   Object.assign({}, arraySchema, {
     items: {
-      type: "string",
+      type: 'string',
       enum: enumeratedList
     },
     minItems
@@ -27,7 +27,7 @@ export const enumArraySchema = (enumeratedList = [], minItems = 0) =>
  * with specified properties object
  */
 export const generateObjSchema = (properties = {}, required) => ({
-  type: "object",
+  type: 'object',
   properties,
   required
 });

@@ -4,9 +4,9 @@
  * @flow
  */
 
-import type { JSXOpeningElement } from "ast-types-flow";
-import { elementType } from "jsx-ast-utils";
-import type { ESLintContext } from "../../flow/eslint";
+import type { JSXOpeningElement } from 'ast-types-flow';
+import { elementType } from 'jsx-ast-utils';
+import type { ESLintContext } from '../../flow/eslint';
 
 const defaultTouchables = {
   Touchable: true,
@@ -20,7 +20,7 @@ const defaultTouchables = {
 export default function isTouchable(
   element: JSXOpeningElement,
   context: ESLintContext = {
-    id: "",
+    id: '',
     options: [],
     report: () => {}
   }
@@ -29,11 +29,11 @@ export default function isTouchable(
   let extraTouchables = [];
   if (
     options[0] &&
-    Object.prototype.hasOwnProperty.call(options[0], "touchables")
+    Object.prototype.hasOwnProperty.call(options[0], 'touchables')
   ) {
     const { touchables } = options[0];
     touchables.forEach(touchable => {
-      if (!touchable.startsWith("Touchable")) {
+      if (!touchable.startsWith('Touchable')) {
         throw Error(
           `Custom touchable specified in ${context.id} does not start with 'Touchable'`
         );

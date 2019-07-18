@@ -1,10 +1,10 @@
 // @flow
 
-import type { JSXAttribute } from "ast-types-flow";
-import { elementType, getLiteralPropValue } from "jsx-ast-utils";
-import { generateObjSchema } from "../util/schemas";
-import type { ESLintContext } from "../../flow/eslint";
-import isOneOf from "../util/isOneOf";
+import type { JSXAttribute } from 'ast-types-flow';
+import { elementType, getLiteralPropValue } from 'jsx-ast-utils';
+import { generateObjSchema } from '../util/schemas';
+import type { ESLintContext } from '../../flow/eslint';
+import isOneOf from '../util/isOneOf';
 
 /**
  * Produces an ESLint rule that validates a prop against an array of acceptable values

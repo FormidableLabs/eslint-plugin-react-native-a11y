@@ -8,9 +8,9 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-import { RuleTester } from "eslint";
-import parserOptionsMapper from "../../__util__/parserOptionsMapper";
-import rule from "../../../src/rules/has-valid-accessibility-traits";
+import { RuleTester } from 'eslint';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper';
+import rule from '../../../src/rules/has-valid-accessibility-traits';
 
 // -----------------------------------------------------------------------------
 // Tests
@@ -19,11 +19,11 @@ import rule from "../../../src/rules/has-valid-accessibility-traits";
 const ruleTester = new RuleTester();
 
 const expectedError = {
-  message: "accessibilityTraits must be one of defined values",
-  type: "JSXAttribute"
+  message: 'accessibilityTraits must be one of defined values',
+  type: 'JSXAttribute'
 };
 
-ruleTester.run("has-valid-accessibility-traits", rule, {
+ruleTester.run('has-valid-accessibility-traits', rule, {
   valid: [
     { code: '<TouchableOpacity accessibilityTraits="none" />;' },
     { code: '<TouchableOpacity accessibilityTraits="button" />;' },

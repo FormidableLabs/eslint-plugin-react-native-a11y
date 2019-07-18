@@ -1,4 +1,4 @@
-export const parser = "flow";
+export const parser = 'flow';
 
 export default function transformer(file, api, options) {
   const j = api.jscodeshift;
@@ -6,8 +6,8 @@ export default function transformer(file, api, options) {
   const { ruleName, rulePath } = options || {};
 
   const nameSort = (a, b) => {
-    const aName = a.key.type === "Literal" ? a.key.value : a.key.name;
-    const bName = b.key.type === "Literal" ? b.key.value : b.key.name;
+    const aName = a.key.type === 'Literal' ? a.key.value : a.key.name;
+    const bName = b.key.type === 'Literal' ? b.key.value : b.key.name;
     if (aName < bName) {
       return -1;
     }
@@ -23,16 +23,16 @@ export default function transformer(file, api, options) {
 
   changesMade += s
     .find(j.Identifier, {
-      name: "rules"
+      name: 'rules'
     })
     .forEach((path, index) => {
       // Add rule path.
       if (index === 0) {
         path.parentPath.value.value.properties.unshift(
           j.property(
-            "init",
+            'init',
             j.literal(ruleName),
-            j.callExpression(j.identifier("require"), [
+            j.callExpression(j.identifier('require'), [
               j.literal(rulePathInSrc)
             ])
           )
@@ -43,9 +43,9 @@ export default function transformer(file, api, options) {
       if (index === 1) {
         path.parentPath.value.value.properties.unshift(
           j.property(
-            "init",
+            'init',
             j.literal(`react-native-a11y/${ruleName}`),
-            j.literal("error")
+            j.literal('error')
           )
         );
         path.parentPath.value.value.properties.sort(nameSort);
@@ -57,7 +57,7 @@ export default function transformer(file, api, options) {
   }
 
   return s.toSource({
-    quote: "single",
+    quote: 'single',
     trailingComma: true
   });
 }
