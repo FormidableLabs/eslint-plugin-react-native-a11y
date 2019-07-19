@@ -19,7 +19,10 @@ const docsPath = path.resolve(`docs/rules/${ruleName}.md`);
 
 const jscodeshiftMain = jscodeshiftJSON.main;
 const jscodeshiftPath = require.resolve('jscodeshift');
-const jscodeshiftRoot = jscodeshiftPath.slice(0, jscodeshiftPath.indexOf(jscodeshiftMain));
+const jscodeshiftRoot = jscodeshiftPath.slice(
+  0,
+  jscodeshiftPath.indexOf(jscodeshiftMain)
+);
 
 // Validate
 if (!ruleName) {
@@ -47,11 +50,11 @@ exec(
     '--extensions js',
     '--parser flow',
     `--ruleName=${ruleName}`,
-    `--rulePath=${rulePath}`,
+    `--rulePath=${rulePath}`
   ].join(' '),
-  (error) => {
+  error => {
     if (error) {
       console.error(`exec error: ${error}`); // eslint-disable-line no-console
     }
-  },
+  }
 );

@@ -19,31 +19,37 @@ import rule from '../../../src/rules/has-valid-accessibility-states';
 const ruleTester = new RuleTester();
 
 const expectedError = {
-	message: 'accessibilityStates must be one or both of the defined values',
-	type: 'JSXAttribute'
+  message: 'accessibilityStates must be one or both of the defined values',
+  type: 'JSXAttribute'
 };
 
 ruleTester.run('has-valid-accessibility-states', rule, {
-	valid: [
-		{ code: '<TouchableOpacity accessibilityStates="selected" />;' },
-		{ code: '<TouchableOpacity accessibilityStates="disabled" />;' },
-		{ code: '<TouchableOpacity accessibilityStates={["selected"]} />;' },
-		{ code: '<TouchableOpacity accessibilityStates={["disabled"]} />;' },
-		{ code: '<TouchableOpacity accessibilityStates={["selected", "disabled"]} />;' },
-		{ code: '<TouchableOpacity accessibilityStates={["disabled", "selected"]} />;' }
-	].map(parserOptionsMapper),
-	invalid: [
-		{
-			code: '<TouchableOpacity accessibilityStates="enabled" />',
-			errors: [expectedError]
-		},
-		{
-			code: '<TouchableOpacity accessibilityStates="none" />;',
-			errors: [expectedError]
-		},
-		{
-			code: '<TouchableOpacity accessibilityStates="primary-button" />',
-			errors: [expectedError]
-		}
-	].map(parserOptionsMapper)
+  valid: [
+    { code: '<TouchableOpacity accessibilityStates="selected" />;' },
+    { code: '<TouchableOpacity accessibilityStates="disabled" />;' },
+    { code: '<TouchableOpacity accessibilityStates={["selected"]} />;' },
+    { code: '<TouchableOpacity accessibilityStates={["disabled"]} />;' },
+    {
+      code:
+        '<TouchableOpacity accessibilityStates={["selected", "disabled"]} />;'
+    },
+    {
+      code:
+        '<TouchableOpacity accessibilityStates={["disabled", "selected"]} />;'
+    }
+  ].map(parserOptionsMapper),
+  invalid: [
+    {
+      code: '<TouchableOpacity accessibilityStates="enabled" />',
+      errors: [expectedError]
+    },
+    {
+      code: '<TouchableOpacity accessibilityStates="none" />;',
+      errors: [expectedError]
+    },
+    {
+      code: '<TouchableOpacity accessibilityStates="primary-button" />',
+      errors: [expectedError]
+    }
+  ].map(parserOptionsMapper)
 });

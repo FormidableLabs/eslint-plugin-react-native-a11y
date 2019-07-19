@@ -28,24 +28,27 @@ module.exports = {
         additionalProperties: {
           type: 'array',
           items: {
-            type: 'string',
+            type: 'string'
           },
-          uniqueItems: true,
-        },
-      },
-    ],
+          uniqueItems: true
+        }
+      }
+    ]
   },
 
   create: (context: ESLintContext) => ({
     JSXOpeningElement: (node: JSXOpeningElement) => {
       if (isTouchable(node, context)) {
-        if (!hasProp(node.attributes, 'accessibilityRole') && !hasEveryProp(node.attributes, deprecatedProps)) {
+        if (
+          !hasProp(node.attributes, 'accessibilityRole') &&
+          !hasEveryProp(node.attributes, deprecatedProps)
+        ) {
           context.report({
             node,
-            message: errorMessage(elementType(node)),
+            message: errorMessage(elementType(node))
           });
         }
       }
-    },
-  }),
+    }
+  })
 };
