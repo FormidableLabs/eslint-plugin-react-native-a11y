@@ -17,5 +17,5 @@ const validValues = ['auto', 'yes', 'no', 'no-hide-descendants'];
 module.exports = createValidPropRule(
   'importantForAccessibility',
   validValues,
-  errorMessage,
+  errorMessage
 );

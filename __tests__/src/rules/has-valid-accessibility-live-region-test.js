@@ -21,35 +21,35 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message: 'accessibilityLiveRegion must be one of defined values',
-  type: 'JSXAttribute',
+  type: 'JSXAttribute'
 };
 
 ruleTester.run('has-valid-accessibility-live-region', rule, {
   valid: [
     { code: '<Text accessibilityLiveRegion="none">Click Me</Text>' },
     { code: '<Text accessibilityLiveRegion="polite">Click Me</Text>' },
-    { code: '<Text accessibilityLiveRegion="assertive">Click Me</Text>' },
+    { code: '<Text accessibilityLiveRegion="assertive">Click Me</Text>' }
   ].map(parserOptionsMapper),
   invalid: [
     {
       code: '<Text accessibilityLiveRegion >Click Me</Text>',
-      errors: [expectedError],
+      errors: [expectedError]
     },
     {
       code: '<Text accessibilityLiveRegion="">Click Me</Text>',
-      errors: [expectedError],
+      errors: [expectedError]
     },
     {
       code: '<Text accessibilityLiveRegion="non">Click Me</Text>',
-      errors: [expectedError],
+      errors: [expectedError]
     },
     {
       code: '<Text accessibilityLiveRegion="nones">Click Me</Text>',
-      errors: [expectedError],
+      errors: [expectedError]
     },
     {
       code: '<Text accessibilityLiveRegion="rude">Click Me</Text>',
-      errors: [expectedError],
-    },
-  ].map(parserOptionsMapper),
+      errors: [expectedError]
+    }
+  ].map(parserOptionsMapper)
 });

@@ -8,7 +8,7 @@ import type { JSXOpeningElement, JSXElement } from 'ast-types-flow';
  */
 export default function findChild(
   node: JSXElement,
-  callback: (child: JSXOpeningElement) => boolean,
+  callback: (child: JSXOpeningElement) => boolean
 ): ?JSXOpeningElement {
   const { children } = node;
   if (children && children.length > 0) {

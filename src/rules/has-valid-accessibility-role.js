@@ -23,11 +23,11 @@ const validValues = [
   'none',
   'search',
   'summary',
-  'text',
+  'text'
 ];
 
 module.exports = createValidPropRule(
   'accessibilityRole',
   validValues,
-  errorMessage,
+  errorMessage
 );
