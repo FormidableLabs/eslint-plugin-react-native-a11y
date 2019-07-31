@@ -14,16 +14,32 @@ const errorMessage = 'accessibilityRole must be one of defined values';
 
 const validValues = [
   'adjustable',
+  'alert',
   'button',
+  'checkbox',
+  'combobox',
   'header',
   'image',
   'imagebutton',
   'keyboardkey',
   'link',
+  'menu',
+  'menubar',
+  'menuitem',
   'none',
+  'progressbar',
+  'radio',
+  'radiogroup',
+  'scrollbar',
   'search',
+  'spinbutton',
   'summary',
-  'text'
+  'switch',
+  'tab',
+  'tablist',
+  'text',
+  'timer',
+  'toolbar'
 ];
 
 module.exports = createValidPropRule(
