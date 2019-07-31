@@ -14,7 +14,7 @@ const defaultTouchables = {
   TouchableHighlight: true,
   TouchableWithoutFeedback: true,
   TouchableNativeFeedback: true,
-  TouchableBounce: true,
+  TouchableBounce: true
 };
 
 export default function isTouchable(
@@ -22,22 +22,22 @@ export default function isTouchable(
   context: ESLintContext = {
     id: '',
     options: [],
-    report: () => {},
-  },
+    report: () => {}
+  }
 ) {
   const { options } = context;
   let extraTouchables = [];
   if (
-    options[0]
-    && Object.prototype.hasOwnProperty.call(options[0], 'touchables')
+    options[0] &&
+    Object.prototype.hasOwnProperty.call(options[0], 'touchables')
   ) {
     const { touchables } = options[0];
-    touchables.forEach((touchable) => {
+    touchables.forEach(touchable => {
       if (!touchable.startsWith('Touchable')) {
         throw Error(
           `Custom touchable specified in ${
             context.id
-          } does not start with 'Touchable'`,
+          } does not start with 'Touchable'`
         );
       }
     });
