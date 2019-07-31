@@ -54,6 +54,12 @@ ruleTester.run('has-accessibility-props', rule, {
     },
     {
       code: '<div><TouchableNativeFeedback accessibilityRole="none"/></div>;'
+    },
+    {
+      code: '<div><TouchableNativeFeedback accessible={false}/></div>;'
+    },
+    {
+      code: '<div><TouchableNativeFeedback accessibilityRole="none"/></div>;'
     }
   ].map(parserOptionsMapper),
   invalid: [
@@ -108,6 +114,10 @@ ruleTester.run('has-accessibility-props', rule, {
     },
     {
       code: '<div><TouchableOpacity /></div>;',
+      errors: [expectedError('TouchableOpacity')]
+    },
+    {
+      code: '<div><TouchableOpacity accessible={true}/></div>;',
       errors: [expectedError('TouchableOpacity')]
     }
   ].map(parserOptionsMapper)
