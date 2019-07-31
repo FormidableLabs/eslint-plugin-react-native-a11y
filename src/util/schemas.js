@@ -4,22 +4,23 @@
 export const arraySchema = {
   type: 'array',
   items: {
-    type: 'string',
+    type: 'string'
   },
   uniqueItems: true,
-  additionalItems: false,
+  additionalItems: false
 };
 
 /**
  * JSON schema to accept an array of unique strings from an enumerated list.
  */
-export const enumArraySchema = (enumeratedList = [], minItems = 0) => Object.assign({}, arraySchema, {
-  items: {
-    type: 'string',
-    enum: enumeratedList,
-  },
-  minItems,
-});
+export const enumArraySchema = (enumeratedList = [], minItems = 0) =>
+  Object.assign({}, arraySchema, {
+    items: {
+      type: 'string',
+      enum: enumeratedList
+    },
+    minItems
+  });
 
 /**
  * Factory function to generate an object schema
@@ -28,5 +29,5 @@ export const enumArraySchema = (enumeratedList = [], minItems = 0) => Object.ass
 export const generateObjSchema = (properties = {}, required) => ({
   type: 'object',
   properties,
-  required,
+  required
 });

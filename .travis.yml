@@ -19,4 +19,5 @@ notifications:
     on_failure: always
 
 script:
+  - yarn run flow
   - yarn run test:ci
