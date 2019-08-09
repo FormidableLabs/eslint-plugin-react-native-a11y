@@ -11,7 +11,7 @@ import createValidPropRule from '../factory/valid-prop';
 // ----------------------------------------------------------------------------
 
 const errorMessage =
-  'accessibilityStates must be one or both of the defined values';
+  'accessibilityStates must be one, both or neither of the defined values';
 
 const validValues = ['selected', 'disabled', ''];
 
