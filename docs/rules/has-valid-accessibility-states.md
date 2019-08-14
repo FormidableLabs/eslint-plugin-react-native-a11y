@@ -4,10 +4,10 @@
 
 The accessibilityStates property is used to tell Talkback or Voiceover the state a UI Element is in.
 
-## This property takes on an Array containing one or both of the following values
+## This property takes on an Array containing one, both, or neither of the following values
 
 - `selected`: Used when the element is in a selected state. For example, a button is selected.
-- `disabled`: Used when the element is disabled and cannot be interacted with.
+- `disabled`: Used when the element is disabled and cannot be interacted with
 
 ### References
 
@@ -20,7 +20,11 @@ This rule takes no arguments.
 ### Succeed
 
 ```jsx
-<TouchableOpacity accessibilityStates="selected" />
+<TouchableOpacity accessibilityStates={["selected"]} />
+<TouchableOpacity accessibilityStates={["disabled"]} />
+<TouchableOpacity accessibilityStates={["selected", "disabled"]} />
+<TouchableOpacity accessibilityStates={[]} />
+<TouchableOpacity accessibilityStates={[""]} />
 ```
 
 ### Fail
