@@ -9,7 +9,13 @@
 // ----------------------------------------------------------------------------
 
 import type { JSXOpeningElement } from 'ast-types-flow';
-import { hasProp, hasEveryProp, elementType } from 'jsx-ast-utils';
+import {
+  hasProp,
+  hasEveryProp,
+  getProp,
+  getLiteralPropValue,
+  elementType
+} from 'jsx-ast-utils';
 import type { ESLintContext } from '../../flow/eslint';
 import isTouchable from '../util/isTouchable';
 
@@ -28,24 +34,27 @@ module.exports = {
         additionalProperties: {
           type: 'array',
           items: {
-            type: 'string',
+            type: 'string'
           },
-          uniqueItems: true,
-        },
-      },
-    ],
+          uniqueItems: true
+        }
+      }
+    ]
   },
 
   create: (context: ESLintContext) => ({
     JSXOpeningElement: (node: JSXOpeningElement) => {
-      if (isTouchable(node, context)) {
-        if (!hasProp(node.attributes, 'accessibilityRole') && !hasEveryProp(node.attributes, deprecatedProps)) {
-          context.report({
-            node,
-            message: errorMessage(elementType(node)),
-          });
-        }
+      if (
+        isTouchable(node, context) &&
+        !hasProp(node.attributes, 'accessibilityRole') &&
+        !hasEveryProp(node.attributes, deprecatedProps) &&
+        getLiteralPropValue(getProp(node.attributes, 'accessible')) !== false
+      ) {
+        context.report({
+          node,
+          message: errorMessage(elementType(node))
+        });
       }
-    },
-  }),
+    }
+  })
 };

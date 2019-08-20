@@ -11,14 +11,14 @@ module.exports = {
     'has-valid-accessibility-states': require('./rules/has-valid-accessibility-states'),
     'has-valid-accessibility-traits': require('./rules/has-valid-accessibility-traits'),
     'has-valid-important-for-accessibility': require('./rules/has-valid-important-for-accessibility'),
-    'no-nested-touchables': require('./rules/no-nested-touchables'),
+    'no-nested-touchables': require('./rules/no-nested-touchables')
   },
   configs: {
     recommended: {
       parserOptions: {
         ecmaFeatures: {
-          jsx: true,
-        },
+          jsx: true
+        }
       },
       rules: {
         'react-native-a11y/accessibility-label': 'error',
@@ -29,16 +29,16 @@ module.exports = {
         'react-native-a11y/has-valid-accessibility-states': 'error',
         'react-native-a11y/has-valid-accessibility-traits': 'error',
         'react-native-a11y/has-valid-important-for-accessibility': 'error',
-        'react-native-a11y/no-nested-touchables': 'error',
-      },
+        'react-native-a11y/no-nested-touchables': 'error'
+      }
     },
     strict: {
       parserOptions: {
         ecmaFeatures: {
-          jsx: true,
-        },
+          jsx: true
+        }
       },
-      rules: {},
-    },
-  },
+      rules: {}
+    }
+  }
 };
