@@ -41,6 +41,7 @@ module.exports = {
 			const labelPropVal = getAccessibilityLabel(node);
 			if (!labelPropVal) {
 				let childWithLabel;
+				// $FlowFixMe
 				if (node.parent) {
 					// $FlowFixMe
 					childWithLabel = findChild(node.parent, child => {
