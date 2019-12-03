@@ -2,8 +2,8 @@
 const path = require('path');
 const fs = require('fs');
 const { exec } = require('child_process');
-const argv = require('minimist')(process.argv.slice(2)); // eslint-disable-line import/no-extraneous-dependencies
-const jscodeshiftJSON = require('jscodeshift/package.json'); // eslint-disable-line import/no-extraneous-dependencies
+const argv = require('minimist')(process.argv.slice(2));
+const jscodeshiftJSON = require('jscodeshift/package.json');
 
 const ruleBoilerplateGenerator = require('./boilerplate/rule');
 const testBoilerplateGenerator = require('./boilerplate/test');
