@@ -35,9 +35,7 @@ export default function isTouchable(
     touchables.forEach(touchable => {
       if (!touchable.startsWith('Touchable')) {
         throw Error(
-          `Custom touchable specified in ${
-            context.id
-          } does not start with 'Touchable'`
+          `Custom touchable specified in ${context.id} does not start with 'Touchable'`
         );
       }
     });
