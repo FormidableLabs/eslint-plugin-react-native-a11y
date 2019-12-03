@@ -45,16 +45,16 @@ ruleTester.run('accessibility-label', rule, {
           <View>
             <Text acessibilityLabel={"Tap me!"}>Button</Text>
           </View>
-        </View>`,
+        </View>`
     },
     {
-      code: '<View accessible={false} />',
+      code: '<View accessible={false} />'
     }
   ].map(parserOptionsMapper),
   invalid: [
     {
       code: '<View accessible />',
-      errors: [expectedError],
+      errors: [expectedError]
     },
     {
       code: '<View accessible={true} />',

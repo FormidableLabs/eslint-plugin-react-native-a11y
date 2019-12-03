@@ -34,30 +34,34 @@ module.exports = {
     schema: [schema]
   },
 
-	create: (context: ESLintContext) => ({
-		JSXOpeningElement: (node: JSXOpeningElement) => {
-			const accessible = getProp(node.attributes, 'accessible');
-			if (!accessible || (accessible.value && accessible.value.expression.value === false)) return;
-			const labelPropVal = getAccessibilityLabel(node);
-			if (!labelPropVal) {
-				let childWithLabel;
-				// $FlowFixMe
-				if (node.parent) {
-					childWithLabel = findChild(node.parent, child => {
-						if (child.attributes) {
-							const childLabelValue = getAccessibilityLabel(child);
-							return !!childLabelValue;
-						}
-						return false;
-					});
-				}
-				if (!childWithLabel) {
-					context.report({
-						node,
-						message: errorMessage
-					});
-				}
-			}
-		}
-	})
+  create: (context: ESLintContext) => ({
+    JSXOpeningElement: (node: JSXOpeningElement) => {
+      const accessible = getProp(node.attributes, 'accessible');
+      if (
+        !accessible ||
+        (accessible.value && accessible.value.expression.value === false)
+      )
+        return;
+      const labelPropVal = getAccessibilityLabel(node);
+      if (!labelPropVal) {
+        let childWithLabel;
+        // $FlowFixMe
+        if (node.parent) {
+          childWithLabel = findChild(node.parent, child => {
+            if (child.attributes) {
+              const childLabelValue = getAccessibilityLabel(child);
+              return !!childLabelValue;
+            }
+            return false;
+          });
+        }
+        if (!childWithLabel) {
+          context.report({
+            node,
+            message: errorMessage
+          });
+        }
+      }
+    }
+  })
 };
