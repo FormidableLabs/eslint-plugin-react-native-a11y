@@ -26,6 +26,7 @@ module.exports = {
         'react-native-a11y/has-valid-accessibility-component-type': 'error',
         'react-native-a11y/has-valid-accessibility-live-region': 'error',
         'react-native-a11y/has-valid-accessibility-role': 'error',
+        'react-native-a11y/has-valid-accessibility-state': 'error',
         'react-native-a11y/has-valid-accessibility-states': 'error',
         'react-native-a11y/has-valid-accessibility-traits': 'error',
         'react-native-a11y/has-valid-important-for-accessibility': 'error',
