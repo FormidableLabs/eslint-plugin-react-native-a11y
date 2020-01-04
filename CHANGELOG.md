@@ -1,5 +1,8 @@
 # Changes
 
+## V1.3.1
+- Migrate to Babel v7 (to fix security issue) [(#67)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/67)
+
 ## V1.3.0
 
 - Adds support for modern `accessibilityRole`s [(#54)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/54)
