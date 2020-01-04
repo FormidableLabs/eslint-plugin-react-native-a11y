@@ -1,7 +1,14 @@
 {
-  "presets": ["es2015"],
+  "presets": [
+    [
+      "@babel/preset-env", {
+        "targets": {
+          "node": "4"
+        }
+      }
+    ]
+  ],
   "plugins": [
-    "transform-object-rest-spread",
-    "transform-flow-strip-types",
+    "@babel/transform-flow-strip-types",
   ]
 }
