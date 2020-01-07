@@ -66,6 +66,7 @@ Alternatively, you can enable all the recommended rules at once by adding `plugi
 - [has-valid-accessibility-states](docs/rules/has-valid-accessibility-states.md): Enforce `accessibilityStates` property value is valid
 - [has-valid-accessibility-component-type](docs/rules/has-valid-accessibility-component-type.md): Enforce `accessibilityComponentType` property value is valid
 - [has-valid-accessibility-traits](docs/rules/has-valid-accessibility-traits.md): Enforce `accessibilityTraits` and `accessibilityComponentType` prop values must be valid
+- [has-valid-accessibility-value](docs/rules/has-valid-accessibility-value.md): Enforce `accessibilityValue` property value is valid
 - [has-valid-accessibility-live-region](docs/rules/has-valid-accessibility-live-region.md): Enforce `accessibilityLiveRegion` prop values must be valid
 - [has-valid-important-for-accessibility](docs/rules/has-valid-important-for-accessibility.md): Enforce `importantForAccessibility` property value is valid
 - [no-nested-touchables](docs/rules/no-nested-touchables.md): Enforce if a view has `accessible={true}`, that there are no touchable elements inside

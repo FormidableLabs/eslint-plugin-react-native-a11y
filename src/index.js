@@ -10,6 +10,7 @@ module.exports = {
     'has-valid-accessibility-state': require('./rules/has-valid-accessibility-state'),
     'has-valid-accessibility-states': require('./rules/has-valid-accessibility-states'),
     'has-valid-accessibility-traits': require('./rules/has-valid-accessibility-traits'),
+    'has-valid-accessibility-value': require('./rules/has-valid-accessibility-value'),
     'has-valid-important-for-accessibility': require('./rules/has-valid-important-for-accessibility'),
     'no-nested-touchables': require('./rules/no-nested-touchables')
   },
@@ -28,6 +29,7 @@ module.exports = {
         'react-native-a11y/has-valid-accessibility-role': 'error',
         'react-native-a11y/has-valid-accessibility-states': 'error',
         'react-native-a11y/has-valid-accessibility-traits': 'error',
+        'react-native-a11y/has-valid-accessibility-value': 'error',
         'react-native-a11y/has-valid-important-for-accessibility': 'error',
         'react-native-a11y/no-nested-touchables': 'error'
       }
