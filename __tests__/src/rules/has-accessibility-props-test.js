@@ -119,6 +119,24 @@ ruleTester.run('has-accessibility-props', rule, {
     {
       code: '<div><TouchableOpacity accessible={true}/></div>;',
       errors: [expectedError('TouchableOpacity')]
+    },
+    {
+      code: '<div><TouchableFoo accessible={true}/></div>;',
+      errors: [expectedError('TouchableFoo')],
+      options: [
+        {
+          touchables: ['TouchableFoo']
+        }
+      ]
+    },
+    {
+      code: '<div><FooTouchable accessible={true}/></div>;',
+      errors: [expectedError('FooTouchable')],
+      options: [
+        {
+          touchables: ['FooTouchable']
+        }
+      ]
     }
   ].map(parserOptionsMapper)
 });
