@@ -98,7 +98,7 @@ $ ./scripts/create-rule.js my-new-rule
 
 ## Attribution
 
-This project started as a fork of [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) and a lot of the work was carried out by its [contributors](evcohen/eslint-plugin-jsx-a11y/graphs/contributors), to whom we owe a lot!
+This project started as a fork of [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) and a lot of the work was carried out by its [contributors](https://github.com/evcohen/eslint-plugin-jsx-a11y/graphs/contributors), to whom we owe a lot!
 
 ## License
 
