@@ -12,7 +12,7 @@ This rule takes no arguments.
 
 ### Succeed
 \`\`\`jsx
-<div />
+<View></View>
 \`\`\`
 
 ### Fail
