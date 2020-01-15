@@ -25,7 +25,7 @@ const expectedError = {
 
 ruleTester.run('${name}', rule, {
   valid: [
-    { code: '<div />;' },
+    { code: '<View></View>;' },
   ].map(parserOptionsMapper),
   invalid: [].map(parserOptionsMapper),
 });
