@@ -16,6 +16,7 @@ const description = argv.description || '$DESCRIPTION';
 const rulePath = path.resolve(`src/rules/${ruleName}.js`);
 const testPath = path.resolve(`__tests__/src/rules/${ruleName}-test.js`);
 const docsPath = path.resolve(`docs/rules/${ruleName}.md`);
+const readmePath = path.resolve(`README.md`);
 
 const jscodeshiftMain = jscodeshiftJSON.main;
 const jscodeshiftPath = require.resolve('jscodeshift');
@@ -58,3 +59,11 @@ exec(
     }
   }
 );
+
+// Add the rule to README.md
+const readme = fs.readFileSync(readmePath);
+const lines = readme.toString().split('\n');
+const index = lines.findIndex(line => line === '### Rule Options') - 1;
+const newRule = `- [${ruleName}](docs/rules/${ruleName}.md): ${description}`;
+lines.splice(index, 0, newRule);
+fs.writeFileSync(readmePath, lines.join('\n'));
