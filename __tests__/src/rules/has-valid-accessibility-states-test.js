@@ -20,7 +20,7 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message:
-    'accessibilityStates must be one, both or neither of the defined values',
+    'accessibilityStates value is not valid.\n\nSee valid values: https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/blob/master/docs/rules/has-valid-accessibility-states.md',
   type: 'JSXAttribute',
 };
 

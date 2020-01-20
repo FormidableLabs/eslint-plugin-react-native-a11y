@@ -10,7 +10,8 @@
 
 import createValidPropRule from '../factory/valid-prop';
 
-const errorMessage = 'importantForAccessibility must be one of defined values';
+const errorMessage =
+  'importantForAccessibility value is not valid.\n\nSee valid values: https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/blob/master/docs/rules/has-valid-important-for-accessibility.md';
 
 const validValues = ['auto', 'yes', 'no', 'no-hide-descendants'];
 

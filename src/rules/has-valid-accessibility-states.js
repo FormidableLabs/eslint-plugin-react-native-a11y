@@ -11,7 +11,7 @@ import createValidPropRule from '../factory/valid-prop';
 // ----------------------------------------------------------------------------
 
 const errorMessage =
-  'accessibilityStates must be one, both or neither of the defined values';
+  'accessibilityStates value is not valid.\n\nSee valid values: https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/blob/master/docs/rules/has-valid-accessibility-states.md';
 
 const validValues = ['selected', 'disabled', ''];
 

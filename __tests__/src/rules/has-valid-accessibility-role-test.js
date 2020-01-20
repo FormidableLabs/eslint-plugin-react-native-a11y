@@ -19,7 +19,8 @@ import rule from '../../../src/rules/has-valid-accessibility-role';
 const ruleTester = new RuleTester();
 
 const expectedError = {
-  message: 'accessibilityRole must be one of defined values',
+  message:
+    'accessibilityRole value is not valid.\n\nSee valid values: https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/blob/master/docs/rules/has-valid-accessibility-role.md',
   type: 'JSXAttribute',
 };
 

@@ -11,7 +11,8 @@
 
 import createValidPropRule from '../factory/valid-prop';
 
-const errorMessage = 'accessibilityLiveRegion must be one of defined values';
+const errorMessage =
+  'accessibilityLiveRegion value is not valid.\n\nSee valid values: https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/blob/master/docs/rules/has-valid-accessibility-live-region.md';
 
 const validValues = ['none', 'polite', 'assertive'];
 

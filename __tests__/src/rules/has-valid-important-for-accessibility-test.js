@@ -19,7 +19,8 @@ import rule from '../../../src/rules/has-valid-important-for-accessibility';
 const ruleTester = new RuleTester();
 
 const expectedError = {
-  message: 'importantForAccessibility must be one of defined values',
+  message:
+    'importantForAccessibility value is not valid.\n\nSee valid values: https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/blob/master/docs/rules/has-valid-important-for-accessibility.md',
   type: 'JSXAttribute',
 };
 

@@ -10,7 +10,8 @@ import createValidPropRule from '../factory/valid-prop';
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-const errorMessage = 'accessibilityRole must be one of defined values';
+const errorMessage =
+  'accessibilityRole value is not valid.\n\nSee valid values: https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/blob/master/docs/rules/has-valid-accessibility-role.md';
 
 const validValues = [
   'adjustable',

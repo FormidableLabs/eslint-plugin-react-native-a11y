@@ -19,7 +19,8 @@ import rule from '../../../src/rules/has-valid-accessibility-traits';
 const ruleTester = new RuleTester();
 
 const expectedError = {
-  message: 'accessibilityTraits must be one of defined values',
+  message:
+    'accessibilityTraits value is not valid.\n\nSee valid values: https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/blob/master/docs/rules/has-valid-accessibility-traits.md',
   type: 'JSXAttribute',
 };
 

@@ -20,7 +20,8 @@ import rule from '../../../src/rules/has-valid-accessibility-live-region';
 const ruleTester = new RuleTester();
 
 const expectedError = {
-  message: 'accessibilityLiveRegion must be one of defined values',
+  message:
+    'accessibilityLiveRegion value is not valid.\n\nSee valid values: https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/blob/master/docs/rules/has-valid-accessibility-live-region.md',
   type: 'JSXAttribute',
 };
 
