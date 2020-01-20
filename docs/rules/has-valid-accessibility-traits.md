@@ -6,23 +6,23 @@ The accessibilityTraits property is used to tell a person using VoiceOver what k
 
 ## Values may be one of the following
 
-- none
-- button
-- link
-- header
-- search
-- image
-- selected
-- plays
-- key
-- text
-- summary
-- disabled
-- frequentUpdates
-- startsMedia
-- adjustable
-- allowsDirectInteraction
-- pageTurn
+- `"none"`
+- `"button"`
+- `"link"`
+- `"header"`
+- `"search"`
+- `"image"`
+- `"selected"`
+- `"plays"`
+- `"key"`
+- `"text"`
+- `"summary"`
+- `"disabled"`
+- `"frequentUpdates"`
+- `"startsMedia"`
+- `"adjustable"`
+- `"allowsDirectInteraction"`
+- `"pageTurn"`
 
 ### References
 

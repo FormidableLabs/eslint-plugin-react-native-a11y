@@ -4,14 +4,14 @@ The accessibilityComponentType property is essentially the android version of [a
 
 Values may be one of the following:
 
-- none
-- button
-- radiobutton_checked
-- radiobutton_unchecked
+- `"none"`
+- `"button"`
+- `"radiobutton_checked"`
+- `"radiobutton_unchecked"`
 
 ### References
 
-1.  https://facebook.github.io/react-native/docs/accessibility.html#accessibilitycomponenttype-android
+1. https://facebook.github.io/react-native/docs/accessibility.html#accessibilitycomponenttype-android
 
 ## Rule details
 
