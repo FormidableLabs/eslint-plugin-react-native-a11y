@@ -26,6 +26,7 @@ This rule takes no arguments.
 <TouchableOpacity accessibilityState={{ disabled: true }} />
 <TouchableOpacity accessibilityState={{ checked: true }} />
 <TouchableOpacity accessibilityState={{ checked: "mixed" }} />
+<TouchableOpacity accessibilityState={{ disabled: true, checked: true }} />
 ```
 
 ### Fail

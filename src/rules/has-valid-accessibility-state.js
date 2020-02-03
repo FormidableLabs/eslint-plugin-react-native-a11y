@@ -40,16 +40,16 @@ module.exports = {
           Object.entries(attrValue).map(([key, value]) => {
             if (validKeys.indexOf(key) < 0) {
               error(`accessibilityState object: "${key}" is not a valid key`);
-            } else if (key !== 'checked' && typeof value !== 'boolean') {
-              error(
-                `accessibilityState object: "${key}" value is not a boolean`
-              );
             } else if (
               key === 'checked' &&
               !(typeof value === 'boolean' || value === 'mixed')
             ) {
               error(
                 `accessibilityState object: "checked" value is not either a boolean or 'mixed'`
+              );
+            } else if (key !== 'checked' && typeof value !== 'boolean') {
+              error(
+                `accessibilityState object: "${key}" value is not a boolean`
               );
             }
           });

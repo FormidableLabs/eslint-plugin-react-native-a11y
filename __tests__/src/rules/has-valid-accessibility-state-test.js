@@ -42,7 +42,11 @@ ruleTester.run('has-valid-accessibility-state', rule, {
   valid: [
     { code: '<TouchableOpacity accessibilityState={{ disabled: true }} />;' },
     { code: '<TouchableOpacity accessibilityState={{ checked: true }} />;' },
-    { code: '<TouchableOpacity accessibilityState={{ checked: "mixed" }} />;' }
+    { code: '<TouchableOpacity accessibilityState={{ checked: "mixed" }} />;' },
+    {
+      code:
+        '<TouchableOpacity accessibilityState={{ disabled: true, checked: true }} />;'
+    }
   ].map(parserOptionsMapper),
   invalid: [
     {
