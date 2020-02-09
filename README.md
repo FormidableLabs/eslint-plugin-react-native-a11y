@@ -60,7 +60,6 @@ Alternatively, you can enable all the recommended rules at once by adding `plugi
 
 ## Supported Rules
 
-- [accessibility-label](docs/rules/accessibility-label.md): Enforce that views that have `accessible={true}`, also have an `accessibilityLabel` prop
 - [has-accessibility-hint](docs/rules/has-accessibility-hint): Enforce `accessibilityHint` is used in conjunction with `accessibilityLabel`
 - [has-accessibility-props](docs/rules/has-accessibility-props.md): Enforce that `<Touchable\*>` components only have either the `accessibilityRole` prop or both `accessibilityTraits` and `accessibilityComponentType` props set
 - [has-valid-accessibility-actions](docs/rules/has-valid-accessibility-actions.md): Enforce both `accessibilityActions` and `onAccessibilityAction` props are valid
