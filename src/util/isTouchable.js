@@ -32,13 +32,6 @@ export default function isTouchable(
     Object.prototype.hasOwnProperty.call(options[0], 'touchables')
   ) {
     const { touchables } = options[0];
-    touchables.forEach(touchable => {
-      if (!touchable.startsWith('Touchable')) {
-        throw Error(
-          `Custom touchable specified in ${context.id} does not start with 'Touchable'`
-        );
-      }
-    });
     extraTouchables = [...touchables];
   }
 
