@@ -8,36 +8,28 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import type { JSXAttribute } from 'ast-types-flow';
-import type { ESLintContext } from '../../flow/eslint';
 import { generateObjSchema } from '../util/schemas';
-import { elementType } from 'jsx-ast-utils';
+import { elementType, getProp, hasProp } from 'jsx-ast-utils';
+import type { JSXElement } from 'ast-types-flow';
+import type { ESLintContext } from '../../flow/eslint';
+import isNodePropValueBoolean from '../util/isNodePropValueBoolean';
 
 const propName = 'accessibilityIgnoresInvertColors';
-const errorMessage = 'accessibilityIgnoresInvertColors must be a boolean';
 const schema = generateObjSchema();
 
-const isNodePropValueBoolean = node => {
-  /**
-   * Using `typeof getLiteralPropValue(node) === 'boolean'` with getLiteralPropValue/getPropValue
-   * from `jsx-ast-utils` doesn't work as expected, because it "converts" strings `"true"` and `"false"`
-   * to booleans `true` and `false`. This function aims to correctly identify uses of the string instead
-   * of the boolean, so that we can correctly identify this error.
-   */
+const defaultInvertableComponents = ['Image'];
 
-  if (typeof node !== 'object' || !node.hasOwnProperty('value')) {
-    // Loose check for correct data being passed in to this function
-    throw new Error('isNodePropValueBoolean expects a node object as argument');
-  }
-  if (node.value === null) {
-    // node.value is null when it is declared as a prop but not equal to anything. This defaults to `true` in JSX
-    return true;
-  }
-  if (node.value.expression.type !== 'Literal') {
-    // If not a literal, it cannot be a boolean
+const hasValidIgnoresInvertColorsProp = ({ attributes }) =>
+  hasProp(attributes, propName) &&
+  isNodePropValueBoolean(getProp(attributes, propName));
+
+const checkParent = ({ openingElement, parent }) => {
+  if (hasValidIgnoresInvertColorsProp(openingElement)) {
     return false;
+  } else if (parent.openingElement) {
+    return checkParent(parent);
   }
-  return typeof node.value.expression.value === 'boolean';
+  return true;
 };
 
 module.exports = {
@@ -46,18 +38,50 @@ module.exports = {
     schema: [schema]
   },
 
-  create: (context: ESLintContext) => ({
-    JSXAttribute: (node: JSXAttribute) => {
-      const attrName = elementType(node);
-      if (attrName === propName) {
-        if (isNodePropValueBoolean(node)) {
-          // No error
-          return;
-        }
-        context.report({
+  create: ({ options, report }: ESLintContext) => ({
+    JSXElement: (node: JSXElement) => {
+      // $FlowFixMe
+      const { children, openingElement, parent } = node;
+
+      if (
+        hasProp(openingElement.attributes, propName) &&
+        !isNodePropValueBoolean(getProp(openingElement.attributes, propName))
+      ) {
+        report({
           node,
-          message: errorMessage
+          message:
+            'accessibilityIgnoresInvertColors prop is not a boolean value'
         });
+      } else {
+        const elementsToCheck = defaultInvertableComponents;
+        if (options.length > 0) {
+          const { invertableComponents } = options[0];
+          if (invertableComponents) {
+            elementsToCheck.push(...invertableComponents);
+          }
+        }
+
+        const type = elementType(openingElement);
+
+        if (
+          elementsToCheck.indexOf(type) > -1 &&
+          !hasValidIgnoresInvertColorsProp(openingElement) &&
+          children.length === 0
+        ) {
+          let shouldReport = true;
+
+          if (parent.openingElement) {
+            shouldReport = checkParent(parent);
+          }
+
+          if (shouldReport) {
+            report({
+              node,
+              message:
+                'Found an element which will be inverted. Add the accessibilityIgnoresInvertColors prop'
+            });
+          }
+        }
       }
     }
   })

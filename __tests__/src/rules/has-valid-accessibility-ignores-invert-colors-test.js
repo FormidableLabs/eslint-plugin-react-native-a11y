@@ -18,9 +18,15 @@ import rule from '../../../src/rules/has-valid-accessibility-ignores-invert-colo
 
 const ruleTester = new RuleTester();
 
-const expectedError = {
-  message: 'accessibilityIgnoresInvertColors must be a boolean',
-  type: 'JSXAttribute'
+const typeError = {
+  message: 'accessibilityIgnoresInvertColors prop is not a boolean value',
+  type: 'JSXElement'
+};
+
+const missingPropError = {
+  message:
+    'Found an element which will be inverted. Add the accessibilityIgnoresInvertColors prop',
+  type: 'JSXElement'
 };
 
 ruleTester.run('has-valid-accessibility-ignores-invert-colors', rule, {
@@ -30,19 +36,79 @@ ruleTester.run('has-valid-accessibility-ignores-invert-colors', rule, {
     { code: '<View accessibilityIgnoresInvertColors={false}></View>' },
     {
       code: '<ScrollView accessibilityIgnoresInvertColors></ScrollView>'
+    },
+    {
+      code: '<Image accessibilityIgnoresInvertColors />'
+    },
+    {
+      code: '<View accessibilityIgnoresInvertColors><Image /></View>'
+    },
+    {
+      code:
+        '<View accessibilityIgnoresInvertColors><View><Image /></View></View>'
+    },
+    {
+      code: '<View><View /></View>'
+    },
+    {
+      code: '<FastImage accessibilityIgnoresInvertColors />',
+      options: [
+        {
+          invertableComponents: ['FastImage']
+        }
+      ]
     }
   ].map(parserOptionsMapper),
   invalid: [
-    '<View accessibilityIgnoresInvertColors={0}></View>',
-    '<View accessibilityIgnoresInvertColors={"true"}></View>',
-    '<View accessibilityIgnoresInvertColors={"False"}></View>',
-    `<View accessibilityIgnoresInvertColors={1}>
-    <Image
-      style={{width: 50, height: 50}}
-      source={{uri: 'https://facebook.github.io/react-native/img/tiny_logo.png'}}
-    />
-  </View>`,
-    '<View accessibilityIgnoresInvertColors={{enabled: 1}}></View>',
-    '<View accessibilityIgnoresInvertColors={{value: true}}></View>'
-  ].map(code => parserOptionsMapper({ code, errors: [expectedError] }))
+    {
+      code: '<View accessibilityIgnoresInvertColors={"true"}></View>',
+      errors: [typeError]
+    },
+    {
+      code: '<View accessibilityIgnoresInvertColors={"False"}></View>',
+      errors: [typeError]
+    },
+    {
+      code: '<View accessibilityIgnoresInvertColors={0}></View>',
+      errors: [typeError]
+    },
+    {
+      code: `<View accessibilityIgnoresInvertColors={1}>
+        <Image
+          style={{width: 50, height: 50}}
+          source={{uri: 'https://facebook.github.io/react-native/img/tiny_logo.png'}}
+        />
+      </View>`,
+      errors: [typeError, missingPropError]
+    },
+    {
+      code: '<View accessibilityIgnoresInvertColors={{enabled: 1}}></View>',
+      errors: [typeError]
+    },
+    {
+      code: '<View accessibilityIgnoresInvertColors={{value: true}}></View>',
+      errors: [typeError]
+    },
+    {
+      code: '<Image />',
+      errors: [missingPropError]
+    },
+    {
+      code: '<View><Image /></View>',
+      errors: [missingPropError]
+    },
+    {
+      code: '<View><View><Image /></View></View>',
+      errors: [missingPropError]
+    },
+    {
+      code: '<FastImage />',
+      errors: [missingPropError],
+      options: [
+        {
+          invertableComponents: ['FastImage']
+        }
+      ]
+    }
+  ].map(parserOptionsMapper)
 });
