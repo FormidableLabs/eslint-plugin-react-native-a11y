@@ -47,7 +47,7 @@
 		"minimist": "^1.2.0",
 		"object.assign": "^4.1.0",
 		"prettier": "^1.19.1",
-		"rimraf": "^3.0.1",
+		"rimraf": "^3.0.2",
 		"safe-publish-latest": "^1.1.4",
 		"to-ast": "^1.0.0"
 	},

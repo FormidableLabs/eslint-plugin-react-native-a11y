@@ -1,8 +1,38 @@
 /* eslint-disable global-require */
 
+const defaultConfig = {
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true
+    }
+  },
+  plugins: ['react-native-a11y']
+};
+
+const basicRules = {
+  'react-native-a11y/has-accessibility-hint': 'error',
+  'react-native-a11y/has-accessibility-props': 'error',
+  'react-native-a11y/has-valid-accessibility-actions': 'error',
+  'react-native-a11y/has-valid-accessibility-component-type': 'error',
+  'react-native-a11y/has-valid-accessibility-role': 'error',
+  'react-native-a11y/has-valid-accessibility-state': 'error',
+  'react-native-a11y/has-valid-accessibility-states': 'error',
+  'react-native-a11y/has-valid-accessibility-traits': 'error',
+  'react-native-a11y/has-valid-accessibility-value': 'error',
+  'react-native-a11y/no-nested-touchables': 'error'
+};
+
+const iOSRules = {
+  'react-native-a11y/has-valid-accessibility-ignores-invert-colors': 'error'
+};
+
+const AndroidRules = {
+  'react-native-a11y/has-valid-accessibility-live-region': 'error',
+  'react-native-a11y/has-valid-important-for-accessibility': 'error'
+};
+
 module.exports = {
   rules: {
-    'accessibility-label': require('./rules/accessibility-label'),
     'has-accessibility-hint': require('./rules/has-accessibility-hint'),
     'has-accessibility-props': require('./rules/has-accessibility-props'),
     'has-valid-accessibility-actions': require('./rules/has-valid-accessibility-actions'),
@@ -18,37 +48,31 @@ module.exports = {
     'no-nested-touchables': require('./rules/no-nested-touchables')
   },
   configs: {
-    recommended: {
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true
-        }
-      },
+    basic: {
+      ...defaultConfig,
+      rules: basicRules
+    },
+    ios: {
+      ...defaultConfig,
       rules: {
-        'react-native-a11y/accessibility-label': 'error',
-        'react-native-a11y/has-accessibility-hint': 'error',
-        'react-native-a11y/has-accessibility-props': 'error',
-        'react-native-a11y/has-valid-accessibility-actions': 'error',
-        'react-native-a11y/has-valid-accessibility-component-type': 'error',
-        'react-native-a11y/has-valid-accessibility-ignores-invert-colors':
-          'error',
-        'react-native-a11y/has-valid-accessibility-live-region': 'error',
-        'react-native-a11y/has-valid-accessibility-role': 'error',
-        'react-native-a11y/has-valid-accessibility-state': 'error',
-        'react-native-a11y/has-valid-accessibility-states': 'error',
-        'react-native-a11y/has-valid-accessibility-traits': 'error',
-        'react-native-a11y/has-valid-accessibility-value': 'error',
-        'react-native-a11y/has-valid-important-for-accessibility': 'error',
-        'react-native-a11y/no-nested-touchables': 'error'
+        ...basicRules,
+        ...iOSRules
       }
     },
-    strict: {
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true
-        }
-      },
-      rules: {}
+    android: {
+      ...defaultConfig,
+      rules: {
+        ...basicRules,
+        ...AndroidRules
+      }
+    },
+    all: {
+      ...defaultConfig,
+      rules: {
+        ...basicRules,
+        ...iOSRules,
+        ...AndroidRules
+      }
     }
   }
 };
