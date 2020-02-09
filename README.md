@@ -4,62 +4,77 @@
 
 Eslint-plugin-react-native-a11y is a collection of React Native specific ESLint rules for identifying accessibility issues. Building upon the foundation set down by eslint-plugin-jsx-a11y, eslint-plugin-react-native-a11y detects a few of the most commonly made accessibility issues found in react native apps. These rules make it easier for your apps to be navigable by users with screen readers.
 
-## Installation
+## Setup
 
-Install [ESLint](http://eslint.org):
+### Pre-Requisites
+Before starting, check you already have ESLint as a `devDependency` of your project.
 
-```sh
-# npm
-npm install eslint --save-dev
+> Projects created using `react-native init` will already have this, but for Expo depending on your template you may need to follow ESLint's [installation instructions](https://eslint.org/docs/user-guide/getting-started#installation-and-usage).
 
-# yarn
-yarn add eslint --dev
-```
+### Installation
 
 Next, install `eslint-plugin-react-native-a11y`:
 
 ```sh
-# npm
 npm install eslint-plugin-react-native-a11y --save-dev
 
-# yarn
+# or
+
 yarn add eslint-plugin-react-native-a11y --dev
 ```
 
 **Note:** If you installed ESLint globally (using the `-g` flag in npm, or the `global` prefix in yarn) then you must also install `eslint-plugin-react-native-a11y` globally.
 
-## Usage
+## Configuration
 
-Add `react-native-a11y` to the plugins section of your `.eslintrc` configuration file.
+This plugin exposes four recommended configs.
 
-```json
-{
-  "plugins": ["react-native-a11y"]
-}
-```
+Name|Description
+-|-
+basic|Only use basic validation rules common to both iOS & Android
+ios|Use all rules from "basic", plus iOS-specific extras
+android|Use all rules from "basic", plus Android-specific extras
+all|Use all rules from "basic", plus iOS-specific extras, plus Android-specific extras
 
-Then configure the rules you want to use under the rules section.
+If your project only supports a single platform, you may get the best experience using a platform-specific config. This will both avoid reporting issues which do not affect your platform and also results in slightly faster linting for larger projects.
 
-```json
-{
-  "rules": {
-    "react-native-a11y/rule-name": 2
-  }
-}
-```
+> If you are unsure which one to use, in most cases `all` can be safely used.
 
-Alternatively, you can enable all the recommended rules at once by adding `plugin:react-native-a11y/recommended` to the `extends` section of your `.eslintrc` configuration file:
+Add the config you want to use to the `extends` section of your ESLint config using the pattern `plugin:react-native-a11y/` followed by your config name, as shown below:
 
 ```js
-{
-  "extends": [
-    "plugin:react-native-a11y/recommended"
+// .eslintrc.js
+
+module.exports = {
+  root: true,
+  extends: [
+    '@react-native-community',
+    'plugin:react-native-a11y/ios'
   ]
-}
+};
 ```
+
+Alternatively if you do not want to use one of the pre-defined configs — or want to override the behaviour of a specific rule — you can always include a list rules and configurations in the `rules` section of your ESLint config.
+
+```js
+// .eslintrc.js
+
+module.exports = {
+  root: true,
+  extends: [
+    '@react-native-community',
+  ],
+  rules: {
+    'react-native-a11y/rule-name': 2
+  }
+};
+```
+
+For more information on configuring behaviour of an individual rule, please refer to the [ESLint docs](react-native-a11y/rule-name)
 
 ## Supported Rules
 
+### Basic
 - [has-accessibility-hint](docs/rules/has-accessibility-hint): Enforce `accessibilityHint` is used in conjunction with `accessibilityLabel`
 - [has-accessibility-props](docs/rules/has-accessibility-props.md): Enforce that `<Touchable\*>` components only have either the `accessibilityRole` prop or both `accessibilityTraits` and `accessibilityComponentType` props set
 - [has-valid-accessibility-actions](docs/rules/has-valid-accessibility-actions.md): Enforce both `accessibilityActions` and `onAccessibilityAction` props are valid
@@ -69,9 +84,14 @@ Alternatively, you can enable all the recommended rules at once by adding `plugi
 - [has-valid-accessibility-component-type](docs/rules/has-valid-accessibility-component-type.md): Enforce `accessibilityComponentType` property value is valid
 - [has-valid-accessibility-traits](docs/rules/has-valid-accessibility-traits.md): Enforce `accessibilityTraits` and `accessibilityComponentType` prop values must be valid
 - [has-valid-accessibility-value](docs/rules/has-valid-accessibility-value.md): Enforce `accessibilityValue` property value is valid
+- [no-nested-touchables](docs/rules/no-nested-touchables.md): Enforce if a view has `accessible={true}`, that there are no touchable elements inside
+
+### iOS
+- [has-valid-accessibility-ignores-invert-colors](docs/has-valid-accessibility-ignores-invert-colors.md): Enforce that certain elements use `accessibilityIgnoresInvertColors` to avoid being inverted by device color settings.
+
+### Android
 - [has-valid-accessibility-live-region](docs/rules/has-valid-accessibility-live-region.md): Enforce `accessibilityLiveRegion` prop values must be valid
 - [has-valid-important-for-accessibility](docs/rules/has-valid-important-for-accessibility.md): Enforce `importantForAccessibility` property value is valid
-- [no-nested-touchables](docs/rules/no-nested-touchables.md): Enforce if a view has `accessible={true}`, that there are no touchable elements inside
 
 ### Rule Options
 
@@ -79,13 +99,30 @@ The following options are available to customize the recommended rule set.
 
 #### Custom Touchables
 
-`react-native-a11y/has-accessibility-props` and `react-native-a11y/no-nested-touchables` allow you to define an array of names for custom components that you may have that conform to the same accessibility interfaces as Touchables. Each of these names must start with 'Touchable'.
+`react-native-a11y/has-accessibility-props` and `react-native-a11y/no-nested-touchables` allow you to define an array of names for custom components that you may have that conform to the same accessibility interfaces as Touchables.
 
 ```js
 "react-native-a11y/has-accessibility-props": [
   "error",
   {
     "touchables": ["TouchableCustom"]
+  }
+]
+```
+
+#### Custom Invertable Components (iOS)
+
+`react-native-a11y/has-valid-accessibility-ignores-invert-colors` allows you to optionally define an Array of component names to check in addition to `<Image />`.
+
+For more information, see the [rule docs](docs/has-valid-accessibility-ignores-invert-colors.md#rule-details).
+
+```js
+"react-native-a11y/has-valid-accessibility-ignores-invert-colors": [
+  "error",
+  {
+    "invertableComponents": [
+      "FastImage",
+    ]
   }
 ]
 ```
