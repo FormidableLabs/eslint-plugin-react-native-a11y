@@ -60,11 +60,15 @@ Alternatively, you can enable all the recommended rules at once by adding `plugi
 
 ## Supported Rules
 
-- [has-accessibility-props](docs/rules/has-accessibility-props.md): Enforce all `<Touchable\*>` components have `accessibilityRole` prop or both `accessibilityTraits` and `accessibilityComponentType` props set
+- [has-accessibility-hint](docs/rules/has-accessibility-hint): Enforce `accessibilityHint` is used in conjunction with `accessibilityLabel`
+- [has-accessibility-props](docs/rules/has-accessibility-props.md): Enforce that `<Touchable\*>` components only have either the `accessibilityRole` prop or both `accessibilityTraits` and `accessibilityComponentType` props set
+- [has-valid-accessibility-actions](docs/rules/has-valid-accessibility-actions.md): Enforce both `accessibilityActions` and `onAccessibilityAction` props are valid
 - [has-valid-accessibility-role](docs/rules/has-valid-accessibility-role.md): Enforce `accessibilityRole` property value is valid
+- [has-valid-accessibility-state](docs/rules/has-valid-accessibility-state.md): Enforce `accessibilityState` property value is valid
 - [has-valid-accessibility-states](docs/rules/has-valid-accessibility-states.md): Enforce `accessibilityStates` property value is valid
 - [has-valid-accessibility-component-type](docs/rules/has-valid-accessibility-component-type.md): Enforce `accessibilityComponentType` property value is valid
 - [has-valid-accessibility-traits](docs/rules/has-valid-accessibility-traits.md): Enforce `accessibilityTraits` and `accessibilityComponentType` prop values must be valid
+- [has-valid-accessibility-value](docs/rules/has-valid-accessibility-value.md): Enforce `accessibilityValue` property value is valid
 - [has-valid-accessibility-live-region](docs/rules/has-valid-accessibility-live-region.md): Enforce `accessibilityLiveRegion` prop values must be valid
 - [has-valid-important-for-accessibility](docs/rules/has-valid-important-for-accessibility.md): Enforce `importantForAccessibility` property value is valid
 - [no-nested-touchables](docs/rules/no-nested-touchables.md): Enforce if a view has `accessible={true}`, that there are no touchable elements inside

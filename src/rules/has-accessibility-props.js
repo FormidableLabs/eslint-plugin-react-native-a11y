@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce all <Touchable*> components have accessibilityRole or accessibilityTraits and accessibilityComponentType props set
+ * @fileoverview Enforce that <Touchable\*> components only have either the accessibilityRole prop or both accessibilityTraits and accessibilityComponentType props set
  * @author Alex Saunders
  * @flow
  */
@@ -11,6 +11,7 @@
 import type { JSXOpeningElement } from 'ast-types-flow';
 import {
   hasProp,
+  hasAnyProp,
   hasEveryProp,
   getProp,
   getLiteralPropValue,
@@ -20,7 +21,7 @@ import type { ESLintContext } from '../../flow/eslint';
 import isTouchable from '../util/isTouchable';
 
 function errorMessage(touchable) {
-  return `<${touchable}> must have the accessibilityRole prop, or both accessibilityComponentType and accessibilityTraits`;
+  return `<${touchable}> must only have either the accessibilityRole prop or both accessibilityTraits and accessibilityComponentType props set`;
 }
 
 const deprecatedProps = ['accessibilityTraits', 'accessibilityComponentType'];
@@ -46,8 +47,9 @@ module.exports = {
     JSXOpeningElement: (node: JSXOpeningElement) => {
       if (
         isTouchable(node, context) &&
-        !hasProp(node.attributes, 'accessibilityRole') &&
-        !hasEveryProp(node.attributes, deprecatedProps) &&
+        hasAnyProp(node.attributes, deprecatedProps) &&
+        (hasProp(node.attributes, 'accessibilityRole') ||
+          !hasEveryProp(node.attributes, deprecatedProps)) &&
         getLiteralPropValue(getProp(node.attributes, 'accessible')) !== false
       ) {
         context.report({

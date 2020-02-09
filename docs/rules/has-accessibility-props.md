@@ -1,6 +1,6 @@
 # has-accessibility-props
 
-Enforce that all <Touchable\*> components have either the accessibilityRole prop or both accessibilityTraits and accessibilityComponentType props set, unless `accessible={false}`.
+Enforce that <Touchable\*> components only have either the accessibilityRole prop or both accessibilityTraits and accessibilityComponentType props set.
 
 The accessibilityRole props tells VoiceOver on iOS what kind of element the user has selected.
 
@@ -44,12 +44,30 @@ This rule takes no arguments.
 />
 ```
 
-### Fail
-
 ```jsx
 <TouchableOpacity />
 ```
 
+### Fail
+
 ```jsx
 <TouchableOpacity accessibilityComponentType="none" />
+```
+
+```jsx
+<TouchableOpacity
+  accessibilityTraits="none"
+/>
+```
+
+```jsx
+<TouchableOpacity accessibilityRole="none" accessibilityComponentType="none" />
+```
+
+```jsx
+<TouchableOpacity accessibilityRole="none" accessibilityTraits="none" />
+```
+
+```jsx
+<TouchableOpacity accessibilityRole="none" accessibilityComponentType="none" accessibilityTraits="none" />
 ```
