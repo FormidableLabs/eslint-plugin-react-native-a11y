@@ -3,6 +3,7 @@
 module.exports = {
   rules: {
     'accessibility-label': require('./rules/accessibility-label'),
+    'has-accessibility-hint': require('./rules/has-accessibility-hint'),
     'has-accessibility-props': require('./rules/has-accessibility-props'),
     'has-valid-accessibility-component-type': require('./rules/has-valid-accessibility-component-type'),
     'has-valid-accessibility-live-region': require('./rules/has-valid-accessibility-live-region'),
@@ -22,6 +23,7 @@ module.exports = {
       },
       rules: {
         'react-native-a11y/accessibility-label': 'error',
+        'react-native-a11y/has-accessibility-hint': 'error',
         'react-native-a11y/has-accessibility-props': 'error',
         'react-native-a11y/has-valid-accessibility-component-type': 'error',
         'react-native-a11y/has-valid-accessibility-live-region': 'error',
