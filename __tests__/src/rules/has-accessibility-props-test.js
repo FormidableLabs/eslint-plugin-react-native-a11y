@@ -81,6 +81,22 @@ ruleTester.run('has-accessibility-props', rule, {
     },
     {
       code: '<div><TouchableOpacity accessible={true}/></div>;'
+    },
+    {
+      code: '<div><TouchableFoo accessible={true}/></div>;',
+      options: [
+        {
+          touchables: ['TouchableFoo']
+        }
+      ]
+    },
+    {
+      code: '<div><FooTouchable accessible={true}/></div>;',
+      options: [
+        {
+          touchables: ['FooTouchable']
+        }
+      ]
     }
   ].map(parserOptionsMapper),
   invalid: [
@@ -130,24 +146,6 @@ ruleTester.run('has-accessibility-props', rule, {
       code:
         '<TouchableOpacity accessibilityRole="none" accessibilityComponentType="none" accessibilityTraits="none" />;',
       errors: [expectedError('TouchableOpacity')]
-    },
-    {
-      code: '<div><TouchableFoo accessible={true}/></div>;',
-      errors: [expectedError('TouchableFoo')],
-      options: [
-        {
-          touchables: ['TouchableFoo']
-        }
-      ]
-    },
-    {
-      code: '<div><FooTouchable accessible={true}/></div>;',
-      errors: [expectedError('FooTouchable')],
-      options: [
-        {
-          touchables: ['FooTouchable']
-        }
-      ]
     }
   ].map(parserOptionsMapper)
 });
