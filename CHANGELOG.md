@@ -1,5 +1,10 @@
 # Changes
 
+## V2.0.0-rc1
+
+- Ignore `Identifier` expressions in bool typechecks [(#85)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/85)
+- Enabled `no-unused-vars` [(#86)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/86)
+
 ## V2.0.0-rc0
 
 ### 🚨 Breaking 🚨
