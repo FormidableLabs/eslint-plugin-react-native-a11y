@@ -13,8 +13,6 @@ import type { JSXOpeningElement } from 'ast-types-flow';
 import type { ESLintContext } from '../../flow/eslint';
 import { generateObjSchema } from '../util/schemas';
 
-const errorMessage = '';
-
 const schema = generateObjSchema();
 
 module.exports = {

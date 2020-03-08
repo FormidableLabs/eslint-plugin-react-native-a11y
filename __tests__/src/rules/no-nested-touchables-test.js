@@ -61,7 +61,7 @@ ruleTester.run('no-nested-touchables', rule, {
   accessibilityComponentType="button"
   accessibilityLabel="Tap Me!"
   accessible={true}
->><View><Text><Button>button</Button></Text></View></TouchableOpacity>`,
+><View><Text><Button>button</Button></Text></View></TouchableOpacity>`,
       errors: [expectedError]
     },
     {
@@ -70,7 +70,7 @@ ruleTester.run('no-nested-touchables', rule, {
   accessibilityComponentType="button"
   accessibilityLabel="Tap Me!"
   accessible={true}
->><TouchableOpacity><Text>Nested</Text></TouchableOpacity></TouchableOpacity>`,
+><TouchableOpacity><Text>Nested</Text></TouchableOpacity></TouchableOpacity>`,
       errors: [expectedError]
     }
   ].map(parserOptionsMapper)

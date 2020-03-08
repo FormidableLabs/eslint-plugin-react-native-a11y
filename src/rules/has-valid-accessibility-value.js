@@ -5,7 +5,7 @@
  */
 
 import type { JSXAttribute } from 'ast-types-flow';
-import { elementType, getPropValue, getLiteralPropValue } from 'jsx-ast-utils';
+import { elementType, getPropValue } from 'jsx-ast-utils';
 import { generateObjSchema } from '../util/schemas';
 import type { ESLintContext } from '../../flow/eslint';
 
