@@ -1,5 +1,8 @@
 {
   "extends": ["plugin:flowtype/recommended", "plugin:prettier/recommended"],
   "parser": "babel-eslint",
-  "plugins": ["flowtype"]
+  "plugins": ["flowtype"],
+  "rules": {
+    "no-unused-vars": 1
+  }
 }
