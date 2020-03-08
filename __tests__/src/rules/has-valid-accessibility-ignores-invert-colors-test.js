@@ -57,6 +57,13 @@ ruleTester.run('has-valid-accessibility-ignores-invert-colors', rule, {
           invertableComponents: ['FastImage']
         }
       ]
+    },
+    {
+      code: `const invertColors = true;
+
+             const Component = () => (
+               <Image accessibilityIgnoresInvertColors={invertColors} />
+             );`
     }
   ].map(parserOptionsMapper),
   invalid: [

@@ -46,6 +46,13 @@ ruleTester.run('has-valid-accessibility-state', rule, {
     {
       code:
         '<TouchableOpacity accessibilityState={{ disabled: true, checked: true }} />;'
+    },
+    {
+      code: `const active = true;
+
+             const Component = () => (
+               <TouchableOpacity accessibilityState={{ selected: active }} />
+             );`
     }
   ].map(parserOptionsMapper),
   invalid: [
@@ -72,6 +79,14 @@ ruleTester.run('has-valid-accessibility-state', rule, {
     {
       code: '<TouchableOpacity accessibilityState={{ foo: "yes" }} />',
       errors: [invalidObjectKey('foo')]
+    },
+    {
+      code: `const active = true;
+
+             const Component = () => (
+               <TouchableOpacity accessibilityState={{ selected: "active" }} />
+             );`,
+      errors: [valueMustBeBoolean('selected')]
     }
   ].map(parserOptionsMapper)
 });

@@ -18,10 +18,18 @@ export default function isattrPropValueBoolean(attr: JSXAttribute): boolean {
     return true;
   }
   // $FlowFixMe
-  if (attr.value.expression.type !== 'Literal') {
+  const { expression } = attr.value;
+
+  if (expression.type === 'Identifier') {
+    // we can't determine the associated value type of an Identifier expression
+    // treat these cases as though they are valid
+    return true;
+  }
+
+  if (expression.type !== 'Literal') {
     // If not a literal, it cannot be a boolean
     return false;
   }
   // $FlowFixMe
-  return typeof attr.value.expression.value === 'boolean';
+  return typeof expression.value === 'boolean';
 }
