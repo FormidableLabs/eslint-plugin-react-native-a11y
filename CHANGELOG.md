@@ -1,5 +1,9 @@
 # Changes
 
+## V2.0.0-rc2
+- Dev Dependency upgrades [(#88)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/88)
+
+
 ## V2.0.0-rc1
 
 - Ignore `Identifier` expressions in bool typechecks [(#85)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/85)
