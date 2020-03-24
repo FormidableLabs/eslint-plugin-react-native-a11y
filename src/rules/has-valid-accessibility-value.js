@@ -16,7 +16,7 @@ import type { ESLintContext } from '../../flow/eslint';
 module.exports = {
   meta: {
     docs: {},
-    schema: [generateObjSchema()]
+    schema: [generateObjSchema()],
   },
 
   create: (context: ESLintContext) => ({
@@ -25,10 +25,10 @@ module.exports = {
       if (attrName === 'accessibilityValue') {
         const attrValue = getPropValue(node);
 
-        const error = message =>
+        const error = (message) =>
           context.report({
             node,
-            message
+            message,
           });
 
         if (typeof attrValue !== 'object' || Array.isArray(attrValue)) {
@@ -72,6 +72,6 @@ module.exports = {
           }
         }
       }
-    }
-  })
+    },
+  }),
 };

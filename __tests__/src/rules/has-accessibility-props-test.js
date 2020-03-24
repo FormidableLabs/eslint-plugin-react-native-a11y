@@ -18,9 +18,9 @@ import rule from '../../../src/rules/has-accessibility-props';
 
 const ruleTester = new RuleTester();
 
-const expectedError = touchable => ({
+const expectedError = (touchable) => ({
   message: `<${touchable}> must only have either the accessibilityRole prop or both accessibilityTraits and accessibilityComponentType props set`,
-  type: 'JSXOpeningElement'
+  type: 'JSXOpeningElement',
 });
 
 ruleTester.run('has-accessibility-props', rule, {
@@ -30,122 +30,122 @@ ruleTester.run('has-accessibility-props', rule, {
     { code: '<TouchableOpacitys />;' },
     {
       code:
-        '<Touchable accessibilityTraits="none" accessibilityComponentType="none"/>;'
+        '<Touchable accessibilityTraits="none" accessibilityComponentType="none"/>;',
     },
     {
       code:
-        '<TouchableOpacity accessibilityTraits="none" accessibilityComponentType="none"/>;'
+        '<TouchableOpacity accessibilityTraits="none" accessibilityComponentType="none"/>;',
     },
     {
       code:
-        '<TouchableHighlight accessibilityTraits="none" accessibilityComponentType="none"/>;'
+        '<TouchableHighlight accessibilityTraits="none" accessibilityComponentType="none"/>;',
     },
     {
       code:
-        '<TouchableWithoutFeedback accessibilityTraits="none" accessibilityComponentType="none"/>;'
+        '<TouchableWithoutFeedback accessibilityTraits="none" accessibilityComponentType="none"/>;',
     },
     {
       code:
-        '<TouchableNativeFeedback accessibilityTraits="none" accessibilityComponentType="none"/>;'
+        '<TouchableNativeFeedback accessibilityTraits="none" accessibilityComponentType="none"/>;',
     },
     {
       code:
-        '<div><TouchableNativeFeedback accessibilityTraits="none" accessibilityComponentType="none"/></div>;'
+        '<div><TouchableNativeFeedback accessibilityTraits="none" accessibilityComponentType="none"/></div>;',
     },
     {
-      code: '<div><TouchableNativeFeedback accessibilityRole="none"/></div>;'
+      code: '<div><TouchableNativeFeedback accessibilityRole="none"/></div>;',
     },
     {
-      code: '<div><TouchableNativeFeedback accessible={false}/></div>;'
+      code: '<div><TouchableNativeFeedback accessible={false}/></div>;',
     },
     {
-      code: '<div><TouchableNativeFeedback accessibilityRole="none"/></div>;'
+      code: '<div><TouchableNativeFeedback accessibilityRole="none"/></div>;',
     },
     {
-      code: '<Touchable />;'
+      code: '<Touchable />;',
     },
     {
-      code: '<TouchableOpacity />;'
+      code: '<TouchableOpacity />;',
     },
     {
-      code: '<TouchableHighlight />;'
+      code: '<TouchableHighlight />;',
     },
     {
-      code: '<TouchableWithoutFeedback />;'
+      code: '<TouchableWithoutFeedback />;',
     },
     {
-      code: '<TouchableNativeFeedback />;'
+      code: '<TouchableNativeFeedback />;',
     },
     {
-      code: '<div><TouchableOpacity /></div>;'
+      code: '<div><TouchableOpacity /></div>;',
     },
     {
-      code: '<div><TouchableOpacity accessible={true}/></div>;'
+      code: '<div><TouchableOpacity accessible={true}/></div>;',
     },
     {
       code: '<div><TouchableFoo accessible={true}/></div>;',
       options: [
         {
-          touchables: ['TouchableFoo']
-        }
-      ]
+          touchables: ['TouchableFoo'],
+        },
+      ],
     },
     {
       code: '<div><FooTouchable accessible={true}/></div>;',
       options: [
         {
-          touchables: ['FooTouchable']
-        }
-      ]
-    }
+          touchables: ['FooTouchable'],
+        },
+      ],
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
       code: '<TouchableOpacity accessibilityTraits="none"/>;',
-      errors: [expectedError('TouchableOpacity')]
+      errors: [expectedError('TouchableOpacity')],
     },
     {
       code: '<TouchableOpacity accessibilityComponentType="none"/>;',
-      errors: [expectedError('TouchableOpacity')]
+      errors: [expectedError('TouchableOpacity')],
     },
     {
       code: '<TouchableHighlight accessibilityComponentType="none"/>;',
-      errors: [expectedError('TouchableHighlight')]
+      errors: [expectedError('TouchableHighlight')],
     },
     {
       code: '<TouchableHighlight accessibilityComponentType="none"/>;',
-      errors: [expectedError('TouchableHighlight')]
+      errors: [expectedError('TouchableHighlight')],
     },
     {
       code: '<TouchableWithoutFeedback accessibilityComponentType="none"/>;',
-      errors: [expectedError('TouchableWithoutFeedback')]
+      errors: [expectedError('TouchableWithoutFeedback')],
     },
     {
       code: '<TouchableWithoutFeedback accessibilityComponentType="none"/>;',
-      errors: [expectedError('TouchableWithoutFeedback')]
+      errors: [expectedError('TouchableWithoutFeedback')],
     },
     {
       code: '<TouchableNativeFeedback accessibilityComponentType="none"/>;',
-      errors: [expectedError('TouchableNativeFeedback')]
+      errors: [expectedError('TouchableNativeFeedback')],
     },
     {
       code: '<TouchableNativeFeedback accessibilityComponentType="none"/>;',
-      errors: [expectedError('TouchableNativeFeedback')]
+      errors: [expectedError('TouchableNativeFeedback')],
     },
     {
       code:
         '<TouchableOpacity accessibilityRole="none" accessibilityComponentType="none" />;',
-      errors: [expectedError('TouchableOpacity')]
+      errors: [expectedError('TouchableOpacity')],
     },
     {
       code:
         '<TouchableOpacity accessibilityRole="none" accessibilityTraits="none" />;',
-      errors: [expectedError('TouchableOpacity')]
+      errors: [expectedError('TouchableOpacity')],
     },
     {
       code:
         '<TouchableOpacity accessibilityRole="none" accessibilityComponentType="none" accessibilityTraits="none" />;',
-      errors: [expectedError('TouchableOpacity')]
-    }
-  ].map(parserOptionsMapper)
+      errors: [expectedError('TouchableOpacity')],
+    },
+  ].map(parserOptionsMapper),
 });

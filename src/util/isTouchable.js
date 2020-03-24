@@ -14,7 +14,7 @@ const defaultTouchables = {
   TouchableHighlight: true,
   TouchableWithoutFeedback: true,
   TouchableNativeFeedback: true,
-  TouchableBounce: true
+  TouchableBounce: true,
 };
 
 export default function isTouchable(
@@ -22,7 +22,7 @@ export default function isTouchable(
   context: ESLintContext = {
     id: '',
     options: [],
-    report: () => {}
+    report: () => {},
   }
 ) {
   const { options } = context;

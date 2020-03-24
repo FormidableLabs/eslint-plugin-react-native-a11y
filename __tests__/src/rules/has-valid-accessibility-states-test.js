@@ -21,7 +21,7 @@ const ruleTester = new RuleTester();
 const expectedError = {
   message:
     'accessibilityStates must be one, both or neither of the defined values',
-  type: 'JSXAttribute'
+  type: 'JSXAttribute',
 };
 
 ruleTester.run('has-valid-accessibility-states', rule, {
@@ -32,27 +32,27 @@ ruleTester.run('has-valid-accessibility-states', rule, {
     { code: '<TouchableOpacity accessibilityStates={["disabled"]} />;' },
     {
       code:
-        '<TouchableOpacity accessibilityStates={["selected", "disabled"]} />;'
+        '<TouchableOpacity accessibilityStates={["selected", "disabled"]} />;',
     },
     {
       code:
-        '<TouchableOpacity accessibilityStates={["disabled", "selected"]} />;'
+        '<TouchableOpacity accessibilityStates={["disabled", "selected"]} />;',
     },
     { code: '<TouchableOpacity accessibilityStates={[""]} />;' },
-    { code: '<TouchableOpacity accessibilityStates={[]} />;' }
+    { code: '<TouchableOpacity accessibilityStates={[]} />;' },
   ].map(parserOptionsMapper),
   invalid: [
     {
       code: '<TouchableOpacity accessibilityStates="enabled" />',
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: '<TouchableOpacity accessibilityStates="none" />;',
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: '<TouchableOpacity accessibilityStates="primary-button" />',
-      errors: [expectedError]
-    }
-  ].map(parserOptionsMapper)
+      errors: [expectedError],
+    },
+  ].map(parserOptionsMapper),
 });

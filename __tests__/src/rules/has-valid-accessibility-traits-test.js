@@ -20,7 +20,7 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message: 'accessibilityTraits must be one of defined values',
-  type: 'JSXAttribute'
+  type: 'JSXAttribute',
 };
 
 ruleTester.run('has-valid-accessibility-traits', rule, {
@@ -42,29 +42,30 @@ ruleTester.run('has-valid-accessibility-traits', rule, {
     { code: '<TouchableOpacity accessibilityTraits="adjustable" />;' },
     {
       code:
-        '<TouchableOpacity accessibilityTraits="allowsDirectInteraction" />;'
+        '<TouchableOpacity accessibilityTraits="allowsDirectInteraction" />;',
     },
     { code: '<TouchableOpacity accessibilityTraits="pageTurn" />;' },
     {
-      code: '<TouchableOpacity accessibilityTraits={["button", "selected"]} />;'
-    }
+      code:
+        '<TouchableOpacity accessibilityTraits={["button", "selected"]} />;',
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
       code: '<TouchableOpacity accessibilityTraits="duck" />',
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: '<TouchableOpacity accessibilityTraits="non" />;',
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: '<TouchableOpacity accessibilityTraits="nones" />;',
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: '<TouchableOpacity accessibilityTraits="primary-button" />',
-      errors: [expectedError]
-    }
-  ].map(parserOptionsMapper)
+      errors: [expectedError],
+    },
+  ].map(parserOptionsMapper),
 });

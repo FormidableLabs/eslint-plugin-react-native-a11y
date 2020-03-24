@@ -23,7 +23,7 @@ const createValidPropRule = (
   meta: {
     docs: {},
     schema: [generateObjSchema()],
-    ...meta
+    ...meta,
   },
 
   create: (context: ESLintContext) => ({
@@ -35,7 +35,7 @@ const createValidPropRule = (
         let invalid = false;
 
         if (Array.isArray(attrValue)) {
-          const validate = attrValue.map(strValue =>
+          const validate = attrValue.map((strValue) =>
             isOneOf(strValue, validValues)
           );
           invalid = validate.indexOf(false) > -1;
@@ -46,13 +46,13 @@ const createValidPropRule = (
         if (invalid) {
           context.report({
             node,
-            message: errorMessage
+            message: errorMessage,
           });
         }
       }
     },
-    ...create
-  })
+    ...create,
+  }),
 });
 
 export default createValidPropRule;

@@ -1,15 +1,15 @@
 const defaultParserOptions = {
   ecmaVersion: 6,
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 export default function parserOptionsMapper({
   code,
   errors,
   options = [],
-  parserOptions = {}
+  parserOptions = {},
 }) {
   return {
     code,
@@ -17,7 +17,7 @@ export default function parserOptionsMapper({
     options,
     parserOptions: {
       ...defaultParserOptions,
-      ...parserOptions
-    }
+      ...parserOptions,
+    },
   };
 }

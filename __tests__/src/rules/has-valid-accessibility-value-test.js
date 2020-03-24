@@ -22,9 +22,9 @@ ruleTester.run('has-valid-accessibility-value', rule, {
   valid: [
     {
       code:
-        '<TouchableOpacity accessibilityValue={{ min: 0, now: 50, max: 100 }} />'
+        '<TouchableOpacity accessibilityValue={{ min: 0, now: 50, max: 100 }} />',
     },
-    { code: '<TouchableOpacity accessibilityValue={{ text: "foo" }} />' }
+    { code: '<TouchableOpacity accessibilityValue={{ text: "foo" }} />' },
   ].map(parserOptionsMapper),
   invalid: [
     {
@@ -34,31 +34,31 @@ ruleTester.run('has-valid-accessibility-value', rule, {
         {
           message:
             'accessibilityValue object must only contain either min, now, max *or* text',
-          type: 'JSXAttribute'
-        }
-      ]
+          type: 'JSXAttribute',
+        },
+      ],
     },
     {
       code: '<TouchableOpacity accessibilityValue={{ now: 50 }} />',
       errors: [
         {
           message: 'accessibilityValue object is missing min value',
-          type: 'JSXAttribute'
+          type: 'JSXAttribute',
         },
         {
           message: 'accessibilityValue object is missing max value',
-          type: 'JSXAttribute'
-        }
-      ]
+          type: 'JSXAttribute',
+        },
+      ],
     },
     {
       code: '<TouchableOpacity accessibilityValue="foo" />',
       errors: [
         {
           message: 'accessibilityValue must be an object',
-          type: 'JSXAttribute'
-        }
-      ]
+          type: 'JSXAttribute',
+        },
+      ],
     },
     {
       code:
@@ -66,26 +66,26 @@ ruleTester.run('has-valid-accessibility-value', rule, {
       errors: [
         {
           message: 'accessibilityValue min value must be an integer',
-          type: 'JSXAttribute'
+          type: 'JSXAttribute',
         },
         {
           message: 'accessibilityValue now value must be an integer',
-          type: 'JSXAttribute'
+          type: 'JSXAttribute',
         },
         {
           message: 'accessibilityValue max value must be an integer',
-          type: 'JSXAttribute'
-        }
-      ]
+          type: 'JSXAttribute',
+        },
+      ],
     },
     {
       code: '<TouchableOpacity accessibilityValue={{ text: 0 }} />',
       errors: [
         {
           message: 'accessibilityValue text value must be a string',
-          type: 'JSXAttribute'
-        }
-      ]
-    }
-  ].map(parserOptionsMapper)
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+  ].map(parserOptionsMapper),
 });

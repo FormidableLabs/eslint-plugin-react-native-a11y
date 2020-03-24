@@ -3,10 +3,10 @@
 const defaultConfig = {
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
-  plugins: ['react-native-a11y']
+  plugins: ['react-native-a11y'],
 };
 
 const basicRules = {
@@ -19,16 +19,16 @@ const basicRules = {
   'react-native-a11y/has-valid-accessibility-states': 'error',
   'react-native-a11y/has-valid-accessibility-traits': 'error',
   'react-native-a11y/has-valid-accessibility-value': 'error',
-  'react-native-a11y/no-nested-touchables': 'error'
+  'react-native-a11y/no-nested-touchables': 'error',
 };
 
 const iOSRules = {
-  'react-native-a11y/has-valid-accessibility-ignores-invert-colors': 'error'
+  'react-native-a11y/has-valid-accessibility-ignores-invert-colors': 'error',
 };
 
 const AndroidRules = {
   'react-native-a11y/has-valid-accessibility-live-region': 'error',
-  'react-native-a11y/has-valid-important-for-accessibility': 'error'
+  'react-native-a11y/has-valid-important-for-accessibility': 'error',
 };
 
 module.exports = {
@@ -45,34 +45,34 @@ module.exports = {
     'has-valid-accessibility-traits': require('./rules/has-valid-accessibility-traits'),
     'has-valid-accessibility-value': require('./rules/has-valid-accessibility-value'),
     'has-valid-important-for-accessibility': require('./rules/has-valid-important-for-accessibility'),
-    'no-nested-touchables': require('./rules/no-nested-touchables')
+    'no-nested-touchables': require('./rules/no-nested-touchables'),
   },
   configs: {
     basic: {
       ...defaultConfig,
-      rules: basicRules
+      rules: basicRules,
     },
     ios: {
       ...defaultConfig,
       rules: {
         ...basicRules,
-        ...iOSRules
-      }
+        ...iOSRules,
+      },
     },
     android: {
       ...defaultConfig,
       rules: {
         ...basicRules,
-        ...AndroidRules
-      }
+        ...AndroidRules,
+      },
     },
     all: {
       ...defaultConfig,
       rules: {
         ...basicRules,
         ...iOSRules,
-        ...AndroidRules
-      }
-    }
-  }
+        ...AndroidRules,
+      },
+    },
+  },
 };

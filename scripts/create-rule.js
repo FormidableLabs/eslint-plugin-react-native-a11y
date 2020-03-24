@@ -51,9 +51,9 @@ exec(
     '--extensions js',
     '--parser flow',
     `--ruleName=${ruleName}`,
-    `--rulePath=${rulePath}`
+    `--rulePath=${rulePath}`,
   ].join(' '),
-  error => {
+  (error) => {
     if (error) {
       console.error(`exec error: ${error}`); // eslint-disable-line no-console
     }
@@ -63,7 +63,7 @@ exec(
 // Add the rule to README.md
 const readme = fs.readFileSync(readmePath);
 const lines = readme.toString().split('\n');
-const index = lines.findIndex(line => line === '### Rule Options') - 1;
+const index = lines.findIndex((line) => line === '### Rule Options') - 1;
 const newRule = `- [${ruleName}](docs/rules/${ruleName}.md): ${description}`;
 lines.splice(index, 0, newRule);
 fs.writeFileSync(readmePath, lines.join('\n'));

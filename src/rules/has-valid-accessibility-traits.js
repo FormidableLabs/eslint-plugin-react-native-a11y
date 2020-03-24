@@ -29,7 +29,7 @@ const validValues = [
   'startsMedia',
   'adjustable',
   'allowsDirectInteraction',
-  'pageTurn'
+  'pageTurn',
 ];
 
 module.exports = createValidPropRule(

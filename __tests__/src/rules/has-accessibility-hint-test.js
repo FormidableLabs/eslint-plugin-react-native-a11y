@@ -20,32 +20,32 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message: 'has accessibilityLabel prop but no accessibilityHint',
-  type: 'JSXOpeningElement'
+  type: 'JSXOpeningElement',
 };
 
 ruleTester.run('has-accessibility-hint', rule, {
   valid: [
     {
-      code: `<TouchableOpacity />`
+      code: `<TouchableOpacity />`,
     },
     {
       code: `<TouchableOpacity
                 accessibilityHint="Navigates to the previous screen"
-              />`
+              />`,
     },
     {
       code: `<TouchableOpacity
                 accessibilityLabel="Go back"
                 accessibilityHint="Navigates to the previous screen"
-              />`
-    }
+              />`,
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
       code: `<TouchableOpacity
                 accessibilityLabel="Go back"
               />`,
-      errors: [expectedError]
-    }
-  ].map(parserOptionsMapper)
+      errors: [expectedError],
+    },
+  ].map(parserOptionsMapper),
 });

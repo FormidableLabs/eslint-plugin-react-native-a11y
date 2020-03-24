@@ -19,21 +19,21 @@ const standardActions = [
   'activate',
   'increment',
   'decrement',
-  'longpress' // Android only
+  'longpress', // Android only
 ];
 
 module.exports = {
   meta: {
     docs: {},
-    schema: [generateObjSchema()]
+    schema: [generateObjSchema()],
   },
 
   create: (context: ESLintContext) => ({
     JSXOpeningElement: (node: JSXOpeningElement) => {
-      const error = message =>
+      const error = (message) =>
         context.report({
           node,
-          message
+          message,
         });
 
       if (hasProp(node.attributes, 'accessibilityActions')) {
@@ -56,7 +56,7 @@ module.exports = {
         } else if (attrValue.length === 0) {
           error('accessibilityActions: Array cannot be empty');
         } else {
-          attrValue.forEach(action => {
+          attrValue.forEach((action) => {
             if (!action.name) {
               error('accessibilityActions: action missing name');
             } else if (
@@ -68,7 +68,7 @@ module.exports = {
               );
             }
             if (
-              Object.keys(action).filter(f => f !== 'name' && f !== 'label')
+              Object.keys(action).filter((f) => f !== 'name' && f !== 'label')
                 .length > 0
             ) {
               error(
@@ -82,6 +82,6 @@ module.exports = {
           'accessibilityActions: has onAccessibilityAction function but no accessibilityActions Array'
         );
       }
-    }
-  })
+    },
+  }),
 };
