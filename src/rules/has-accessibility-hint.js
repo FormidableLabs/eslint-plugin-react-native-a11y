@@ -18,7 +18,7 @@ const schema = generateObjSchema();
 module.exports = {
   meta: {
     docs: {},
-    schema: [schema]
+    schema: [schema],
   },
 
   create: (context: ESLintContext) => ({
@@ -29,9 +29,9 @@ module.exports = {
       ) {
         context.report({
           node,
-          message: 'has accessibilityLabel prop but no accessibilityHint'
+          message: 'has accessibilityLabel prop but no accessibilityHint',
         });
       }
-    }
-  })
+    },
+  }),
 };

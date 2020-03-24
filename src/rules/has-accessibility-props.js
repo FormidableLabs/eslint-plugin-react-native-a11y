@@ -15,7 +15,7 @@ import {
   hasEveryProp,
   getProp,
   getLiteralPropValue,
-  elementType
+  elementType,
 } from 'jsx-ast-utils';
 import type { ESLintContext } from '../../flow/eslint';
 import isTouchable from '../util/isTouchable';
@@ -35,12 +35,12 @@ module.exports = {
         additionalProperties: {
           type: 'array',
           items: {
-            type: 'string'
+            type: 'string',
           },
-          uniqueItems: true
-        }
-      }
-    ]
+          uniqueItems: true,
+        },
+      },
+    ],
   },
 
   create: (context: ESLintContext) => ({
@@ -54,9 +54,9 @@ module.exports = {
       ) {
         context.report({
           node,
-          message: errorMessage(elementType(node))
+          message: errorMessage(elementType(node)),
         });
       }
-    }
-  })
+    },
+  }),
 };

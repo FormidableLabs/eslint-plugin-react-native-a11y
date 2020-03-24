@@ -4,10 +4,10 @@
 export const arraySchema = {
   type: 'array',
   items: {
-    type: 'string'
+    type: 'string',
   },
   uniqueItems: true,
-  additionalItems: false
+  additionalItems: false,
 };
 
 /**
@@ -17,9 +17,9 @@ export const enumArraySchema = (enumeratedList = [], minItems = 0) =>
   Object.assign({}, arraySchema, {
     items: {
       type: 'string',
-      enum: enumeratedList
+      enum: enumeratedList,
     },
-    minItems
+    minItems,
   });
 
 /**
@@ -29,5 +29,5 @@ export const enumArraySchema = (enumeratedList = [], minItems = 0) =>
 export const generateObjSchema = (properties = {}, required) => ({
   type: 'object',
   properties,
-  required
+  required,
 });

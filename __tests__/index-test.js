@@ -8,10 +8,10 @@ import plugin from '../src';
 
 const rules = fs
   .readdirSync(path.resolve(__dirname, '../src/rules/'))
-  .map(f => path.basename(f, '.js'));
+  .map((f) => path.basename(f, '.js'));
 
 describe('all rule files should be exported by the plugin', () => {
-  rules.forEach(ruleName => {
+  rules.forEach((ruleName) => {
     it(`should export ${ruleName}`, () => {
       assert.equal(
         plugin.rules[ruleName],
@@ -28,7 +28,7 @@ describe('configurations', () => {
 });
 
 describe('schemas', () => {
-  rules.forEach(ruleName => {
+  rules.forEach((ruleName) => {
     it(`${ruleName} should export a schema with type object`, () => {
       const rule = require(path.join('../src/rules', ruleName)); // eslint-disable-line
       const schema = rule.meta && rule.meta.schema && rule.meta.schema[0];

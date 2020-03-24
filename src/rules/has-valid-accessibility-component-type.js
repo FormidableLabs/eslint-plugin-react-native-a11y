@@ -16,7 +16,7 @@ const validValues = [
   'none',
   'button',
   'radiobutton_checked',
-  'radiobutton_unchecked'
+  'radiobutton_unchecked',
 ];
 
 module.exports = createValidPropRule(

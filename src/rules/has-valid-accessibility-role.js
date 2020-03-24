@@ -39,7 +39,7 @@ const validValues = [
   'tablist',
   'text',
   'timer',
-  'toolbar'
+  'toolbar',
 ];
 
 module.exports = createValidPropRule(

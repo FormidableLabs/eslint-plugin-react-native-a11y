@@ -23,7 +23,7 @@ export default function transformer(file, api, options) {
 
   changesMade += s
     .find(j.Identifier, {
-      name: 'rules'
+      name: 'rules',
     })
     .forEach((path, index) => {
       // Add rule path.
@@ -33,7 +33,7 @@ export default function transformer(file, api, options) {
             'init',
             j.literal(ruleName),
             j.callExpression(j.identifier('require'), [
-              j.literal(rulePathInSrc)
+              j.literal(rulePathInSrc),
             ])
           )
         );
@@ -58,6 +58,6 @@ export default function transformer(file, api, options) {
 
   return s.toSource({
     quote: 'single',
-    trailingComma: true
+    trailingComma: true,
   });
 }

@@ -20,7 +20,7 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message: 'importantForAccessibility must be one of defined values',
-  type: 'JSXAttribute'
+  type: 'JSXAttribute',
 };
 
 ruleTester.run('has-valid-important-for-accessibility', rule, {
@@ -28,20 +28,20 @@ ruleTester.run('has-valid-important-for-accessibility', rule, {
     { code: '<View importantForAccessibility="auto"/>' },
     { code: '<View importantForAccessibility="yes"/>' },
     { code: '<View importantForAccessibility="no"/>' },
-    { code: '<View importantForAccessibility="no-hide-descendants"/>' }
+    { code: '<View importantForAccessibility="no-hide-descendants"/>' },
   ].map(parserOptionsMapper),
   invalid: [
     {
       code: '<View importantForAccessibility="" />',
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: '<View importantForAccessibility="aut" />',
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: '<View importantForAccessibility="autoyes" />',
-      errors: [expectedError]
-    }
-  ].map(parserOptionsMapper)
+      errors: [expectedError],
+    },
+  ].map(parserOptionsMapper),
 });

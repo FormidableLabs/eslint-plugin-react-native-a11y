@@ -20,22 +20,22 @@ const ruleTester = new RuleTester();
 
 const propMustBeAnObject = {
   message: 'accessibilityState must be an object',
-  type: 'JSXAttribute'
+  type: 'JSXAttribute',
 };
 
-const invalidObjectKey = key => ({
+const invalidObjectKey = (key) => ({
   message: `accessibilityState object: "${key}" is not a valid key`,
-  type: 'JSXAttribute'
+  type: 'JSXAttribute',
 });
 
-const valueMustBeBoolean = key => ({
+const valueMustBeBoolean = (key) => ({
   message: `accessibilityState object: "${key}" value is not a boolean`,
-  type: 'JSXAttribute'
+  type: 'JSXAttribute',
 });
 
 const checkedMustBeBooleanOrMixed = {
   message: `accessibilityState object: "checked" value is not either a boolean or 'mixed'`,
-  type: 'JSXAttribute'
+  type: 'JSXAttribute',
 };
 
 ruleTester.run('has-valid-accessibility-state', rule, {
@@ -45,40 +45,40 @@ ruleTester.run('has-valid-accessibility-state', rule, {
     { code: '<TouchableOpacity accessibilityState={{ checked: "mixed" }} />;' },
     {
       code:
-        '<TouchableOpacity accessibilityState={{ disabled: true, checked: true }} />;'
+        '<TouchableOpacity accessibilityState={{ disabled: true, checked: true }} />;',
     },
     {
       code: `const active = true;
 
              const Component = () => (
                <TouchableOpacity accessibilityState={{ selected: active }} />
-             );`
-    }
+             );`,
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
       code: '<TouchableOpacity accessibilityState="disabled" />',
-      errors: [propMustBeAnObject]
+      errors: [propMustBeAnObject],
     },
     {
       code: '<TouchableOpacity accessibilityState={["disabled"]} />',
-      errors: [propMustBeAnObject]
+      errors: [propMustBeAnObject],
     },
     {
       code: '<TouchableOpacity accessibilityState={{ disabled: "yes" }} />',
-      errors: [valueMustBeBoolean('disabled')]
+      errors: [valueMustBeBoolean('disabled')],
     },
     {
       code: '<TouchableOpacity accessibilityState={{ checked: "yes" }} />',
-      errors: [checkedMustBeBooleanOrMixed]
+      errors: [checkedMustBeBooleanOrMixed],
     },
     {
       code: '<TouchableOpacity accessibilityState={{ foo: true }} />',
-      errors: [invalidObjectKey('foo')]
+      errors: [invalidObjectKey('foo')],
     },
     {
       code: '<TouchableOpacity accessibilityState={{ foo: "yes" }} />',
-      errors: [invalidObjectKey('foo')]
+      errors: [invalidObjectKey('foo')],
     },
     {
       code: `const active = true;
@@ -86,7 +86,7 @@ ruleTester.run('has-valid-accessibility-state', rule, {
              const Component = () => (
                <TouchableOpacity accessibilityState={{ selected: "active" }} />
              );`,
-      errors: [valueMustBeBoolean('selected')]
-    }
-  ].map(parserOptionsMapper)
+      errors: [valueMustBeBoolean('selected')],
+    },
+  ].map(parserOptionsMapper),
 });

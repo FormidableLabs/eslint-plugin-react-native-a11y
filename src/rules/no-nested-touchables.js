@@ -20,11 +20,11 @@ const schema = generateObjSchema();
 module.exports = {
   meta: {
     docs: {},
-    schema: [schema]
+    schema: [schema],
   },
 
-  create: context => ({
-    JSXOpeningElement: node => {
+  create: (context) => ({
+    JSXOpeningElement: (node) => {
       const { parent } = node;
 
       const accessibleProp = getProp(node.attributes, 'accessible');
@@ -33,16 +33,16 @@ module.exports = {
       if (accessible) {
         const clickableChild = findChild(
           parent,
-          child =>
+          (child) =>
             isTouchable(child, context) || elementType(child) === 'Button'
         );
         if (clickableChild) {
           context.report({
             node,
-            message: errorMessage
+            message: errorMessage,
           });
         }
       }
-    }
-  })
+    },
+  }),
 };

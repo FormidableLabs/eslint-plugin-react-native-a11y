@@ -35,7 +35,7 @@ const checkParent = ({ openingElement, parent }) => {
 module.exports = {
   meta: {
     docs: {},
-    schema: [schema]
+    schema: [schema],
   },
 
   create: ({ options, report }: ESLintContext) => ({
@@ -50,7 +50,7 @@ module.exports = {
         report({
           node,
           message:
-            'accessibilityIgnoresInvertColors prop is not a boolean value'
+            'accessibilityIgnoresInvertColors prop is not a boolean value',
         });
       } else {
         const elementsToCheck = defaultInvertableComponents;
@@ -78,11 +78,11 @@ module.exports = {
             report({
               node,
               message:
-                'Found an element which will be inverted. Add the accessibilityIgnoresInvertColors prop'
+                'Found an element which will be inverted. Add the accessibilityIgnoresInvertColors prop',
             });
           }
         }
       }
-    }
-  })
+    },
+  }),
 };

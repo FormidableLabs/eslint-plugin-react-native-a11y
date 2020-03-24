@@ -20,7 +20,7 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message: 'accessibilityRole must be one of defined values',
-  type: 'JSXAttribute'
+  type: 'JSXAttribute',
 };
 
 ruleTester.run('has-valid-accessibility-role', rule, {
@@ -51,24 +51,24 @@ ruleTester.run('has-valid-accessibility-role', rule, {
     { code: '<TouchableOpacity accessibilityRole="tablist" />;' },
     { code: '<TouchableOpacity accessibilityRole="text" />;' },
     { code: '<TouchableOpacity accessibilityRole="timer" />;' },
-    { code: '<TouchableOpacity accessibilityRole="toolbar" />;' }
+    { code: '<TouchableOpacity accessibilityRole="toolbar" />;' },
   ].map(parserOptionsMapper),
   invalid: [
     {
       code: '<TouchableOpacity accessibilityRole="duck" />',
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: '<TouchableOpacity accessibilityRole="key" />;',
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: '<TouchableOpacity accessibilityRole="nones" />;',
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: '<TouchableOpacity accessibilityRole="primary-button" />',
-      errors: [expectedError]
-    }
-  ].map(parserOptionsMapper)
+      errors: [expectedError],
+    },
+  ].map(parserOptionsMapper),
 });

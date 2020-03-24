@@ -21,7 +21,7 @@ const ruleTester = new RuleTester();
 const expectedError = {
   message:
     'Elements with accessible={true} must not have any clickable elements inside',
-  type: 'JSXOpeningElement'
+  type: 'JSXOpeningElement',
 };
 
 ruleTester.run('no-nested-touchables', rule, {
@@ -32,7 +32,7 @@ ruleTester.run('no-nested-touchables', rule, {
       accessibilityComponentType="button"
       accessibilityLabel="Tap Me!"
       accessible={true}
-    />`
+    />`,
     },
     {
       code: `<TouchableOpacity
@@ -40,8 +40,8 @@ ruleTester.run('no-nested-touchables', rule, {
       accessibilityComponentType="button"
       accessibilityLabel="Tap Me!"
       accessible={true}
-    ><Text>submit</Text><View><Text>cancel</Text></View></TouchableOpacity>`
-    }
+    ><Text>submit</Text><View><Text>cancel</Text></View></TouchableOpacity>`,
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
@@ -53,7 +53,7 @@ ruleTester.run('no-nested-touchables', rule, {
               >
                 <Button />
               </TouchableOpacity>`,
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: `<TouchableOpacity
@@ -62,7 +62,7 @@ ruleTester.run('no-nested-touchables', rule, {
   accessibilityLabel="Tap Me!"
   accessible={true}
 ><View><Text><Button>button</Button></Text></View></TouchableOpacity>`,
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: `<TouchableOpacity
@@ -71,7 +71,7 @@ ruleTester.run('no-nested-touchables', rule, {
   accessibilityLabel="Tap Me!"
   accessible={true}
 ><TouchableOpacity><Text>Nested</Text></TouchableOpacity></TouchableOpacity>`,
-      errors: [expectedError]
-    }
-  ].map(parserOptionsMapper)
+      errors: [expectedError],
+    },
+  ].map(parserOptionsMapper),
 });
