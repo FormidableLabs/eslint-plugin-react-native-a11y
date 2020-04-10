@@ -1,5 +1,9 @@
 # Changes
 
+## V2.0.0
+- Minor doc improvements [(#78)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/78)
+- Dev Dependency upgrades [(#89)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/89)
+
 ## V2.0.0-rc2
 - Dev Dependency upgrades [(#88)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/88)
 
