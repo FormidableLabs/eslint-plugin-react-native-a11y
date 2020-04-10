@@ -4,7 +4,7 @@
 
 ### References
 
-1.  https://facebook.github.io/react-native/docs/accessibility.html
+1. https://facebook.github.io/react-native/docs/accessibility.html
 
 ## Rule details
 

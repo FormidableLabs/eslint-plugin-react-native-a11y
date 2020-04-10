@@ -6,8 +6,8 @@ The accessibilityStates property is used to tell Talkback or Voiceover the state
 
 ## This property takes on an Array containing one, both, or neither of the following values
 
-- `selected`: Used when the element is in a selected state. For example, a button is selected.
-- `disabled`: Used when the element is disabled and cannot be interacted with
+- `"selected"`: Used when the element is in a selected state. For example, a button is selected.
+- `"disabled"`: Used when the element is disabled and cannot be interacted with
 
 ### References
 

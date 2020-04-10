@@ -2,14 +2,14 @@
 
 If there are two (or more) overlapping UI components with the same parent, default accessibility focus can have unpredictable behavior. The `importantForAccessibility` property will resolve this by controlling if a view fires accessibility events and if it is reported to accessibility services. It can be set to:
 
-- auto
-- yes
-- no
-- no-hide-descendants (this will force accessibility services to ignore the component and all of its children).
+- `"auto"`
+- `"yes"`
+- `"no"`
+- `"no-hide-descendants"` (this will force accessibility services to ignore the component and all of its children).
 
 ### References
 
-1.  https://facebook.github.io/react-native/docs/accessibility.html#importantforaccessibility-android
+1. https://facebook.github.io/react-native/docs/accessibility.html#importantforaccessibility-android
 
 ## Rule details
 

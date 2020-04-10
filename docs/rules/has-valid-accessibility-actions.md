@@ -13,8 +13,8 @@ Depending on the action type, the action should contain the following fields:-
 
 NAME|TYPE|REQUIRED
 -|-|-
-name|string|**Yes**
-label|string|Only required for Custom actions
+`name`|string|**Yes**
+`label`|string|Only required for Custom actions
 
 ### Standard Actions
 
@@ -22,12 +22,12 @@ Standard Actions must have a `name` field matching one of:-
 
 NAME|PLATFORM SUPPORT
 -|-
-magicTap|iOS only
-escape|iOS only
-activate|both iOS & Android
-increment|both iOS & Android
-decrement|both iOS & Android
-longpress|Android only
+`"magicTap"`|iOS only
+`"escape"`|iOS only
+`"activate"`|both iOS & Android
+`"increment"`|both iOS & Android
+`"decrement"`|both iOS & Android
+`"longpress"`|Android only
 
 Providing a `label` for a Standard Action is optional.
 

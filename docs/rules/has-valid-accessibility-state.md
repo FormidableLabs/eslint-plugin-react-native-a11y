@@ -6,11 +6,11 @@ Describes the current state of a component to the user of an assistive technolog
 
 NAME|TYPE|REQUIRED
 -|-|-
-disabled|boolean|No
-selecte|boolean|No
-checked|boolean or 'mixed'|No
-busy|boolean|No
-expanded|boolean|No
+`disabled`|boolean|No
+`selected`|boolean|No
+`checked`|boolean or 'mixed'|No
+`busy`|boolean|No
+`expanded`|boolean|No
 
 ### References
 

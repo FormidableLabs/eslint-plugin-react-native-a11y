@@ -6,13 +6,13 @@ Represents the current value of a component.
 
 NAME|DESCRIPTION|TYPE|REQUIRED
 -|-|-|-
-min|The minimum value of this component's range.|integer|Required if `now` is set.
-max|The maximum value of this component's range.|integer|Required if `now` is set.
-now|The current value of this component's range.|integer|No
+`min`|The minimum value of this component's range.|integer|Required if `now` is set.
+`max`|The maximum value of this component's range.|integer|Required if `now` is set.
+`now`|The current value of this component's range.|integer|No
 
 NAME|DESCRIPTION|TYPE|REQUIRED
 -|-|-|-
-text|A textual description of this component's value.|string|No
+`text`|A textual description of this component's value.|string|No
 
 
 ### References
