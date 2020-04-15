@@ -13,12 +13,19 @@ export default function isattrPropValueBoolean(attr: JSXAttribute): boolean {
     // Loose check for correct data being passed in to this function
     throw new Error('isattrPropValueBoolean expects a attr object as argument');
   }
-  if (attr.value === null) {
+
+  const { value } = attr;
+
+  if (value === null) {
     // attr.value is null when it is declared as a prop but not equal to anything. This defaults to `true` in JSX
     return true;
   }
-  // $FlowFixMe
-  const { expression } = attr.value;
+
+  if (!value || !value.expression) {
+    return false;
+  }
+
+  const { expression } = value;
 
   if (expression.type === 'Identifier') {
     // we can't determine the associated value type of an Identifier expression

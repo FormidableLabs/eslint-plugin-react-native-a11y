@@ -68,6 +68,10 @@ ruleTester.run('has-valid-accessibility-ignores-invert-colors', rule, {
   ].map(parserOptionsMapper),
   invalid: [
     {
+      code: '<View accessibilityIgnoresInvertColors="true"></View>',
+      errors: [typeError],
+    },
+    {
       code: '<View accessibilityIgnoresInvertColors={"true"}></View>',
       errors: [typeError],
     },
