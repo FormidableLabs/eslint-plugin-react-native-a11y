@@ -75,7 +75,7 @@ For more information on configuring behaviour of an individual rule, please refe
 ## Supported Rules
 
 ### Basic
-- [has-accessibility-hint](docs/rules/has-accessibility-hint): Enforce `accessibilityHint` is used in conjunction with `accessibilityLabel`
+- [has-accessibility-hint](docs/rules/has-accessibility-hint.md): Enforce `accessibilityHint` is used in conjunction with `accessibilityLabel`
 - [has-accessibility-props](docs/rules/has-accessibility-props.md): Enforce that `<Touchable\*>` components only have either the `accessibilityRole` prop or both `accessibilityTraits` and `accessibilityComponentType` props set
 - [has-valid-accessibility-actions](docs/rules/has-valid-accessibility-actions.md): Enforce both `accessibilityActions` and `onAccessibilityAction` props are valid
 - [has-valid-accessibility-role](docs/rules/has-valid-accessibility-role.md): Enforce `accessibilityRole` property value is valid
@@ -87,7 +87,7 @@ For more information on configuring behaviour of an individual rule, please refe
 - [no-nested-touchables](docs/rules/no-nested-touchables.md): Enforce if a view has `accessible={true}`, that there are no touchable elements inside
 
 ### iOS
-- [has-valid-accessibility-ignores-invert-colors](docs/has-valid-accessibility-ignores-invert-colors.md): Enforce that certain elements use `accessibilityIgnoresInvertColors` to avoid being inverted by device color settings.
+- [has-valid-accessibility-ignores-invert-colors](docs/rules/has-valid-accessibility-ignores-invert-colors.md): Enforce that certain elements use `accessibilityIgnoresInvertColors` to avoid being inverted by device color settings.
 
 ### Android
 - [has-valid-accessibility-live-region](docs/rules/has-valid-accessibility-live-region.md): Enforce `accessibilityLiveRegion` prop values must be valid
@@ -146,7 +146,6 @@ eslint-plugin-react-native-a11y is licensed under the [MIT License](LICENSE.md).
 
 ### Maintenance Status
 
-**Active:** Formidable is actively working on this project, and we expect to continue for work for the foreseeable future. Bug reports, feature requests and pull requests are welcome. 
+**Active:** Formidable is actively working on this project, and we expect to continue for work for the foreseeable future. Bug reports, feature requests and pull requests are welcome.
 
 [maintenance-image]: https://img.shields.io/badge/maintenance-active-green.svg
-
