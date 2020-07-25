@@ -5,6 +5,7 @@ import { elementType, getLiteralPropValue } from 'jsx-ast-utils';
 import { generateObjSchema } from '../util/schemas';
 import type { ESLintContext } from '../../flow/eslint';
 import isOneOf from '../util/isOneOf';
+import isNodePropExpression from '../util/isNodePropExpression';
 
 /**
  * Produces an ESLint rule that validates a prop against an array of acceptable values
@@ -30,24 +31,27 @@ const createValidPropRule = (
     JSXAttribute: (node: JSXAttribute) => {
       const attrName = elementType(node);
       if (attrName === propName) {
-        // ensure we are only checking literal prop values
-        const attrValue = getLiteralPropValue(node);
-        let invalid = false;
+        const isExpression = isNodePropExpression(node);
+        if (!isExpression) {
+          // ensure we are only checking literal prop values
+          const attrValue = getLiteralPropValue(node);
+          let invalid = false;
 
-        if (Array.isArray(attrValue)) {
-          const validate = attrValue.map((strValue) =>
-            isOneOf(strValue, validValues)
-          );
-          invalid = validate.indexOf(false) > -1;
-        } else {
-          invalid = !isOneOf(attrValue, validValues);
-        }
+          if (Array.isArray(attrValue)) {
+            const validate = attrValue.map((strValue) =>
+              isOneOf(strValue, validValues)
+            );
+            invalid = validate.indexOf(false) > -1;
+          } else {
+            invalid = !isOneOf(attrValue, validValues);
+          }
 
-        if (invalid) {
-          context.report({
-            node,
-            message: errorMessage,
-          });
+          if (invalid) {
+            context.report({
+              node,
+              message: errorMessage,
+            });
+          }
         }
       }
     },
