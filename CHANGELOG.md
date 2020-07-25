@@ -1,12 +1,18 @@
 # Changes
 
+## V2.0.1
+
+- Allow Expressions in prop validators [(#96)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/96)
+- Dependency upgrades [(#95)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/95)
+
 ## V2.0.0
+
 - Minor doc improvements [(#78)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/78)
 - Dev Dependency upgrades [(#89)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/89)
 
 ## V2.0.0-rc2
-- Dev Dependency upgrades [(#88)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/88)
 
+- Dev Dependency upgrades [(#88)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/88)
 
 ## V2.0.0-rc1
 
@@ -16,22 +22,26 @@
 ## V2.0.0-rc0
 
 ### 🚨 Breaking 🚨
+
 - This release removes support for Node 8 [(#80)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/80)
 - The `has-valid-accessibility-state` rule has been re-written to cover the new `accessibilityState` implementation [(#60)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/60)
 - Deprecates the `recommended` config and introduces new platform-specific configs [(#83)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/83)
 
 ### ✨ New Features ✨
+
 - Adds `has-valid-accessibility-value` rule for `accessibilityValue` prop [(#68)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/68)
 - Adds `has-valid-accessibility-actions` rule for `accessibilityActions` and `onAccessibilityAction` props [(#69)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/69)
 - Adds `has-valid-accessibility-ignores-invert-colors` rule for `accessibilityIgnoresInvertColors` [(#73)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/73)
 - Adds `has-accessibility-hint` for `accessibilityHint` [(#74)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/74)
 
 ### 🐛 Bugfixes 🐛
+
 - Removes `Touchable~` as a requirement for custom Touchable names [(#70)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/70)
 - Allows `Touchable`s without either `accessibilityRole` or both `accessibilityTraits` and `accessibilityComponentType` [(#81)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/81)
 - Removes `has-accessibility-label` rule [(#82)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/82)
 
 ## V1.3.1
+
 - Migrate to Babel v7 (to fix security issue) [(#67)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/67)
 
 ## V1.3.0
@@ -43,7 +53,6 @@
 - Support for ESLint version ^6 [(#57)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/57)
 - Adopted Prettier [(#51)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/51)
 - Dev Dependency upgrades [(#58)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/58)
-
 
 ## V1.2.0
 
