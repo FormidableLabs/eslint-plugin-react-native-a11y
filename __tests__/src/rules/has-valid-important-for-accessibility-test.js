@@ -29,6 +29,10 @@ ruleTester.run('has-valid-important-for-accessibility', rule, {
     { code: '<View importantForAccessibility="yes"/>' },
     { code: '<View importantForAccessibility="no"/>' },
     { code: '<View importantForAccessibility="no-hide-descendants"/>' },
+    {
+      code:
+        '<View importantForAccessibility={isHidden ? "no-hide-descendants" : "yes"} />',
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {

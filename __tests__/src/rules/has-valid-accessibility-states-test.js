@@ -40,6 +40,10 @@ ruleTester.run('has-valid-accessibility-states', rule, {
     },
     { code: '<TouchableOpacity accessibilityStates={[""]} />;' },
     { code: '<TouchableOpacity accessibilityStates={[]} />;' },
+    {
+      code:
+        '<TouchableHighlight accessibilityStates={props.disabled ? ["disabled"]: []} />',
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {

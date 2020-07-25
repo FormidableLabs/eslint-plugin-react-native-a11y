@@ -65,6 +65,9 @@ ruleTester.run('has-valid-accessibility-ignores-invert-colors', rule, {
                <Image accessibilityIgnoresInvertColors={invertColors} />
              );`,
     },
+    {
+      code: `<Image accessibilityIgnoresInvertColors={shouldInvert ? true : false} />`,
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
