@@ -1,5 +1,10 @@
 # Changes
 
+## V2.0.2
+
+- Update accessibilityState to allow Identifiers for `checked` value [(#98)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/98)
+- Dev Dependency upgrades [(#99)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/99)
+
 ## V2.0.1
 
 - Allow Expressions in prop validators [(#96)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/96)
