@@ -37,25 +37,25 @@ module.exports = {
           error('accessibilityState must be an object');
         } else {
           Object.entries(attrValue).map(([key, value]) => {
-            if (validKeys.indexOf(key) < 0) {
-              error(`accessibilityState object: "${key}" is not a valid key`);
-            } else if (
-              key === 'checked' &&
-              !(typeof value === 'boolean' || value === 'mixed')
-            ) {
-              error(
-                `accessibilityState object: "checked" value is not either a boolean or 'mixed'`
-              );
-            } else if (key !== 'checked' && typeof value !== 'boolean') {
+            // $FlowFixMe
+            const astObjectProp = node.value.expression.properties.find(
               // $FlowFixMe
-              const astObjectProp = node.value.expression.properties.find(
-                // $FlowFixMe
-                (f) => f.key.name === key
-              );
-              // we can't determine the associated value type of an Identifier expression
-              // treat these cases as though they are valid
-              // $FlowFixMe
-              if (astObjectProp && astObjectProp.value.type !== 'Identifier') {
+              (f) => f.key.name === key
+            );
+            // we can't determine the associated value type of an Identifier expression
+            // treat these cases as though they are valid
+            // $FlowFixMe
+            if (astObjectProp && astObjectProp.value.type !== 'Identifier') {
+              if (validKeys.indexOf(key) < 0) {
+                error(`accessibilityState object: "${key}" is not a valid key`);
+              } else if (
+                key === 'checked' &&
+                !(typeof value === 'boolean' || value === 'mixed')
+              ) {
+                error(
+                  `accessibilityState object: "checked" value is not either a boolean or 'mixed'`
+                );
+              } else if (key !== 'checked' && typeof value !== 'boolean') {
                 error(
                   `accessibilityState object: "${key}" value is not a boolean`
                 );
