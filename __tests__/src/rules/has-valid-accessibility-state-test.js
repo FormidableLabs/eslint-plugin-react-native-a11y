@@ -54,6 +54,14 @@ ruleTester.run('has-valid-accessibility-state', rule, {
                <TouchableOpacity accessibilityState={{ selected: active }} />
              );`,
     },
+    {
+      code: `const itemChecked = true;
+
+            <>
+              <TouchableHighlight accessibilityState={{ checked: itemChecked }} />
+              <TouchableHighlight accessibilityState={{ selected: itemChecked }} />
+            </>`,
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
