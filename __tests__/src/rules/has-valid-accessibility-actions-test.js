@@ -56,6 +56,12 @@ ruleTester.run('has-valid-accessibility-actions', rule, {
               }}
             />`,
     },
+    {
+      code: `<View
+              accessibilityActions={useMemo()}
+              onAccessibilityAction={useCallback()}
+            />`,
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {

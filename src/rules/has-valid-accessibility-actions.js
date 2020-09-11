@@ -5,7 +5,7 @@
  */
 
 import type { JSXOpeningElement } from 'ast-types-flow';
-import { getProp, getPropValue, hasProp } from 'jsx-ast-utils';
+import { getProp, getPropValue, hasEveryProp, hasProp } from 'jsx-ast-utils';
 import { generateObjSchema } from '../util/schemas';
 import type { ESLintContext } from '../../flow/eslint';
 
@@ -36,51 +36,67 @@ module.exports = {
           message,
         });
 
-      if (hasProp(node.attributes, 'accessibilityActions')) {
-        if (
-          typeof getPropValue(
-            getProp(node.attributes, 'onAccessibilityAction')
-          ) !== 'function'
-        ) {
+      if (
+        hasEveryProp(node.attributes, [
+          'accessibilityActions',
+          'onAccessibilityAction',
+        ])
+      ) {
+        const handlerProp = getProp(node.attributes, 'onAccessibilityAction');
+        const handlerPropType = handlerProp.value.expression.type;
+        // CallExpressions are always assumed valid
+        if (handlerPropType !== 'CallExpression') {
+          const handlerPropValue = getPropValue(handlerProp);
+          if (typeof handlerPropValue !== 'function') {
+            error(
+              'accessibilityActions: has accessibilityActions but onAccessibilityAction is not a function'
+            );
+          }
+        }
+
+        const actionsProp = getProp(node.attributes, 'accessibilityActions');
+        const actionsPropType = actionsProp.value.expression.type;
+        // CallExpressions are always assumed valid
+        if (actionsPropType !== 'CallExpression') {
+          const attrValue = getPropValue(actionsProp);
+
+          if (!Array.isArray(attrValue)) {
+            error('accessibilityActions: value must be an Array');
+          } else if (attrValue.length === 0) {
+            error('accessibilityActions: Array cannot be empty');
+          } else {
+            attrValue.forEach((action) => {
+              if (!action.name) {
+                error('accessibilityActions: action missing name');
+              } else if (
+                standardActions.indexOf(action.name) < 0 &&
+                !action.label
+              ) {
+                error(
+                  `accessibilityActions: custom action "${action.name}" missing label`
+                );
+              }
+              if (
+                Object.keys(action).filter((f) => f !== 'name' && f !== 'label')
+                  .length > 0
+              ) {
+                error(
+                  `accessibilityActions: action "${action.name}" contains unrecognised keys`
+                );
+              }
+            });
+          }
+        }
+      } else {
+        if (hasProp(node.attributes, 'accessibilityActions')) {
           error(
             'accessibilityActions: has accessibilityActions but onAccessibilityAction is not a function'
           );
+        } else if (hasProp(node.attributes, 'onAccessibilityAction')) {
+          error(
+            'accessibilityActions: has onAccessibilityAction function but no accessibilityActions Array'
+          );
         }
-
-        const attrValue = getPropValue(
-          getProp(node.attributes, 'accessibilityActions')
-        );
-
-        if (!Array.isArray(attrValue)) {
-          error('accessibilityActions: value must be an Array');
-        } else if (attrValue.length === 0) {
-          error('accessibilityActions: Array cannot be empty');
-        } else {
-          attrValue.forEach((action) => {
-            if (!action.name) {
-              error('accessibilityActions: action missing name');
-            } else if (
-              standardActions.indexOf(action.name) < 0 &&
-              !action.label
-            ) {
-              error(
-                `accessibilityActions: custom action "${action.name}" missing label`
-              );
-            }
-            if (
-              Object.keys(action).filter((f) => f !== 'name' && f !== 'label')
-                .length > 0
-            ) {
-              error(
-                `accessibilityActions: action "${action.name}" contains unrecognised keys`
-              );
-            }
-          });
-        }
-      } else if (hasProp(node.attributes, 'onAccessibilityAction')) {
-        error(
-          'accessibilityActions: has onAccessibilityAction function but no accessibilityActions Array'
-        );
       }
     },
   }),
