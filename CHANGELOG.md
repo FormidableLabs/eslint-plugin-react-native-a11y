@@ -1,5 +1,9 @@
 # Changes
 
+## V2.0.3
+- allow CallExpressions in accessibilityActions [(#101)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/101)
+- Dependency upgrades [(#102)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/102)
+
 ## V2.0.2
 
 - Update accessibilityState to allow Identifiers for `checked` value [(#98)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/98)
