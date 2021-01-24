@@ -15,6 +15,7 @@ const defaultTouchables = {
   TouchableWithoutFeedback: true,
   TouchableNativeFeedback: true,
   TouchableBounce: true,
+  Pressable: true,
 };
 
 export default function isTouchable(

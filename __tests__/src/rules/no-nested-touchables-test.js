@@ -73,5 +73,14 @@ ruleTester.run('no-nested-touchables', rule, {
 ><TouchableOpacity><Text>Nested</Text></TouchableOpacity></TouchableOpacity>`,
       errors: [expectedError],
     },
+    {
+      code: `<TouchableOpacity
+  accessibilityTraits="button"
+  accessibilityComponentType="button"
+  accessibilityLabel="Tap Me!"
+  accessible={true}
+><Pressable><Text>Nested</Text></Pressable></TouchableOpacity>`,
+      errors: [expectedError],
+    },
   ].map(parserOptionsMapper),
 });

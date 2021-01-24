@@ -1,6 +1,6 @@
 # no-nested-touchables
 
-<Touchable*> or <Button /> will not work inside an accessible element. Any element that has the accessible={true} property (along with the accessibleLabel property) must therefore not contain any <Touchable*> or <Button /> elements.
+<Touchable*> and <Pressable /> or <Button /> will not work inside an accessible element. Any element that has the accessible={true} property (along with the accessibleLabel property) must therefore not contain any <Touchable*> and <Pressable /> or <Button /> elements.
 
 ### References
 
