@@ -61,7 +61,7 @@
 		"jsx-ast-utils": "^3.2.0"
 	},
 	"peerDependencies": {
-		"eslint": "^3 || ^4 || ^5 || ^6"
+		"eslint": "^3 || ^4 || ^5 || ^6 || ^7"
 	},
 	"jest": {
 		"coverageReporters": [
