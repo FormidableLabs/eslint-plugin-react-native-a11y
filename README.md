@@ -140,6 +140,10 @@ $ ./scripts/create-rule.js my-new-rule
 
 This project started as a fork of [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) and a lot of the work was carried out by its [contributors](https://github.com/evcohen/eslint-plugin-jsx-a11y/graphs/contributors), to whom we owe a lot!
 
+## Related Projects
+
+- [react-native-accessibility-engine](https://github.com/aryella-lacerda/react-native-accessibility-engine) is a testing tool that inspects components for accessibility-related errors and can be used together with eslint-plugin-react-native-a11y to extend your accessibility toolchain.
+
 ## License
 
 eslint-plugin-react-native-a11y is licensed under the [MIT License](LICENSE.md).
