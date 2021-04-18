@@ -42,10 +42,10 @@ module.exports = {
               // $FlowFixMe
               (f) => f.key.name === key
             );
-            // we can't determine the associated value type of an Identifier expression
+            // we can't determine the associated value type of non-Literal expressions
             // treat these cases as though they are valid
             // $FlowFixMe
-            if (astObjectProp && astObjectProp.value.type !== 'Identifier') {
+            if (astObjectProp && astObjectProp.value.type === 'Literal') {
               if (validKeys.indexOf(key) < 0) {
                 error(`accessibilityState object: "${key}" is not a valid key`);
               } else if (

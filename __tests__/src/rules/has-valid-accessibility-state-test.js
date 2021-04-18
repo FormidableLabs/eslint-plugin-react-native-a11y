@@ -62,6 +62,27 @@ ruleTester.run('has-valid-accessibility-state', rule, {
               <TouchableHighlight accessibilityState={{ selected: itemChecked }} />
             </>`,
     },
+    {
+      code: `const isFirst = () => {
+              return something === "example";
+            }
+
+            <TouchableOpacity
+              accessible
+              accessibilityState={{ disabled: isFirst() }}
+              disabled={isFirst()}
+            />`,
+    },
+    {
+      code: `const myObj = {
+              myBool: true
+            };
+
+            <TouchableOpacity
+              accessible
+              accessibilityState={{ checked: myObj.myBool }}
+            />`,
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
