@@ -44,8 +44,11 @@ module.exports = {
       ) {
         const handlerProp = getProp(node.attributes, 'onAccessibilityAction');
         const handlerPropType = handlerProp.value.expression.type;
-        // CallExpressions are always assumed valid
-        if (handlerPropType !== 'CallExpression') {
+        // CallExpressions & Identifiers are always assumed valid
+        if (
+          handlerPropType !== 'CallExpression' &&
+          handlerPropType !== 'Identifier'
+        ) {
           const handlerPropValue = getPropValue(handlerProp);
           if (typeof handlerPropValue !== 'function') {
             error(
@@ -56,8 +59,11 @@ module.exports = {
 
         const actionsProp = getProp(node.attributes, 'accessibilityActions');
         const actionsPropType = actionsProp.value.expression.type;
-        // CallExpressions are always assumed valid
-        if (actionsPropType !== 'CallExpression') {
+        // CallExpressions & Identifiers are always assumed valid
+        if (
+          actionsPropType !== 'CallExpression' &&
+          actionsPropType !== 'Identifier'
+        ) {
           const attrValue = getPropValue(actionsProp);
 
           if (!Array.isArray(attrValue)) {

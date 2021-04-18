@@ -62,6 +62,24 @@ ruleTester.run('has-valid-accessibility-actions', rule, {
               onAccessibilityAction={useCallback()}
             />`,
     },
+    {
+      code: `const onAccessibilityAction = (event) => {
+                switch (event.nativeEvent.actionName) {
+                  case "delete":
+                    deleteAction();
+                    break;
+                  default:
+                    Alert.alert("Some text");
+                }
+              }
+
+              const accessibilityActionsList = [{ name: "delete", label: "Delete" }];
+
+              <TouchableOpacity
+                accessibilityActions={accessibilityActionsList}
+                onAccessibilityAction={onAccessibilityAction}
+              />`,
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
