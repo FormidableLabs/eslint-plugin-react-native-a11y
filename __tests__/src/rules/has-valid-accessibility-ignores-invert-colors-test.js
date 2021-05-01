@@ -30,42 +30,43 @@ const missingPropError = {
 
 describe('verifyReactNativeImage', () => {
   it('returns true when importing a named export of Image from react-native', () => {
-    expect(
-      rule.functions
-        .verifyReactNativeImage(`import { Text, Image, View } from 'react-native';
+    const output = rule.functions
+      .verifyReactNativeImage(`import { Text, Image, View } from 'react-native';
+  const Component = () => (
+    <View>
+    <Image />
+    </View>
+    );`);
+
+    expect(output.enableLinting).toBe(true);
+  });
+
+  it('returns false when importing a named export of a Image from any other library', () => {
+    const output = rule.functions
+      .verifyReactNativeImage(`import { Text, Image, View } from './custom-image-component/Image';
       const Component = () => (
         <View>
         <Image />
         </View>
-        );`)
-    ).toBe(true);
-  });
-
-  it('returns false when importing a named export of a Image from any other library', () => {
-    expect(
-      rule.functions
-        .verifyReactNativeImage(`import { Text, Image, View } from './custom-image-component/Image';
-          const Component = () => (
-            <View>
-            <Image />
-            </View>
-            );`)
-    ).toBe(false);
+        );`);
+    expect(output.enableLinting).toBe(false);
   });
 
   /**
    * Super edge case if someone wants to alias ReactNative.Image as another component like RNImage and imports an Image from './any-library'
    */
   it('returns true when provided a named export of Image that is aliased as something from react-native', () => {
-    expect(
-      rule.functions
-        .verifyReactNativeImage(`import { Text, Image as RNImage, View } from 'react-native';
-              const Component = () => (
-                <View>
-                <RNImage />
-                </View>
-                );`)
-    ).toBe(true);
+    const output = rule.functions
+      .verifyReactNativeImage(`import React from 'react'
+    import {Image as RNImage} from 'react-native'
+    
+    const CustomImage = () => {
+      return <RNImage />
+    }
+    
+    export default CustomImage`);
+
+    expect(output.enableLinting).toBe(true);
   });
 });
 
@@ -226,20 +227,6 @@ const invalidCustomImport = [
 
     export const RNImage = (props) => <Image source={props.source} />
     `,
-    errors: [missingPropError],
-    parserOptions: {
-      sourceType: 'module',
-    },
-  },
-  {
-    title: 'supports linting module imports',
-    code: `import * as RN from 'react-native';
-  const { Image } = RN;
-  
-  const Component = (props) => (
-    <Image source={props.source} />
-  );
-  `,
     errors: [missingPropError],
     parserOptions: {
       sourceType: 'module',

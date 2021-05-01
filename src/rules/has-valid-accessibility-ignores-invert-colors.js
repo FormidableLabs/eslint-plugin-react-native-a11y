@@ -36,20 +36,39 @@ const checkParent = ({ openingElement, parent }) => {
  * @description varifies that the Image asset is imported from 'react-native' otherwise exits linting
  */
 const verifyReactNativeImage = (text: string): boolean => {
+  const res = {
+    enableLinting: true,
+    elementsToCheck: defaultInvertableComponents,
+  };
+
+  // Escape hatch for tests
+  if (!text.match(new RegExp(/import/, 'g'))) {
+    return res;
+  }
+
   // Flow has issues with String.raw
   // $FlowFixMe
   const namedSelector = String.raw`(import\s{)(.*)(\bImage\b)(.*)(}\sfrom\s'react-native')`;
   // $FlowFixMe
-  const moduleSelector = String.raw`(import\s\*\sas\s)([a-zA-Z0-9_]\w)(\sfrom\s)('react-native')`;
+  const es6moduleSelector = String.raw`(?<=Image as )(.*?)(?=} from 'react-native')`;
 
-  const imageSourceReactNativeRegExp = new RegExp(
-    `${moduleSelector}|${namedSelector}`,
+  const imageSourceReactNativeRegExp = new RegExp(`${namedSelector}`, 'gs');
+  const imageSourceReactNativeAliasRegExp = new RegExp(
+    `${es6moduleSelector}`,
     'gs'
   );
 
-  const hasReactNativeImage = text.match(imageSourceReactNativeRegExp);
+  const matchedImage = text.match(imageSourceReactNativeRegExp) || [];
+  const matchedAliasImage = text.match(imageSourceReactNativeAliasRegExp) || [];
 
-  return hasReactNativeImage ? true : false;
+  res.enableLinting =
+    matchedImage.length === 1 || matchedAliasImage.length === 1;
+
+  if (matchedAliasImage.length === 1) {
+    res.elementsToCheck = [matchedAliasImage[0].trim()];
+  }
+
+  return res;
 };
 
 module.exports = {
@@ -66,18 +85,7 @@ module.exports = {
      * Checks to see if there are valid imports and if so verifies that those imports related to 'react-native' or if a custom module exists
      * */
     const { text } = getSourceCode();
-    let hasImageImportAlias = false;
-    if (text.match(new RegExp(/import/, 'g'))) {
-      const hasReactNativeImage = verifyReactNativeImage(text);
-      if (!hasReactNativeImage) {
-        hasImageImportAlias = true;
-      }
-    }
-
-    // avoid directly mutating a constant as it ends up stacking up duplicate strings
-    const elementsToCheck = !hasImageImportAlias
-      ? [...defaultInvertableComponents]
-      : [];
+    const { enableLinting, elementsToCheck } = verifyReactNativeImage(text);
 
     // Add in any other invertible components to check for
     if (options.length > 0) {
@@ -88,7 +96,7 @@ module.exports = {
     }
 
     // Exit process if there is nothing to check
-    if (hasImageImportAlias && options.length === 0) {
+    if (!enableLinting && options.length === 0) {
       return {};
     }
 
@@ -107,7 +115,6 @@ module.exports = {
               'accessibilityIgnoresInvertColors prop is not a boolean value',
           });
         } else {
-          const elementsToCheck = defaultInvertableComponents;
           if (options.length > 0) {
             const { invertableComponents } = options[0];
             if (invertableComponents) {
