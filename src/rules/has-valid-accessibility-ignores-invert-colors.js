@@ -32,11 +32,16 @@ const checkParent = ({ openingElement, parent }) => {
   return true;
 };
 
+type VerifyRNImageRes = {
+  enableLinting: boolean,
+  elementsToCheck: string[],
+};
+
 /**
  * @description varifies that the Image asset is imported from 'react-native' otherwise exits linting
  */
-const verifyReactNativeImage = (text: string): boolean => {
-  const res = {
+const verifyReactNativeImage = (text: string): VerifyRNImageRes => {
+  const res: VerifyRNImageRes = {
     enableLinting: true,
     elementsToCheck: defaultInvertableComponents,
   };
