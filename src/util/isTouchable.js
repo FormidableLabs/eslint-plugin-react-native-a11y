@@ -24,6 +24,9 @@ export default function isTouchable(
     id: '',
     options: [],
     report: () => {},
+    getSourceCode: () => ({
+      text: '',
+    }),
   }
 ) {
   const { options } = context;

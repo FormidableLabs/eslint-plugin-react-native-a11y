@@ -1,86 +1,86 @@
 {
-	"name": "eslint-plugin-react-native-a11y",
-	"version": "2.0.4",
-	"description": "React Native specific accessibility linting rules.",
-	"keywords": [
-		"eslint",
-		"eslintplugin",
-		"eslint-plugin",
-		"a11y",
-		"accessibility",
-		"react-native"
-	],
-	"author": "JP Driver <jp.driver@formidable.com>",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/FormidableLabs/eslint-plugin-react-native-a11y"
-	},
-	"main": "lib/index.js",
-	"scripts": {
-		"build": "rimraf lib && babel src --out-dir lib --copy-files",
-		"create": "node ./scripts/create-rule",
-		"flow": "flow",
-		"lint:fix": "npm run lint -- --fix",
-		"lint": "eslint  --config .eslintrc src __tests__ scripts",
-		"prepublishOnly": "safe-publish-latest && not-in-publish || (npm run lint && npm run flow && npm run jest && npm run build)",
-		"pretest": "npm run lint:fix && npm run flow",
-		"test": "npm run jest",
-		"test:ci": "npm run jest -- --ci --runInBand",
-		"jest": "jest --coverage __tests__/**/*"
-	},
-	"devDependencies": {
-		"@babel/cli": "^7.12.10",
-		"@babel/core": "^7.12.10",
-		"@babel/plugin-transform-flow-strip-types": "^7.12.10",
-		"@babel/preset-env": "^7.12.11",
-		"babel-eslint": "^10.1.0",
-		"babel-jest": "^26.6.3",
-		"eslint": "^7.18.0",
-		"eslint-config-prettier": "^7.2.0",
-		"eslint-plugin-flowtype": "^5.2.0",
-		"eslint-plugin-prettier": "^3.3.1",
-		"expect": "^26.6.2",
-		"flow-bin": "^0.122.0",
-		"in-publish": "^2.0.1",
-		"jest": "^26.6.3",
-		"jscodeshift": "^0.11.0",
-		"minimist": "^1.2.5",
-		"object.assign": "^4.1.2",
-		"prettier": "^2.2.1",
-		"rimraf": "^3.0.2",
-		"safe-publish-latest": "^1.1.4",
-		"to-ast": "^1.0.0"
-	},
-	"engines": {
-		"node": ">=10.0"
-	},
-	"license": "MIT",
-	"dependencies": {
-		"@babel/runtime": "^7.12.5",
-		"ast-types-flow": "^0.0.7",
-		"jsx-ast-utils": "^3.2.0"
-	},
-	"peerDependencies": {
-		"eslint": "^3 || ^4 || ^5 || ^6 || ^7"
-	},
-	"jest": {
-		"coverageReporters": [
-			"lcov",
-			"html"
-		],
-		"coverageDirectory": "reports",
-		"roots": [
-			"<rootDir>/__tests__"
-		],
-		"testPathIgnorePatterns": [
-			"<rootDir>/__tests__/__util__"
-		],
-		"testEnvironment": "node"
-	},
-	"greenkeeper": {
-		"ignore": [
-			"jest",
-			"babel-jest"
-		]
-	}
+  "name": "eslint-plugin-react-native-a11y",
+  "version": "2.0.4",
+  "description": "React Native specific accessibility linting rules.",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "a11y",
+    "accessibility",
+    "react-native"
+  ],
+  "author": "JP Driver <jp.driver@formidable.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FormidableLabs/eslint-plugin-react-native-a11y"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rimraf lib && babel src --out-dir lib --copy-files",
+    "create": "node ./scripts/create-rule",
+    "flow": "flow",
+    "lint:fix": "npm run lint -- --fix",
+    "lint": "eslint  --config .eslintrc src __tests__ scripts",
+    "prepublishOnly": "safe-publish-latest && not-in-publish || (npm run lint && npm run flow && npm run jest && npm run build)",
+    "pretest": "npm run lint:fix && npm run flow",
+    "test": "npm run jest",
+    "test:ci": "npm run jest -- --ci --runInBand",
+    "jest": "jest --coverage __tests__/**/*"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-flow-strip-types": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "expect": "^26.6.2",
+    "flow-bin": "^0.122.0",
+    "in-publish": "^2.0.1",
+    "jest": "^26.6.3",
+    "jscodeshift": "^0.11.0",
+    "minimist": "^1.2.5",
+    "object.assign": "^4.1.2",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "safe-publish-latest": "^1.1.4",
+    "to-ast": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=10.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@babel/runtime": "^7.12.5",
+    "ast-types-flow": "^0.0.7",
+    "jsx-ast-utils": "^3.2.0"
+  },
+  "peerDependencies": {
+    "eslint": "^3 || ^4 || ^5 || ^6 || ^7"
+  },
+  "jest": {
+    "coverageReporters": [
+      "lcov",
+      "html"
+    ],
+    "coverageDirectory": "reports",
+    "roots": [
+      "<rootDir>/__tests__"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/__util__"
+    ],
+    "testEnvironment": "node"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "jest",
+      "babel-jest"
+    ]
+  }
 }

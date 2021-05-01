@@ -7,6 +7,7 @@ Eslint-plugin-react-native-a11y is a collection of React Native specific ESLint 
 ## Setup
 
 ### Pre-Requisites
+
 Before starting, check you already have ESLint as a `devDependency` of your project.
 
 > Projects created using `react-native init` will already have this, but for Expo depending on your template you may need to follow ESLint's [installation instructions](https://eslint.org/docs/user-guide/getting-started#installation-and-usage).
@@ -29,12 +30,12 @@ yarn add eslint-plugin-react-native-a11y --dev
 
 This plugin exposes four recommended configs.
 
-Name|Description
--|-
-basic|Only use basic validation rules common to both iOS & Android
-ios|Use all rules from "basic", plus iOS-specific extras
-android|Use all rules from "basic", plus Android-specific extras
-all|Use all rules from "basic", plus iOS-specific extras, plus Android-specific extras
+| Name    | Description                                                                        |
+| ------- | ---------------------------------------------------------------------------------- |
+| basic   | Only use basic validation rules common to both iOS & Android                       |
+| ios     | Use all rules from "basic", plus iOS-specific extras                               |
+| android | Use all rules from "basic", plus Android-specific extras                           |
+| all     | Use all rules from "basic", plus iOS-specific extras, plus Android-specific extras |
 
 If your project only supports a single platform, you may get the best experience using a platform-specific config. This will both avoid reporting issues which do not affect your platform and also results in slightly faster linting for larger projects.
 
@@ -47,10 +48,7 @@ Add the config you want to use to the `extends` section of your ESLint config us
 
 module.exports = {
   root: true,
-  extends: [
-    '@react-native-community',
-    'plugin:react-native-a11y/ios'
-  ]
+  extends: ['@react-native-community', 'plugin:react-native-a11y/ios'],
 };
 ```
 
@@ -61,12 +59,10 @@ Alternatively if you do not want to use one of the pre-defined configs — or wa
 
 module.exports = {
   root: true,
-  extends: [
-    '@react-native-community',
-  ],
+  extends: ['@react-native-community'],
   rules: {
-    'react-native-a11y/rule-name': 2
-  }
+    'react-native-a11y/rule-name': 2,
+  },
 };
 ```
 
@@ -75,6 +71,7 @@ For more information on configuring behaviour of an individual rule, please refe
 ## Supported Rules
 
 ### Basic
+
 - [has-accessibility-hint](docs/rules/has-accessibility-hint.md): Enforce `accessibilityHint` is used in conjunction with `accessibilityLabel`
 - [has-accessibility-props](docs/rules/has-accessibility-props.md): Enforce that `<Touchable\*>` components only have either the `accessibilityRole` prop or both `accessibilityTraits` and `accessibilityComponentType` props set
 - [has-valid-accessibility-actions](docs/rules/has-valid-accessibility-actions.md): Enforce both `accessibilityActions` and `onAccessibilityAction` props are valid
@@ -87,9 +84,11 @@ For more information on configuring behaviour of an individual rule, please refe
 - [no-nested-touchables](docs/rules/no-nested-touchables.md): Enforce if a view has `accessible={true}`, that there are no touchable elements inside
 
 ### iOS
+
 - [has-valid-accessibility-ignores-invert-colors](docs/rules/has-valid-accessibility-ignores-invert-colors.md): Enforce that certain elements use `accessibilityIgnoresInvertColors` to avoid being inverted by device color settings.
 
 ### Android
+
 - [has-valid-accessibility-live-region](docs/rules/has-valid-accessibility-live-region.md): Enforce `accessibilityLiveRegion` prop values must be valid
 - [has-valid-important-for-accessibility](docs/rules/has-valid-important-for-accessibility.md): Enforce `importantForAccessibility` property value is valid
 

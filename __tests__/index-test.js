@@ -22,8 +22,12 @@ describe('all rule files should be exported by the plugin', () => {
 });
 
 describe('configurations', () => {
-  it("should export a 'recommended' configuration", () => {
-    assert(plugin.configs.recommended);
+  const configs = ['basic', 'ios', 'android', 'all'];
+
+  configs.forEach((name) => {
+    it(`should export a '${name}' configuration`, () => {
+      assert(plugin.configs[name]);
+    });
   });
 });
 
