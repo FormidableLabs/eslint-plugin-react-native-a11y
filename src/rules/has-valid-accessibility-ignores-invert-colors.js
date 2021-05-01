@@ -32,57 +32,112 @@ const checkParent = ({ openingElement, parent }) => {
   return true;
 };
 
+/**
+ * @description varifies that the Image asset is imported from 'react-native' otherwise exits linting
+ */
+const verifyReactNativeImage = (text: string): boolean => {
+  // Flow has issues with String.raw
+  // $FlowFixMe
+  const namedSelector = String.raw`(import\s{)(.*)(\bImage\b)(.*)(}\sfrom\s'react-native')`;
+  // $FlowFixMe
+  const moduleSelector = String.raw`(import\s\*\sas\s)([a-zA-Z0-9_]\w)(\sfrom\s)('react-native')`;
+
+  const imageSourceReactNativeRegExp = new RegExp(
+    `${moduleSelector}|${namedSelector}`,
+    'gs'
+  );
+
+  const hasReactNativeImage = text.match(imageSourceReactNativeRegExp);
+
+  return hasReactNativeImage ? true : false;
+};
+
 module.exports = {
   meta: {
     docs: {},
     schema: [schema],
   },
+  functions: {
+    verifyReactNativeImage,
+  },
 
-  create: ({ options, report }: ESLintContext) => ({
-    JSXElement: (node: JSXElement) => {
-      // $FlowFixMe
-      const { children, openingElement, parent } = node;
+  create: ({ options, report, getSourceCode }: ESLintContext) => {
+    /**
+     * Checks to see if there are valid imports and if so verifies that those imports related to 'react-native' or if a custom module exists
+     * */
+    const { text } = getSourceCode();
+    let hasImageImportAlias = false;
+    if (text.match(new RegExp(/import/, 'g'))) {
+      const hasReactNativeImage = verifyReactNativeImage(text);
+      if (!hasReactNativeImage) {
+        hasImageImportAlias = true;
+      }
+    }
 
-      if (
-        hasProp(openingElement.attributes, propName) &&
-        !isNodePropValueBoolean(getProp(openingElement.attributes, propName))
-      ) {
-        report({
-          node,
-          message:
-            'accessibilityIgnoresInvertColors prop is not a boolean value',
-        });
-      } else {
-        const elementsToCheck = defaultInvertableComponents;
-        if (options.length > 0) {
-          const { invertableComponents } = options[0];
-          if (invertableComponents) {
-            elementsToCheck.push(...invertableComponents);
-          }
-        }
+    // avoid directly mutating a constant as it ends up stacking up duplicate strings
+    const elementsToCheck = !hasImageImportAlias
+      ? [...defaultInvertableComponents]
+      : [];
 
-        const type = elementType(openingElement);
+    // Add in any other invertible components to check for
+    if (options.length > 0) {
+      const { invertableComponents } = options[0];
+      if (invertableComponents) {
+        elementsToCheck.push(...invertableComponents);
+      }
+    }
+
+    // Exit process if there is nothing to check
+    if (hasImageImportAlias && options.length === 0) {
+      return {};
+    }
+
+    return {
+      JSXElement: (node: JSXElement) => {
+        // $FlowFixMe
+        const { children, openingElement, parent } = node;
 
         if (
-          elementsToCheck.indexOf(type) > -1 &&
-          !hasValidIgnoresInvertColorsProp(openingElement) &&
-          children.length === 0
+          hasProp(openingElement.attributes, propName) &&
+          !isNodePropValueBoolean(getProp(openingElement.attributes, propName))
         ) {
-          let shouldReport = true;
-
-          if (parent.openingElement) {
-            shouldReport = checkParent(parent);
+          report({
+            node,
+            message:
+              'accessibilityIgnoresInvertColors prop is not a boolean value',
+          });
+        } else {
+          const elementsToCheck = defaultInvertableComponents;
+          if (options.length > 0) {
+            const { invertableComponents } = options[0];
+            if (invertableComponents) {
+              elementsToCheck.push(...invertableComponents);
+            }
           }
 
-          if (shouldReport) {
-            report({
-              node,
-              message:
-                'Found an element which will be inverted. Add the accessibilityIgnoresInvertColors prop',
-            });
+          const type = elementType(openingElement);
+
+          if (
+            elementsToCheck.indexOf(type) > -1 &&
+            !hasValidIgnoresInvertColorsProp(openingElement) &&
+            children.length === 0
+          ) {
+            let shouldReport = true;
+
+            if (parent.openingElement) {
+              shouldReport = checkParent(parent);
+            }
+
+            if (shouldReport) {
+              report({
+                node,
+                message:
+                  'Found an element which will be inverted. Add the accessibilityIgnoresInvertColors prop',
+              });
+            }
           }
         }
-      }
-    },
-  }),
+      },
+    };
+  },
 };
