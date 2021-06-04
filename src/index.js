@@ -20,6 +20,7 @@ const basicRules = {
   'react-native-a11y/has-valid-accessibility-traits': 'error',
   'react-native-a11y/has-valid-accessibility-value': 'error',
   'react-native-a11y/no-nested-touchables': 'error',
+  'react-native-a11y/pressable-has-accessibility-role': 'error',
 };
 
 const iOSRules = {
@@ -46,6 +47,7 @@ module.exports = {
     'has-valid-accessibility-value': require('./rules/has-valid-accessibility-value'),
     'has-valid-important-for-accessibility': require('./rules/has-valid-important-for-accessibility'),
     'no-nested-touchables': require('./rules/no-nested-touchables'),
+    'pressable-has-accessibility-role': require('./rules/pressable-has-accessibility-role'),
   },
   configs: {
     basic: {
