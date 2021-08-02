@@ -13,8 +13,21 @@ import { getProp, getPropValue, elementType } from 'jsx-ast-utils';
 import { generateObjSchema } from '../util/schemas';
 import isTouchable from '../util/isTouchable';
 
-function errorMessage(touchable) {
-  return `<${touchable}> must have at least 44 points of size`;
+import type { JSXOpeningElement } from 'ast-types-flow';
+import type { ESLintContext } from '../../flow/eslint';
+
+function errorMessage(touchable, heightTooSmall, widthTooSmall) {
+  if (heightTooSmall && widthTooSmall) {
+    return `<${touchable}> must have a size of at least 44 points x 44 points`;
+  }
+
+  if (heightTooSmall) {
+    return `<${touchable}> must have a height of at least 44 points`;
+  }
+
+  if (widthTooSmall) {
+    return `<${touchable}> must have a width of at least 44 points`;
+  }
 }
 
 const MIN_TARGET_SIZE = 44;
@@ -27,22 +40,27 @@ module.exports = {
     schema: [schema],
   },
 
-  create: (context) => ({
-    JSXOpeningElement: (node) => {
+  create: (context: ESLintContext) => ({
+    JSXOpeningElement: (node: JSXOpeningElement) => {
       if (isTouchable(node, context)) {
         const styleProp = getProp(node.attributes, 'style');
         const style = getPropValue(styleProp) || {};
         const { height, width, minHeight, minWidth } = style;
+
         const heightTooSmall =
           (Number(height) || 0) < MIN_TARGET_SIZE &&
           (Number(minHeight) || 0) < MIN_TARGET_SIZE;
+
         const widthTooSmall =
           (Number(width) || 0) < MIN_TARGET_SIZE &&
           (Number(minWidth) || 0) < MIN_TARGET_SIZE;
+
         if (heightTooSmall || widthTooSmall) {
           context.report({
             node,
             message: errorMessage(elementType(node)),
+            heightTooSmall,
+            widthTooSmall,
           });
         }
       }
