@@ -18,17 +18,27 @@ import rule from '../../../src/rules/has-valid-tappable-area-size';
 
 const ruleTester = new RuleTester();
 
-const expectedError = {
-  message: '<TouchableOpacity> must have at least 44 points of size',
+const touchableHeightError = {
+  message: '<TouchableOpacity> must have a height of at least 44 points',
   type: 'JSXOpeningElement',
 };
 
-const secondExpectedError = {
-  message: '<Pressable> must have at least 44 points of size',
+const touchableWidthError = {
+  message: '<TouchableOpacity> must have a width of at least 44 points',
   type: 'JSXOpeningElement',
 };
 
-ruleTester.run('my-new-rule', rule, {
+const pressableHeightError = {
+  message: '<Pressable> must have a height of at least 44 points',
+  type: 'JSXOpeningElement',
+};
+
+const pressableWidthError = {
+  message: '<Pressable> must have a width of at least 44 points',
+  type: 'JSXOpeningElement',
+};
+
+ruleTester.run('has-valid-size', rule, {
   valid: [
     {
       code: `<TouchableOpacity
@@ -59,7 +69,7 @@ ruleTester.run('my-new-rule', rule, {
                 style={{height: '50%', width: 54}}
               >
               </TouchableOpacity>`,
-      errors: [expectedError],
+      errors: [touchableHeightError],
     },
     {
       code: `<TouchableOpacity
@@ -69,7 +79,7 @@ ruleTester.run('my-new-rule', rule, {
   accessible={true}
   style={{height: 43, width: 70}}
 ></TouchableOpacity>`,
-      errors: [expectedError],
+      errors: [touchableHeightError],
     },
     {
       code: `<TouchableOpacity
@@ -78,7 +88,12 @@ ruleTester.run('my-new-rule', rule, {
   accessibilityLabel="Tap Me!"
   accessible={true}
 ><TouchableOpacity><Text>Nested</Text></TouchableOpacity></TouchableOpacity>`,
-      errors: [expectedError, expectedError],
+      errors: [
+        touchableHeightError,
+        touchableWidthError,
+        touchableHeightError,
+        touchableWidthError,
+      ],
     },
     {
       code: `<TouchableOpacity
@@ -87,7 +102,12 @@ ruleTester.run('my-new-rule', rule, {
   accessibilityLabel="Tap Me!"
   accessible={true}
 ><Pressable><Text>Nested</Text></Pressable></TouchableOpacity>`,
-      errors: [expectedError, secondExpectedError],
+      errors: [
+        touchableHeightError,
+        touchableWidthError,
+        pressableHeightError,
+        pressableWidthError,
+      ],
     },
   ].map(parserOptionsMapper),
 });
