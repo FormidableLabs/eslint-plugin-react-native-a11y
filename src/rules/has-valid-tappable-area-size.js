@@ -36,7 +36,15 @@ const schema = generateObjSchema();
 
 module.exports = {
   meta: {
-    docs: {},
+    docs: {
+      description:
+        'Forbid "pressable" element to have a size smaller than 44 px',
+      category: 'Possible Errors',
+      recommended: true,
+      url:
+        'https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/tree/master/docs/rules/has-valid-tappable-area-size.md',
+    },
+    fixable: null,
     schema: [schema],
   },
 
