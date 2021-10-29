@@ -44,8 +44,7 @@ ruleTester.run('has-valid-accessibility-state', rule, {
     { code: '<TouchableOpacity accessibilityState={{ checked: true }} />;' },
     { code: '<TouchableOpacity accessibilityState={{ checked: "mixed" }} />;' },
     {
-      code:
-        '<TouchableOpacity accessibilityState={{ disabled: true, checked: true }} />;',
+      code: '<TouchableOpacity accessibilityState={{ disabled: true, checked: true }} />;',
     },
     {
       code: `const active = true;

@@ -29,36 +29,36 @@
 		"jest": "jest --coverage __tests__/**/*"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.12.10",
-		"@babel/core": "^7.12.10",
-		"@babel/plugin-transform-flow-strip-types": "^7.12.10",
-		"@babel/preset-env": "^7.12.11",
-		"babel-eslint": "^10.1.0",
-		"babel-jest": "^26.6.3",
-		"eslint": "^7.18.0",
-		"eslint-config-prettier": "^7.2.0",
-		"eslint-plugin-flowtype": "^5.2.0",
-		"eslint-plugin-prettier": "^3.3.1",
-		"expect": "^26.6.2",
-		"flow-bin": "^0.122.0",
+		"@babel/cli": "^7.15.7",
+		"@babel/core": "^7.15.8",
+		"@babel/eslint-parser": "^7.15.8",
+		"@babel/plugin-transform-flow-strip-types": "^7.14.5",
+		"@babel/preset-env": "^7.15.8",
+		"babel-jest": "^27.3.1",
+		"eslint": "^7.32.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-flowtype": "^7.0.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"expect": "^27.3.1",
+		"flow-bin": "^0.137.0",
 		"in-publish": "^2.0.1",
-		"jest": "^26.6.3",
-		"jscodeshift": "^0.11.0",
+		"jest": "^27.3.1",
+		"jscodeshift": "^0.13.0",
 		"minimist": "^1.2.5",
 		"object.assign": "^4.1.2",
-		"prettier": "^2.2.1",
+		"prettier": "^2.4.1",
 		"rimraf": "^3.0.2",
-		"safe-publish-latest": "^1.1.4",
+		"safe-publish-latest": "^2.0.0",
 		"to-ast": "^1.0.0"
 	},
 	"engines": {
-		"node": ">=10.0"
+		"node": ">=12.0"
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@babel/runtime": "^7.12.5",
+		"@babel/runtime": "^7.15.4",
 		"ast-types-flow": "^0.0.7",
-		"jsx-ast-utils": "^3.2.0"
+		"jsx-ast-utils": "^3.2.1"
 	},
 	"peerDependencies": {
 		"eslint": "^3 || ^4 || ^5 || ^6 || ^7"

@@ -31,18 +31,15 @@ ruleTester.run('has-valid-accessibility-states', rule, {
     { code: '<TouchableOpacity accessibilityStates={["selected"]} />;' },
     { code: '<TouchableOpacity accessibilityStates={["disabled"]} />;' },
     {
-      code:
-        '<TouchableOpacity accessibilityStates={["selected", "disabled"]} />;',
+      code: '<TouchableOpacity accessibilityStates={["selected", "disabled"]} />;',
     },
     {
-      code:
-        '<TouchableOpacity accessibilityStates={["disabled", "selected"]} />;',
+      code: '<TouchableOpacity accessibilityStates={["disabled", "selected"]} />;',
     },
     { code: '<TouchableOpacity accessibilityStates={[""]} />;' },
     { code: '<TouchableOpacity accessibilityStates={[]} />;' },
     {
-      code:
-        '<TouchableHighlight accessibilityStates={props.disabled ? ["disabled"]: []} />',
+      code: '<TouchableHighlight accessibilityStates={props.disabled ? ["disabled"]: []} />',
     },
   ].map(parserOptionsMapper),
   invalid: [

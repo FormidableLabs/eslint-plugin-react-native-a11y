@@ -28,12 +28,10 @@ ruleTester.run('has-valid-accessibility-component-type', rule, {
     { code: '<TouchableOpacity accessibilityComponentType="none" />;' },
     { code: '<TouchableOpacity accessibilityComponentType="button" />;' },
     {
-      code:
-        '<TouchableOpacity accessibilityComponentType="radiobutton_checked" />;',
+      code: '<TouchableOpacity accessibilityComponentType="radiobutton_checked" />;',
     },
     {
-      code:
-        '<TouchableOpacity accessibilityComponentType="radiobutton_unchecked" />;',
+      code: '<TouchableOpacity accessibilityComponentType="radiobutton_unchecked" />;',
     },
   ].map(parserOptionsMapper),
   invalid: [

@@ -5,3 +5,4 @@
 
 [options]
 esproposal.optional_chaining=enable
+types_first=false
