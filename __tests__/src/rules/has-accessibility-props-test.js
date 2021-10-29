@@ -29,28 +29,22 @@ ruleTester.run('has-accessibility-props', rule, {
     { code: '<TouchableOpacit />;' },
     { code: '<TouchableOpacitys />;' },
     {
-      code:
-        '<Touchable accessibilityTraits="none" accessibilityComponentType="none"/>;',
+      code: '<Touchable accessibilityTraits="none" accessibilityComponentType="none"/>;',
     },
     {
-      code:
-        '<TouchableOpacity accessibilityTraits="none" accessibilityComponentType="none"/>;',
+      code: '<TouchableOpacity accessibilityTraits="none" accessibilityComponentType="none"/>;',
     },
     {
-      code:
-        '<TouchableHighlight accessibilityTraits="none" accessibilityComponentType="none"/>;',
+      code: '<TouchableHighlight accessibilityTraits="none" accessibilityComponentType="none"/>;',
     },
     {
-      code:
-        '<TouchableWithoutFeedback accessibilityTraits="none" accessibilityComponentType="none"/>;',
+      code: '<TouchableWithoutFeedback accessibilityTraits="none" accessibilityComponentType="none"/>;',
     },
     {
-      code:
-        '<TouchableNativeFeedback accessibilityTraits="none" accessibilityComponentType="none"/>;',
+      code: '<TouchableNativeFeedback accessibilityTraits="none" accessibilityComponentType="none"/>;',
     },
     {
-      code:
-        '<div><TouchableNativeFeedback accessibilityTraits="none" accessibilityComponentType="none"/></div>;',
+      code: '<div><TouchableNativeFeedback accessibilityTraits="none" accessibilityComponentType="none"/></div>;',
     },
     {
       code: '<div><TouchableNativeFeedback accessibilityRole="none"/></div>;',
@@ -133,18 +127,15 @@ ruleTester.run('has-accessibility-props', rule, {
       errors: [expectedError('TouchableNativeFeedback')],
     },
     {
-      code:
-        '<TouchableOpacity accessibilityRole="none" accessibilityComponentType="none" />;',
+      code: '<TouchableOpacity accessibilityRole="none" accessibilityComponentType="none" />;',
       errors: [expectedError('TouchableOpacity')],
     },
     {
-      code:
-        '<TouchableOpacity accessibilityRole="none" accessibilityTraits="none" />;',
+      code: '<TouchableOpacity accessibilityRole="none" accessibilityTraits="none" />;',
       errors: [expectedError('TouchableOpacity')],
     },
     {
-      code:
-        '<TouchableOpacity accessibilityRole="none" accessibilityComponentType="none" accessibilityTraits="none" />;',
+      code: '<TouchableOpacity accessibilityRole="none" accessibilityComponentType="none" accessibilityTraits="none" />;',
       errors: [expectedError('TouchableOpacity')],
     },
   ].map(parserOptionsMapper),

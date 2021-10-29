@@ -41,13 +41,11 @@ ruleTester.run('has-valid-accessibility-traits', rule, {
     { code: '<TouchableOpacity accessibilityTraits="startsMedia" />;' },
     { code: '<TouchableOpacity accessibilityTraits="adjustable" />;' },
     {
-      code:
-        '<TouchableOpacity accessibilityTraits="allowsDirectInteraction" />;',
+      code: '<TouchableOpacity accessibilityTraits="allowsDirectInteraction" />;',
     },
     { code: '<TouchableOpacity accessibilityTraits="pageTurn" />;' },
     {
-      code:
-        '<TouchableOpacity accessibilityTraits={["button", "selected"]} />;',
+      code: '<TouchableOpacity accessibilityTraits={["button", "selected"]} />;',
     },
   ].map(parserOptionsMapper),
   invalid: [

@@ -21,15 +21,13 @@ const ruleTester = new RuleTester();
 ruleTester.run('has-valid-accessibility-value', rule, {
   valid: [
     {
-      code:
-        '<TouchableOpacity accessibilityValue={{ min: 0, now: 50, max: 100 }} />',
+      code: '<TouchableOpacity accessibilityValue={{ min: 0, now: 50, max: 100 }} />',
     },
     { code: '<TouchableOpacity accessibilityValue={{ text: "foo" }} />' },
   ].map(parserOptionsMapper),
   invalid: [
     {
-      code:
-        '<TouchableOpacity accessibilityValue={{ min: 0, now: 50, max: 100, text: "foo" }} />',
+      code: '<TouchableOpacity accessibilityValue={{ min: 0, now: 50, max: 100, text: "foo" }} />',
       errors: [
         {
           message:
@@ -61,8 +59,7 @@ ruleTester.run('has-valid-accessibility-value', rule, {
       ],
     },
     {
-      code:
-        '<TouchableOpacity accessibilityValue={{ min: "0", now: "50", max: "100" }} />',
+      code: '<TouchableOpacity accessibilityValue={{ min: "0", now: "50", max: "100" }} />',
       errors: [
         {
           message: 'accessibilityValue min value must be an integer',

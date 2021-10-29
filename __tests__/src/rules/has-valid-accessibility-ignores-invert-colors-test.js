@@ -44,8 +44,7 @@ ruleTester.run('has-valid-accessibility-ignores-invert-colors', rule, {
       code: '<View accessibilityIgnoresInvertColors><Image /></View>',
     },
     {
-      code:
-        '<View accessibilityIgnoresInvertColors><View><Image /></View></View>',
+      code: '<View accessibilityIgnoresInvertColors><View><Image /></View></View>',
     },
     {
       code: '<View><View /></View>',
