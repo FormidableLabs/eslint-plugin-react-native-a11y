@@ -1,5 +1,20 @@
 # Changes
 
+## V3.0.0
+
+### 🚨 Breaking 🚨
+
+- This release removes support for Node 10 [(#126)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/126)
+
+### ✨ New Features ✨
+
+- Allow Eslint 7 as a peer dependency [(#111)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/111)
+
+### 🐛 Bugfixes 🐛
+
+- only validate Literals in accessibilityState [(#112)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/112)
+- allow Identifiers in accessibilityActions [(#113)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/113)
+
 ## V2.0.4
 - include Pressable when checking `no-nested-touchables` [(#103](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/103)
 - Dependency upgrades [(#106)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/106)
