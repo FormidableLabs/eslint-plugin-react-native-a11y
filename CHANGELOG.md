@@ -1,5 +1,11 @@
 # Changes
 
+## V3.1.0
+
+### ✨ New Features ✨
+
+- Checks Touchable* components have accessibility props [(#128)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/128)
+
 ## V3.0.0
 
 ### 🚨 Breaking 🚨
