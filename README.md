@@ -85,6 +85,7 @@ For more information on configuring behaviour of an individual rule, please refe
 - [has-valid-accessibility-traits](docs/rules/has-valid-accessibility-traits.md): Enforce `accessibilityTraits` and `accessibilityComponentType` prop values must be valid
 - [has-valid-accessibility-value](docs/rules/has-valid-accessibility-value.md): Enforce `accessibilityValue` property value is valid
 - [no-nested-touchables](docs/rules/no-nested-touchables.md): Enforce if a view has `accessible={true}`, that there are no touchable elements inside
+- [has-valid-accessibility-descriptors](docs/rules/has-valid-accessibility-descriptors.md): Ensures that Touchable* components have appropriate props to communicate with assistive technologies
 
 ### iOS
 - [has-valid-accessibility-ignores-invert-colors](docs/rules/has-valid-accessibility-ignores-invert-colors.md): Enforce that certain elements use `accessibilityIgnoresInvertColors` to avoid being inverted by device color settings.
