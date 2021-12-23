@@ -4,14 +4,17 @@
  * @flow
  */
 
-import type { JSXAttribute } from 'ast-types-flow';
-import { elementType, getPropValue } from 'jsx-ast-utils';
+import type { JSXOpeningElement } from 'ast-types-flow';
+import { hasProp } from 'jsx-ast-utils';
 import { generateObjSchema } from '../util/schemas';
 import type { ESLintContext } from '../../flow/eslint';
+import getPropValue from 'jsx-ast-utils/lib/getPropValue';
 
 // ----------------------------------------------------------------------------
 // Rule Definition
 // ----------------------------------------------------------------------------
+
+const PROP_NAME = 'accessibilityState';
 
 const validKeys = ['disabled', 'selected', 'checked', 'busy', 'expanded'];
 
@@ -22,10 +25,15 @@ module.exports = {
   },
 
   create: (context: ESLintContext) => ({
-    JSXAttribute: (node: JSXAttribute) => {
-      const attrName = elementType(node);
-      if (attrName === 'accessibilityState') {
-        const attrValue = getPropValue(node);
+    JSXOpeningElement: (node: JSXOpeningElement) => {
+      if (hasProp(node.attributes, PROP_NAME)) {
+        const stateProp = node.attributes.find(
+          // $FlowFixMe
+          (f) => f.name.name === PROP_NAME
+        );
+        const statePropType =
+          // $FlowFixMe
+          stateProp.value.expression?.type || stateProp.value.type;
 
         const error = (message) =>
           context.report({
@@ -33,22 +41,26 @@ module.exports = {
             message,
           });
 
-        if (typeof attrValue !== 'object' || Array.isArray(attrValue)) {
+        if (
+          statePropType === 'Literal' ||
+          statePropType === 'ArrayExpression'
+        ) {
           error('accessibilityState must be an object');
-        } else {
-          Object.entries(attrValue).map(([key, value]) => {
-            // $FlowFixMe
-            const astObjectProp = node.value.expression.properties.find(
+        } else if (statePropType === 'ObjectExpression') {
+          const stateValue = getPropValue(stateProp);
+          Object.entries(stateValue).map(([key, value]) => {
+            if (!validKeys.includes(key)) {
+              error(`accessibilityState object: "${key}" is not a valid key`);
+            } else if (
+              // we can't determine the associated value type of non-Literal expressions
+              // treat these cases as though they are valid
               // $FlowFixMe
-              (f) => f.key.name === key
-            );
-            // we can't determine the associated value type of non-Literal expressions
-            // treat these cases as though they are valid
-            // $FlowFixMe
-            if (astObjectProp && astObjectProp.value.type === 'Literal') {
-              if (validKeys.indexOf(key) < 0) {
-                error(`accessibilityState object: "${key}" is not a valid key`);
-              } else if (
+              stateProp.value.expression.properties.every(
+                // $FlowFixMe
+                (p) => p.value.type === 'Literal'
+              )
+            ) {
+              if (
                 key === 'checked' &&
                 !(typeof value === 'boolean' || value === 'mixed')
               ) {
