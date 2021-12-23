@@ -65,7 +65,11 @@ ruleTester.run('has-valid-accessibility-descriptors', rule, {
     },
     {
       code: `<TextInput accessibilityLabel="Accessibility label." />`,
-      errors: [expectedError],
+    },
+    {
+      code: `<TouchableOpacity accessible={false}>
+              <Text>Back</Text>
+             </TouchableOpacity>`,
     },
   ].map(parserOptionsMapper),
   invalid: [
