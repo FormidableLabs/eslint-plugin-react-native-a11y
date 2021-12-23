@@ -23,6 +23,7 @@ module.exports = {
   meta: {
     docs: {},
     schema: [schema],
+    fixable: 'code',
   },
 
   create: (context: ESLintContext) => ({
@@ -39,6 +40,13 @@ module.exports = {
           context.report({
             node,
             message: errorMessage,
+            fix: (fixer) => {
+              return fixer.insertTextAfterRange(
+                // $FlowFixMe
+                node.name.range,
+                ' accessible={false}'
+              );
+            },
           });
         }
       }
