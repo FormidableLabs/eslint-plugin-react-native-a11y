@@ -40,8 +40,8 @@ module.exports = {
             node,
             message: errorMessage,
             fix: (fixer) => {
-              // $FlowFixMe
               return fixer.insertTextAfterRange(
+                // $FlowFixMe
                 node.name.range,
                 ' accessible={false}'
               );
