@@ -33,6 +33,7 @@ module.exports = {
             'accessibilityRole',
             'accessibilityLabel',
             'accessibilityActions',
+            'accessible',
           ])
         ) {
           context.report({
