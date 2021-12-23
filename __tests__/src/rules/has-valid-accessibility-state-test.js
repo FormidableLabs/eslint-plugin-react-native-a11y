@@ -91,6 +91,12 @@ ruleTester.run('has-valid-accessibility-state', rule, {
               accessibilityState={accessibilityState}
             />`,
     },
+    {
+      code: `<TouchableOpacity
+              {...localProps}
+              accessibilityState={accessibilityState}
+            />`,
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {

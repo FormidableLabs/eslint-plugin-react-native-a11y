@@ -29,7 +29,7 @@ module.exports = {
       if (hasProp(node.attributes, PROP_NAME)) {
         const stateProp = node.attributes.find(
           // $FlowFixMe
-          (f) => f.name.name === PROP_NAME
+          (f) => f.name?.name === PROP_NAME
         );
         const statePropType =
           // $FlowFixMe
