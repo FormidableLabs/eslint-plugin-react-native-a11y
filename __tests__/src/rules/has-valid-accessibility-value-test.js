@@ -24,6 +24,25 @@ ruleTester.run('has-valid-accessibility-value', rule, {
       code: '<TouchableOpacity accessibilityValue={{ min: 0, now: 50, max: 100 }} />',
     },
     { code: '<TouchableOpacity accessibilityValue={{ text: "foo" }} />' },
+    {
+      code: `<TouchableOpacity
+              accessibilityValue={this.props.accessibilityValue}
+            />`,
+    },
+    {
+      code: `<TouchableOpacity
+              accessibilityValue={{
+                min: 0,
+                now: this.state.current,
+                max: 100
+              }} />`,
+    },
+    {
+      code: `<TouchableOpacity
+              accessibilityValue={{
+                text: this.props.text
+              }} />`,
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
@@ -32,7 +51,7 @@ ruleTester.run('has-valid-accessibility-value', rule, {
         {
           message:
             'accessibilityValue object must only contain either min, now, max *or* text',
-          type: 'JSXAttribute',
+          type: 'JSXOpeningElement',
         },
       ],
     },
@@ -41,11 +60,11 @@ ruleTester.run('has-valid-accessibility-value', rule, {
       errors: [
         {
           message: 'accessibilityValue object is missing min value',
-          type: 'JSXAttribute',
+          type: 'JSXOpeningElement',
         },
         {
           message: 'accessibilityValue object is missing max value',
-          type: 'JSXAttribute',
+          type: 'JSXOpeningElement',
         },
       ],
     },
@@ -54,7 +73,7 @@ ruleTester.run('has-valid-accessibility-value', rule, {
       errors: [
         {
           message: 'accessibilityValue must be an object',
-          type: 'JSXAttribute',
+          type: 'JSXOpeningElement',
         },
       ],
     },
@@ -63,15 +82,15 @@ ruleTester.run('has-valid-accessibility-value', rule, {
       errors: [
         {
           message: 'accessibilityValue min value must be an integer',
-          type: 'JSXAttribute',
+          type: 'JSXOpeningElement',
         },
         {
           message: 'accessibilityValue now value must be an integer',
-          type: 'JSXAttribute',
+          type: 'JSXOpeningElement',
         },
         {
           message: 'accessibilityValue max value must be an integer',
-          type: 'JSXAttribute',
+          type: 'JSXOpeningElement',
         },
       ],
     },
@@ -80,7 +99,7 @@ ruleTester.run('has-valid-accessibility-value', rule, {
       errors: [
         {
           message: 'accessibilityValue text value must be a string',
-          type: 'JSXAttribute',
+          type: 'JSXOpeningElement',
         },
       ],
     },
