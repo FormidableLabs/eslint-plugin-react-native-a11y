@@ -4,14 +4,16 @@
  * @flow
  */
 
-import type { JSXAttribute } from 'ast-types-flow';
-import { elementType, getPropValue } from 'jsx-ast-utils';
+import type { JSXOpeningElement } from 'ast-types-flow';
+import { getPropValue, hasProp } from 'jsx-ast-utils';
 import { generateObjSchema } from '../util/schemas';
 import type { ESLintContext } from '../../flow/eslint';
 
 // ----------------------------------------------------------------------------
 // Rule Definition
 // ----------------------------------------------------------------------------
+
+const PROP_NAME = 'accessibilityValue';
 
 module.exports = {
   meta: {
@@ -20,10 +22,15 @@ module.exports = {
   },
 
   create: (context: ESLintContext) => ({
-    JSXAttribute: (node: JSXAttribute) => {
-      const attrName = elementType(node);
-      if (attrName === 'accessibilityValue') {
-        const attrValue = getPropValue(node);
+    JSXOpeningElement: (node: JSXOpeningElement) => {
+      if (hasProp(node.attributes, PROP_NAME)) {
+        const valueProp = node.attributes.find(
+          // $FlowFixMe
+          (f) => f.name?.name === PROP_NAME
+        );
+        const valuePropType =
+          // $FlowFixMe
+          valueProp.value.expression?.type || valueProp.value.type;
 
         const error = (message) =>
           context.report({
@@ -31,44 +38,43 @@ module.exports = {
             message,
           });
 
-        if (typeof attrValue !== 'object' || Array.isArray(attrValue)) {
+        if (valuePropType === 'Literal') {
           error('accessibilityValue must be an object');
-        } else {
+        } else if (valuePropType === 'ObjectExpression') {
+          const attrValue = getPropValue(valueProp);
           const keys = Object.keys(attrValue);
-          if (keys.indexOf('now') > -1 && keys.indexOf('min') < 0) {
-            error('accessibilityValue object is missing min value');
-          }
-          if (keys.indexOf('now') > -1 && keys.indexOf('max') < 0) {
-            error('accessibilityValue object is missing max value');
-          }
-          if (keys.indexOf('text') > -1 && keys.length > 1) {
-            error(
-              'accessibilityValue object must only contain either min, now, max *or* text'
-            );
-          }
-          if (
-            keys.indexOf('min') > -1 &&
-            typeof attrValue['min'] !== 'number'
-          ) {
-            error('accessibilityValue min value must be an integer');
-          }
-          if (
-            keys.indexOf('now') > -1 &&
-            typeof attrValue['now'] !== 'number'
-          ) {
-            error('accessibilityValue now value must be an integer');
-          }
-          if (
-            keys.indexOf('max') > -1 &&
-            typeof attrValue['max'] !== 'number'
-          ) {
-            error('accessibilityValue max value must be an integer');
-          }
-          if (
-            keys.indexOf('text') > -1 &&
-            typeof attrValue['text'] !== 'string'
-          ) {
-            error('accessibilityValue text value must be a string');
+
+          const properties = valueProp.value.expression?.properties || [];
+
+          if (keys.includes('text')) {
+            if (keys.length > 1) {
+              error(
+                'accessibilityValue object must only contain either min, now, max *or* text'
+              );
+            }
+            properties.forEach(({ key, value }) => {
+              if (
+                key.name === 'text' &&
+                value.type === 'Literal' &&
+                typeof value.value !== 'string'
+              ) {
+                error('accessibilityValue text value must be a string');
+              }
+            });
+          } else {
+            ['min', 'max', 'now'].forEach((key) => {
+              if (!keys.includes(key)) {
+                error(`accessibilityValue object is missing ${key} value`);
+              }
+            });
+
+            properties.forEach(({ key, value }) => {
+              if (value.type === 'Literal' && typeof value.value !== 'number') {
+                error(
+                  `accessibilityValue ${key.name} value must be an integer`
+                );
+              }
+            });
           }
         }
       }
