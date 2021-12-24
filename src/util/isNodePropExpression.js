@@ -1,7 +1,12 @@
 // @flow
 import type { JSXAttribute } from 'ast-types-flow';
 
-const ALLOWED_TYPES = ['Identifier', 'ConditionalExpression'];
+const ALLOWED_TYPES = [
+  'Identifier',
+  'CallExpression',
+  'ConditionalExpression',
+  'MemberExpression',
+];
 
 export default function isattrPropExpression(attr: JSXAttribute): boolean {
   // $FlowFixMe

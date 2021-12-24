@@ -6,6 +6,7 @@
 
 import type { JSXOpeningElement } from 'ast-types-flow';
 import { getProp, getPropValue, hasEveryProp, hasProp } from 'jsx-ast-utils';
+import isNodePropExpression from '../util/isNodePropExpression';
 import { generateObjSchema } from '../util/schemas';
 import type { ESLintContext } from '../../flow/eslint';
 
@@ -43,12 +44,8 @@ module.exports = {
         ])
       ) {
         const handlerProp = getProp(node.attributes, 'onAccessibilityAction');
-        const handlerPropType = handlerProp.value.expression.type;
-        // CallExpressions & Identifiers are always assumed valid
-        if (
-          handlerPropType !== 'CallExpression' &&
-          handlerPropType !== 'Identifier'
-        ) {
+        const isHandlerExpression = isNodePropExpression(handlerProp);
+        if (!isHandlerExpression) {
           const handlerPropValue = getPropValue(handlerProp);
           if (typeof handlerPropValue !== 'function') {
             error(
@@ -58,12 +55,8 @@ module.exports = {
         }
 
         const actionsProp = getProp(node.attributes, 'accessibilityActions');
-        const actionsPropType = actionsProp.value.expression.type;
-        // CallExpressions & Identifiers are always assumed valid
-        if (
-          actionsPropType !== 'CallExpression' &&
-          actionsPropType !== 'Identifier'
-        ) {
+        const isActionsExpression = isNodePropExpression(actionsProp);
+        if (!isActionsExpression) {
           const attrValue = getPropValue(actionsProp);
 
           if (!Array.isArray(attrValue)) {
