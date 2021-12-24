@@ -80,6 +80,12 @@ ruleTester.run('has-valid-accessibility-actions', rule, {
                 onAccessibilityAction={onAccessibilityAction}
               />`,
     },
+    {
+      code: `<TouchableOpacity
+              accessibilityActions={this.props.accessibilityActions}
+              onAccessibilityAction={this.props.onAccessibilityAction}
+            />`,
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
