@@ -13,6 +13,7 @@ import createValidPropRule from '../factory/valid-prop';
 const errorMessage = 'accessibilityRole must be one of defined values';
 
 const validValues = [
+  'togglebutton',
   'adjustable',
   'alert',
   'button',
@@ -36,9 +37,11 @@ const validValues = [
   'summary',
   'switch',
   'tab',
+  'tabbar',
   'tablist',
   'text',
   'timer',
+  'list',
   'toolbar',
 ];
 

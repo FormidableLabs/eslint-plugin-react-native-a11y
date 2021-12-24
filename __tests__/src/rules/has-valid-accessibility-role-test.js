@@ -52,6 +52,13 @@ ruleTester.run('has-valid-accessibility-role', rule, {
     { code: '<TouchableOpacity accessibilityRole="text" />;' },
     { code: '<TouchableOpacity accessibilityRole="timer" />;' },
     { code: '<TouchableOpacity accessibilityRole="toolbar" />;' },
+    {
+      code: `<TouchableOpacity
+              {...restProps}
+              {...platformProps}
+              accessibilityRole={props.accessibilityRole ? 'switch' : undefined}
+            />`,
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
