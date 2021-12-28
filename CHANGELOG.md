@@ -1,5 +1,20 @@
 # Changes
 
+## V3.2.0
+
+### ✨ New Features ✨
+
+- make has-valid-accessibility-descriptors fixable [(#131)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/131)
+
+### 🐛 Bugfixes 🐛
+
+- allow Identifiers in accessibilityState [(#129)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/129)
+- support spread props in accessibilityState [(#132)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/132)
+- allow Touchables with accessible={false} [(#130)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/130)
+- assume MemberExpressions are valid [(#133)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/133)
+- update has-accessibility-value to only typecheck Literals [(#134)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/134)
+- update has-accessibility-role typechecking [(#135)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/135)
+
 ## V3.1.0
 
 ### ✨ New Features ✨
