@@ -71,6 +71,9 @@ ruleTester.run('has-valid-accessibility-descriptors', rule, {
               <Text>Back</Text>
              </TouchableOpacity>`,
     },
+    {
+      code: `<TouchableBounce {...props} hostRef={hostRef} />`,
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
@@ -78,14 +81,14 @@ ruleTester.run('has-valid-accessibility-descriptors', rule, {
               <Text>Back</Text>
              </TouchableOpacity>`,
       errors: [expectedError],
-      output: `<TouchableOpacity accessible={false}>
+      output: `<TouchableOpacity accessibilityRole="button">
               <Text>Back</Text>
              </TouchableOpacity>`,
     },
     {
       code: `<TextInput />`,
       errors: [expectedError],
-      output: `<TextInput accessible={false} />`,
+      output: `<TextInput accessibilityLabel="Text input field" />`,
     },
   ].map(parserOptionsMapper),
 });

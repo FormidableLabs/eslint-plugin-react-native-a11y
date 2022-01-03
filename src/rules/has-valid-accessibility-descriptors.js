@@ -19,6 +19,9 @@ const errorMessage =
 
 const schema = generateObjSchema();
 
+const hasSpreadProps = (attributes) =>
+  attributes.some((attr) => attr.type === 'JSXSpreadAttribute');
+
 module.exports = {
   meta: {
     docs: {},
@@ -35,7 +38,8 @@ module.exports = {
             'accessibilityLabel',
             'accessibilityActions',
             'accessible',
-          ])
+          ]) &&
+          !hasSpreadProps(node.attributes)
         ) {
           context.report({
             node,
@@ -44,7 +48,9 @@ module.exports = {
               return fixer.insertTextAfterRange(
                 // $FlowFixMe
                 node.name.range,
-                ' accessible={false}'
+                isTouchable(node, context)
+                  ? ' accessibilityRole="button"'
+                  : ' accessibilityLabel="Text input field"'
               );
             },
           });
