@@ -1,5 +1,11 @@
 # Changes
 
+## V3.2.1
+
+### 🐛 Bugfixes 🐛
+
+- update fixer for has-valid-accessibility-descriptors [(#136)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/136)
+
 ## V3.2.0
 
 ### ✨ New Features ✨
