@@ -15,9 +15,8 @@ Touchable components are one of:
 
 ### References
 
-1. https://facebook.github.io/react-native/docs/accessibility.html#accessibilityrole-ios-android
-2. https://facebook.github.io/react-native/docs/accessibility.html#accessibilitytraits-ios
-3. https://facebook.github.io/react-native/docs/accessibility.html#accessibilitycomponenttype-android
+1. https://reactnative.dev/docs/accessibility#accessibilityrole
+2. https://reactnative.dev/blog/2018/08/13/react-native-accessibility-updates
 
 ## Rule details
 
