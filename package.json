@@ -32,12 +32,14 @@
 		"@babel/cli": "^7.15.7",
 		"@babel/core": "^7.15.8",
 		"@babel/eslint-parser": "^7.15.8",
+		"@babel/plugin-syntax-flow": "^7.14.5",
 		"@babel/plugin-transform-flow-strip-types": "^7.14.5",
+		"@babel/plugin-transform-react-jsx": "^7.14.9",
 		"@babel/preset-env": "^7.15.8",
 		"babel-jest": "^27.3.1",
-		"eslint": "^7.32.0",
+		"eslint": "^8.21.0",
 		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-flowtype": "^7.0.0",
+		"eslint-plugin-flowtype": "^8.0.3",
 		"eslint-plugin-prettier": "^4.0.0",
 		"expect": "^27.3.1",
 		"flow-bin": "^0.137.0",
@@ -61,7 +63,7 @@
 		"jsx-ast-utils": "^3.2.1"
 	},
 	"peerDependencies": {
-		"eslint": "^3 || ^4 || ^5 || ^6 || ^7"
+		"eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8"
 	},
 	"jest": {
 		"coverageReporters": [
