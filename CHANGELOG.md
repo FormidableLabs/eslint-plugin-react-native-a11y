@@ -1,5 +1,11 @@
 # Changes
 
+## V3.3.0
+
+### ✨ New Features ✨
+
+- Allow Eslint 8 as a peer dependency [(#145)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/145)
+
 ## V3.2.1
 
 ### 🐛 Bugfixes 🐛
