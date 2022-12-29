@@ -1,6 +1,7 @@
-[![Maintenance Status][maintenance-image]](#maintenance-status)
+[![Eslint-plugin-react-native-a11y — Formidable, We build the modern web](./eslint-plugin-react-native-a11y-Hero.png)](https://formidable.com/open-source/)
 
-# eslint-plugin-react-native-a11y
+
+[![Maintenance Status][maintenance-image]](#maintenance-status)
 
 Eslint-plugin-react-native-a11y is a collection of React Native specific ESLint rules for identifying accessibility issues. Building upon the foundation set down by eslint-plugin-jsx-a11y, eslint-plugin-react-native-a11y detects a few of the most commonly made accessibility issues found in react native apps. These rules make it easier for your apps to be navigable by users with screen readers.
 
