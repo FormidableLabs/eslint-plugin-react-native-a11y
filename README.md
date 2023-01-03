@@ -1,4 +1,4 @@
-[![Eslint-plugin-react-native-a11y — Formidable, We build the modern web](./eslint-plugin-react-native-a11y-Hero.png)](https://formidable.com/open-source/)
+[![Eslint-plugin-react-native-a11y — Formidable, We build the modern web](https://raw.githubusercontent.com/FormidableLabs/eslint-plugin-react-native-a11y/master/eslint-plugin-react-native-a11y-Hero.png)](https://formidable.com/open-source/)
 
 
 [![Maintenance Status][maintenance-image]](#maintenance-status)
