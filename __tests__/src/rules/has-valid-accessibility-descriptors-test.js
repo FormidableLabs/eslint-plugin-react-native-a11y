@@ -20,7 +20,7 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message:
-    'Missing a11y props. Expected one of: accessibilityRole OR BOTH accessibilityLabel + accessibilityHint OR BOTH accessibilityActions + onAccessibilityAction',
+    'Missing a11y props. Expected one of: accessibilityRole OR role OR BOTH accessibilityLabel + accessibilityHint OR BOTH accessibilityActions + onAccessibilityAction',
   type: 'JSXOpeningElement',
 };
 
@@ -28,6 +28,11 @@ ruleTester.run('has-valid-accessibility-descriptors', rule, {
   valid: [
     {
       code: '<View></View>;',
+    },
+    {
+      code: `<Pressable role="button">
+              <Text>Back</Text>
+             </Pressable>`,
     },
     {
       code: `<Pressable accessibilityRole="button">
