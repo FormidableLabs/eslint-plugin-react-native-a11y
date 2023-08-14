@@ -15,7 +15,7 @@ import isTouchable from '../util/isTouchable';
 import { generateObjSchema } from '../util/schemas';
 
 const errorMessage =
-  'Missing a11y props. Expected one of: accessibilityRole OR BOTH accessibilityLabel + accessibilityHint OR BOTH accessibilityActions + onAccessibilityAction';
+  'Missing a11y props. Expected one of: accessibilityRole OR role OR BOTH accessibilityLabel + accessibilityHint OR BOTH accessibilityActions + onAccessibilityAction';
 
 const schema = generateObjSchema();
 
