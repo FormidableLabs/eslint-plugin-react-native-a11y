@@ -34,6 +34,7 @@ module.exports = {
       if (isTouchable(node, context) || elementType(node) === 'TextInput') {
         if (
           !hasAnyProp(node.attributes, [
+            'role',
             'accessibilityRole',
             'accessibilityLabel',
             'accessibilityActions',
