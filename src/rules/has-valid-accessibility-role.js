@@ -13,6 +13,9 @@ import createValidPropRule from '../factory/valid-prop';
 const errorMessage = 'accessibilityRole must be one of defined values';
 
 const validValues = [
+  'img',
+  'img button',
+  'img link',
   'togglebutton',
   'adjustable',
   'alert',
