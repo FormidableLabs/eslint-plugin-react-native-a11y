@@ -1,5 +1,11 @@
 # Changes
 
+## 3.4.1
+
+### Patch Changes
+
+- Remove changeset from deps ([#156](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/156))
+
 ## 3.4.0
 
 ### Minor Changes
