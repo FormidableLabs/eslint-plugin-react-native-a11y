@@ -1,4 +1,4 @@
-[![Eslint-plugin-react-native-a11y — Formidable, We build the modern web](https://raw.githubusercontent.com/FormidableLabs/eslint-plugin-react-native-a11y/master/eslint-plugin-react-native-a11y-Hero.png)](https://formidable.com/open-source/)
+[![Eslint-plugin-react-native-a11y — Formidable, We build the modern web](https://oss.nearform.com/api/banner?text=eslint-plugin-native-a11y&bg=c99f46)](https://commerce.nearform.com/open-source/)
 
 
 [![Maintenance Status][maintenance-image]](#maintenance-status)
@@ -148,6 +148,6 @@ eslint-plugin-react-native-a11y is licensed under the [MIT License](LICENSE.md).
 
 ### Maintenance Status
 
-**Active:** Formidable is actively working on this project, and we expect to continue for work for the foreseeable future. Bug reports, feature requests and pull requests are welcome.
+**Active:** Nearform is actively working on this project, and we expect to continue for work for the foreseeable future. Bug reports, feature requests and pull requests are welcome.
 
 [maintenance-image]: https://img.shields.io/badge/maintenance-active-green.svg
