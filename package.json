@@ -1,6 +1,6 @@
 {
 	"name": "eslint-plugin-react-native-a11y",
-	"version": "3.3.0",
+	"version": "3.4.0",
 	"description": "React Native specific accessibility linting rules.",
 	"keywords": [
 		"eslint",
@@ -17,7 +17,7 @@
 	"main": "lib/index.js",
 	"scripts": {
 		"build": "rimraf lib && babel src --out-dir lib --copy-files",
-    "changeset": "changeset",
+		"changeset": "changeset",
 		"create": "node ./scripts/create-rule",
 		"flow": "flow",
 		"lint:fix": "npm run lint -- --fix",
