@@ -1,6 +1,6 @@
 {
 	"name": "eslint-plugin-react-native-a11y",
-	"version": "3.4.0",
+	"version": "3.4.1",
 	"description": "React Native specific accessibility linting rules.",
 	"keywords": [
 		"eslint",
@@ -35,7 +35,7 @@
 		"@babel/plugin-transform-flow-strip-types": "^7.14.5",
 		"@babel/preset-env": "^7.15.8",
 		"@changesets/cli": "^2.27.7",
-    "@svitejs/changesets-changelog-github-compact": "^1.1.0",
+		"@svitejs/changesets-changelog-github-compact": "^1.1.0",
 		"babel-jest": "^27.3.1",
 		"eslint": "^7.32.0",
 		"eslint-config-prettier": "^8.3.0",
