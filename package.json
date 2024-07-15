@@ -34,6 +34,8 @@
 		"@babel/eslint-parser": "^7.15.8",
 		"@babel/plugin-transform-flow-strip-types": "^7.14.5",
 		"@babel/preset-env": "^7.15.8",
+		"@changesets/cli": "^2.27.7",
+    "@svitejs/changesets-changelog-github-compact": "^1.1.0",
 		"babel-jest": "^27.3.1",
 		"eslint": "^7.32.0",
 		"eslint-config-prettier": "^8.3.0",
@@ -57,7 +59,6 @@
 	"license": "MIT",
 	"dependencies": {
 		"@babel/runtime": "^7.15.4",
-		"@changesets/cli": "^2.27.7",
 		"ast-types-flow": "^0.0.7",
 		"jsx-ast-utils": "^3.2.1"
 	},
