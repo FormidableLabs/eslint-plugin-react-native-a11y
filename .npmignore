@@ -8,3 +8,8 @@ npm-debug.log
 /src
 /reports
 yarn-error.log
+/.vscode
+/docs
+/.github
+/.changeset
+/__tests__
