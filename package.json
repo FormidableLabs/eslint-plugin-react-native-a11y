@@ -10,7 +10,6 @@
 		"accessibility",
 		"react-native"
 	],
-	"author": "JP Driver <jp.driver@formidable.com>",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/FormidableLabs/eslint-plugin-react-native-a11y"
@@ -18,6 +17,7 @@
 	"main": "lib/index.js",
 	"scripts": {
 		"build": "rimraf lib && babel src --out-dir lib --copy-files",
+    "changeset": "changeset",
 		"create": "node ./scripts/create-rule",
 		"flow": "flow",
 		"lint:fix": "npm run lint -- --fix",
@@ -77,11 +77,5 @@
 			"<rootDir>/__tests__/__util__"
 		],
 		"testEnvironment": "node"
-	},
-	"greenkeeper": {
-		"ignore": [
-			"jest",
-			"babel-jest"
-		]
 	}
 }
