@@ -1,5 +1,11 @@
 # Changes
 
+## 3.4.0
+
+### Minor Changes
+
+- 0f2e813: Additional support for role and accessibility props
+
 ## V3.3.0
 
 ### ✨ New Features ✨
@@ -31,7 +37,7 @@
 
 ### ✨ New Features ✨
 
-- Checks Touchable* components have accessibility props [(#128)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/128)
+- Checks Touchable\* components have accessibility props [(#128)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/128)
 
 ## V3.0.0
 
@@ -49,10 +55,12 @@
 - allow Identifiers in accessibilityActions [(#113)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/113)
 
 ## V2.0.4
+
 - include Pressable when checking `no-nested-touchables` [(#103](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/103)
 - Dependency upgrades [(#106)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/106)
 
 ## V2.0.3
+
 - allow CallExpressions in accessibilityActions [(#101)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/101)
 - Dependency upgrades [(#102)](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/102)
 
