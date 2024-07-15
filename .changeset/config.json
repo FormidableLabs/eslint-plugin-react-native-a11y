@@ -3,7 +3,7 @@
   "changelog": [
     "@svitejs/changesets-changelog-github-compact",
     {
-      "repo": "FormidableLabs/victory-native-xl"
+      "repo": "FormidableLabs/eslint-plugin-react-native-a11y"
     }
   ],
   "access": "public",
