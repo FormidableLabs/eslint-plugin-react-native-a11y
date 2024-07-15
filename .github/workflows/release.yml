@@ -1,9 +1,9 @@
-name: eslint-plugin-react-native-a11y Release Workflow
+name: Release Workflow
 
 on:
   push:
     branches:
-      - main
+      - master
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
