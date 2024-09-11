@@ -9,5 +9,8 @@ export type ESLintReport = {
 export type ESLintContext = {
   id: string,
   options: Array<Object>,
-  report: ESLintReport => void,
+  report: (ESLintReport) => void,
+  getSourceCode: () => {
+    text: string,
+  },
 };
