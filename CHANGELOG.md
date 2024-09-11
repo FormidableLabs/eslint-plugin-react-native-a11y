@@ -1,5 +1,11 @@
 # Changes
 
+## 3.5.0
+
+### Minor Changes
+
+- Allow aliasing Images ([#93](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/93))
+
 ## 3.4.1
 
 ### Patch Changes
