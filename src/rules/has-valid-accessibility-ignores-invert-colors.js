@@ -85,11 +85,11 @@ module.exports = {
     verifyReactNativeImage,
   },
 
-  create: ({ options, report, getSourceCode }: ESLintContext) => {
+  create: ({ options, report, getSourceCode, sourceCode }: ESLintContext) => {
     /**
      * Checks to see if there are valid imports and if so verifies that those imports related to 'react-native' or if a custom module exists
      * */
-    const { text } = getSourceCode();
+    const { text } = sourceCode || getSourceCode();
     const { enableLinting, elementsToCheck } = verifyReactNativeImage(text);
 
     // Add in any other invertible components to check for
