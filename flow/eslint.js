@@ -13,4 +13,7 @@ export type ESLintContext = {
   getSourceCode: () => {
     text: string,
   },
+  sourceCode: {
+    text: string,
+  },
 };
