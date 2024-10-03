@@ -10,7 +10,7 @@ const defaultConfig = {
 };
 
 const basicRules = {
-  'react-native-a11y/has-accessibility-hint': 'error',
+  'react-native-a11y/has-accessibility-hint': 'off',
   'react-native-a11y/has-accessibility-props': 'error',
   'react-native-a11y/has-valid-accessibility-actions': 'error',
   'react-native-a11y/has-valid-accessibility-component-type': 'error',
