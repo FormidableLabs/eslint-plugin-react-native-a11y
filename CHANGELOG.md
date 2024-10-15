@@ -1,5 +1,11 @@
 # Changes
 
+## 3.5.1
+
+### Patch Changes
+
+- Fix for has-valid-accessibility-ignores-invert-colors with eslint 9 ([#162](https://github.com/FormidableLabs/eslint-plugin-react-native-a11y/pull/162))
+
 ## 3.5.0
 
 ### Minor Changes
