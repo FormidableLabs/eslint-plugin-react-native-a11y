@@ -21,4 +21,4 @@ This rule takes no arguments.
 \`\`\`
 `;
 
-module.exports = docBoilerplateGenerator;
+export default docBoilerplateGenerator;

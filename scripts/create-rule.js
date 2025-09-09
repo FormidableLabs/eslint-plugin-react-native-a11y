@@ -1,13 +1,16 @@
 #!/usr/bin/env node --harmony
-const path = require('path');
-const fs = require('fs');
-const { exec } = require('child_process');
-const argv = require('minimist')(process.argv.slice(2));
-const jscodeshiftJSON = require('jscodeshift/package.json');
+import path from 'path';
+import fs from 'fs';
+import { exec } from 'child_process';
+import minimist from 'minimist';
+import jscodeshiftJSON from 'jscodeshift/package.json';
+import ruleBoilerplateGenerator from './boilerplate/rule';
+import testBoilerplateGenerator from './boilerplate/test';
+import docBoilerplateGenerator from './boilerplate/doc';
+import jscodeshift from 'jscodeshift';
 
-const ruleBoilerplateGenerator = require('./boilerplate/rule');
-const testBoilerplateGenerator = require('./boilerplate/test');
-const docBoilerplateGenerator = require('./boilerplate/doc');
+const argv = minimist(process.argv.slice(2));
+
 
 const ruleName = argv._[0];
 const author = argv.author || '$AUTHOR';
@@ -19,10 +22,9 @@ const docsPath = path.resolve(`docs/rules/${ruleName}.md`);
 const readmePath = path.resolve(`README.md`);
 
 const jscodeshiftMain = jscodeshiftJSON.main;
-const jscodeshiftPath = require.resolve('jscodeshift');
-const jscodeshiftRoot = jscodeshiftPath.slice(
+const jscodeshiftRoot = jscodeshift.slice(
   0,
-  jscodeshiftPath.indexOf(jscodeshiftMain)
+  jscodeshift.indexOf(jscodeshiftMain)
 );
 
 // Validate
@@ -55,7 +57,7 @@ exec(
   ].join(' '),
   (error) => {
     if (error) {
-      console.error(`exec error: ${error}`); // eslint-disable-line no-console
+      console.error(`exec error: ${error}`);
     }
   }
 );

@@ -10,35 +10,28 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [22]
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
-    - name: Get Yarn cache directory
-      id: yarn-cache-dir-path
-      run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
 
-    - name: Use Yarn cache
-      uses: actions/cache@v4
-      id: yarn-cache
-      with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ matrix.node-version }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
 
-    - name: Install dependencies
-      run: yarn install --prefer-offline --frozen-lockfile
+      - name: Test
+        run: pnpm test
 
-    - name: Test
-      run: yarn run test
+      - name: Lint
+        run: pnpm lint
 
-    - name: Lint
-      run: yarn run lint
-
-    - name: Build
-      run: yarn run build
+      - name: Build
+        run: pnpm build

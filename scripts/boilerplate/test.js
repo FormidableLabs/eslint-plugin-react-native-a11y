@@ -9,7 +9,7 @@ const testBoilerplate = (name, author, description) => `/* eslint-env jest */
 // -----------------------------------------------------------------------------
 
 import { RuleTester } from 'eslint';
-import parserOptionsMapper from '../../__util__/parserOptionsMapper';
+import languageOptionsMapper from '../../__util__/languageOptionsMapper';
 import rule from '../../../src/rules/${name}';
 
 // -----------------------------------------------------------------------------
@@ -26,9 +26,9 @@ const expectedError = {
 ruleTester.run('${name}', rule, {
   valid: [
     { code: '<View></View>;' },
-  ].map(parserOptionsMapper),
-  invalid: [].map(parserOptionsMapper),
+  ].map(languageOptionsMapper),
+  invalid: [].map(languageOptionsMapper),
 });
 `;
 
-module.exports = testBoilerplate;
+export default testBoilerplate;

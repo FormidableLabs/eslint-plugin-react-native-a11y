@@ -1,82 +1,77 @@
 {
-	"name": "eslint-plugin-react-native-a11y",
-	"version": "3.5.1",
-	"description": "React Native specific accessibility linting rules.",
-	"keywords": [
-		"eslint",
-		"eslintplugin",
-		"eslint-plugin",
-		"a11y",
-		"accessibility",
-		"react-native"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/FormidableLabs/eslint-plugin-react-native-a11y"
-	},
-	"main": "lib/index.js",
-	"scripts": {
-		"build": "rimraf lib && babel src --out-dir lib --copy-files",
-		"changeset": "changeset",
-		"create": "node ./scripts/create-rule",
-		"flow": "flow",
-		"lint:fix": "npm run lint -- --fix",
-		"lint": "eslint  --config .eslintrc src __tests__ scripts",
-		"prepublishOnly": "safe-publish-latest && not-in-publish || (npm run lint && npm run flow && npm run jest && npm run build)",
-		"pretest": "npm run lint:fix && npm run flow",
-		"test": "npm run jest",
-		"test:ci": "npm run jest -- --ci --runInBand",
-		"jest": "jest --coverage __tests__/**/*"
-	},
-	"devDependencies": {
-		"@babel/cli": "^7.15.7",
-		"@babel/core": "^7.15.8",
-		"@babel/eslint-parser": "^7.15.8",
-		"@babel/plugin-transform-flow-strip-types": "^7.14.5",
-		"@babel/preset-env": "^7.15.8",
-		"@changesets/cli": "^2.27.7",
-		"@svitejs/changesets-changelog-github-compact": "^1.1.0",
-		"babel-jest": "^27.3.1",
-		"eslint": "^7.32.0",
-		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-flowtype": "^7.0.0",
-		"eslint-plugin-prettier": "^4.0.0",
-		"expect": "^27.3.1",
-		"flow-bin": "^0.137.0",
-		"in-publish": "^2.0.1",
-		"jest": "^27.3.1",
-		"jscodeshift": "^0.13.0",
-		"minimist": "^1.2.5",
-		"object.assign": "^4.1.2",
-		"prettier": "^2.4.1",
-		"rimraf": "^3.0.2",
-		"safe-publish-latest": "^2.0.0",
-		"to-ast": "^1.0.0"
-	},
-	"engines": {
-		"node": ">=12.0"
-	},
-	"license": "MIT",
-	"dependencies": {
-		"@babel/runtime": "^7.15.4",
-		"ast-types-flow": "^0.0.7",
-		"jsx-ast-utils": "^3.2.1"
-	},
-	"peerDependencies": {
-		"eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8"
-	},
-	"jest": {
-		"coverageReporters": [
-			"lcov",
-			"html"
-		],
-		"coverageDirectory": "reports",
-		"roots": [
-			"<rootDir>/__tests__"
-		],
-		"testPathIgnorePatterns": [
-			"<rootDir>/__tests__/__util__"
-		],
-		"testEnvironment": "node"
-	}
+  "name": "eslint-plugin-react-native-a11y",
+  "version": "4.0.0",
+  "description": "React Native specific accessibility linting rules.",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "a11y",
+    "accessibility",
+    "react-native"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FormidableLabs/eslint-plugin-react-native-a11y"
+  },
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./flat": {
+      "types": "./dist/flat.d.ts",
+      "default": "./dist/flat.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc --project ./tsconfig.build.json",
+    "changeset": "changeset",
+    "create": "node ./scripts/create-rule",
+    "lint:fix": "eslint --fix",
+    "lint": "eslint",
+    "prepublishOnly": "safe-publish-latest && not-in-publish || (pnpm lint && pnpm test && pnpm build)",
+    "pretest": "pnpm lint:fix",
+    "test": "vitest --ui",
+    "test:ci": "vitest --coverage --run --runInBand"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.2",
+    "@eslint/compat": "^1.2.9",
+    "@eslint/js": "^9.25.1",
+    "@svitejs/changesets-changelog-github-compact": "^1.2.0",
+    "@types/eslint": "^9.6.1",
+    "@types/estree-jsx": "^1.0.5",
+    "@types/jsx-ast-utils": "^3.3.1",
+    "@types/node": "^22.15.3",
+    "@vitest/ui": "^3.1.2",
+    "deepmerge": "^4.3.1",
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "globals": "^16.0.0",
+    "in-publish": "^2.0.1",
+    "jscodeshift": "^17.3.0",
+    "minimist": "^1.2.8",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "safe-publish-latest": "^2.0.0",
+    "to-ast": "^1.0.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.1",
+    "vite": "^6.3.4",
+    "vitest": "^3.1.2"
+  },
+  "engines": {
+    "node": ">=12.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@babel/runtime": "^7.27.1",
+    "jsx-ast-utils": "^3.3.5"
+  },
+  "peerDependencies": {
+    "eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9"
+  }
 }

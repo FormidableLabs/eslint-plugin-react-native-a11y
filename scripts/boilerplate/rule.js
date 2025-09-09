@@ -8,8 +8,8 @@ const ruleBoilerplate = (author, description) => `/**
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import type { JSXOpeningElement } from 'ast-types-flow';
-import type { ESLintContext } from '../../flow/eslint';
+import type { JSXOpeningElement } from 'ast-types';
+import type { Rule.RuleContext } from '../../flow/eslint';
 import { generateObjSchema } from '../util/schemas';
 
 const errorMessage = '';
@@ -22,7 +22,7 @@ module.exports = {
     schema: [schema],
   },
 
-  create: (context: ESLintContext) => ({
+  create: (context: Rule.RuleContext) => ({
     JSXOpeningElement: (node: JSXOpeningElement) => {
       context.report({
         node,
@@ -33,4 +33,4 @@ module.exports = {
 };
 `;
 
-module.exports = ruleBoilerplate;
+export default ruleBoilerplate;
