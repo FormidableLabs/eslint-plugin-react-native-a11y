@@ -65,6 +65,10 @@ module.exports = {
             error('accessibilityActions: Array cannot be empty');
           } else {
             attrValue.forEach((action) => {
+              if (action === undefined) {
+                return;
+              }
+
               if (!action.name) {
                 error('accessibilityActions: action missing name');
               } else if (
