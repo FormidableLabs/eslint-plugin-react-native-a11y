@@ -97,6 +97,28 @@ ruleTester.run('has-valid-accessibility-state', rule, {
               accessibilityState={accessibilityState}
             />`,
     },
+    {
+      code: `const accessibilityState = { disabled: false };
+
+            <TouchableOpacity
+              accessibilityState={{ ...accessibilityState, disabled }}
+            />`,
+      parserOptions: {
+        ecmaVersion: 2018,
+      },
+    },
+    {
+      code: '<TouchableOpacity accessibilityState={{ ...accessibilityState, disabled: true }} />',
+      parserOptions: {
+        ecmaVersion: 2018,
+      },
+    },
+    {
+      code: '<TouchableOpacity accessibilityState={{ ...accessibilityState }} />',
+      parserOptions: {
+        ecmaVersion: 2018,
+      },
+    },
   ].map(parserOptionsMapper),
   invalid: [
     {
@@ -130,6 +152,20 @@ ruleTester.run('has-valid-accessibility-state', rule, {
                <TouchableOpacity accessibilityState={{ selected: "active" }} />
              );`,
       errors: [valueMustBeBoolean('selected')],
+    },
+    {
+      code: '<TouchableOpacity accessibilityState={{ ...accessibilityState, foo: true }} />',
+      errors: [invalidObjectKey('foo')],
+      parserOptions: {
+        ecmaVersion: 2018,
+      },
+    },
+    {
+      code: '<TouchableOpacity accessibilityState={{ ...accessibilityState, disabled: "yes" }} />',
+      errors: [valueMustBeBoolean('disabled')],
+      parserOptions: {
+        ecmaVersion: 2018,
+      },
     },
   ].map(parserOptionsMapper),
 });

@@ -57,7 +57,7 @@ module.exports = {
               // $FlowFixMe
               stateProp.value.expression.properties.every(
                 // $FlowFixMe
-                (p) => p.value.type === 'Literal'
+                (p) => p.type === 'SpreadElement' || p.value?.type === 'Literal'
               )
             ) {
               if (
