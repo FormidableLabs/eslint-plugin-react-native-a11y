@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /**
  * @fileoverview $DESCRIPTION
  * @author $AUTHOR
@@ -20,7 +19,6 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message: 'accessibilityTraits must be one of defined values',
-  type: 'JSXAttribute',
 };
 
 ruleTester.run('has-valid-accessibility-traits', rule, {

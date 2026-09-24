@@ -18,5 +18,5 @@ const validValues = ['selected', 'disabled', ''];
 module.exports = createValidPropRule(
   'accessibilityStates',
   validValues,
-  errorMessage
+  errorMessage,
 );

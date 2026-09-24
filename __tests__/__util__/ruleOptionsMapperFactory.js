@@ -10,7 +10,7 @@ type ESLintTestRunnerTestCase = {
 };
 
 export default function ruleOptionsMapperFactory(
-  ruleOptions: Array<mixed> = []
+  ruleOptions: Array<mixed> = [],
 ) {
   // eslint-disable-next-line
   return ({ code, errors, options, parserOptions }: ESLintTestRunnerTestCase): ESLintTestRunnerTestCase => {
@@ -25,7 +25,7 @@ export default function ruleOptionsMapperFactory(
             ...item,
           },
         ],
-        [{}]
+        [{}],
       ),
       parserOptions,
     };

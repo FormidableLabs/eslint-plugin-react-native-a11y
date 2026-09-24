@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /**
  * @fileoverview Enforce importantForAccessibility property value is valid
  * @author Alex Saunders
@@ -20,7 +19,6 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message: 'importantForAccessibility must be one of defined values',
-  type: 'JSXAttribute',
 };
 
 ruleTester.run('has-valid-important-for-accessibility', rule, {

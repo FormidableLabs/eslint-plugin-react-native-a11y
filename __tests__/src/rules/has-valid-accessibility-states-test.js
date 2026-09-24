@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /**
  * @fileoverview Used to tell Talkback or Voiceover the state a UI Element is in
  * @author Jen Luker
@@ -21,7 +20,6 @@ const ruleTester = new RuleTester();
 const expectedError = {
   message:
     'accessibilityStates must be one, both or neither of the defined values',
-  type: 'JSXAttribute',
 };
 
 ruleTester.run('has-valid-accessibility-states', rule, {

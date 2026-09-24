@@ -1,4 +1,4 @@
-/* eslint-disable global-require */
+const { name, version } = require('../package.json');
 
 const defaultConfig = {
   parserOptions: {
@@ -32,44 +32,95 @@ const AndroidRules = {
   'react-native-a11y/has-valid-important-for-accessibility': 'error',
 };
 
-module.exports = {
-  rules: {
-    'has-accessibility-hint': require('./rules/has-accessibility-hint'),
-    'has-accessibility-props': require('./rules/has-accessibility-props'),
-    'has-valid-accessibility-actions': require('./rules/has-valid-accessibility-actions'),
-    'has-valid-accessibility-component-type': require('./rules/has-valid-accessibility-component-type'),
-    'has-valid-accessibility-descriptors': require('./rules/has-valid-accessibility-descriptors'),
-    'has-valid-accessibility-ignores-invert-colors': require('./rules/has-valid-accessibility-ignores-invert-colors'),
-    'has-valid-accessibility-live-region': require('./rules/has-valid-accessibility-live-region'),
-    'has-valid-accessibility-role': require('./rules/has-valid-accessibility-role'),
-    'has-valid-accessibility-state': require('./rules/has-valid-accessibility-state'),
-    'has-valid-accessibility-states': require('./rules/has-valid-accessibility-states'),
-    'has-valid-accessibility-traits': require('./rules/has-valid-accessibility-traits'),
-    'has-valid-accessibility-value': require('./rules/has-valid-accessibility-value'),
-    'has-valid-important-for-accessibility': require('./rules/has-valid-important-for-accessibility'),
-    'no-nested-touchables': require('./rules/no-nested-touchables'),
+const rules = {
+  'has-accessibility-hint': require('./rules/has-accessibility-hint'),
+  'has-accessibility-props': require('./rules/has-accessibility-props'),
+  'has-valid-accessibility-actions': require('./rules/has-valid-accessibility-actions'),
+  'has-valid-accessibility-component-type': require('./rules/has-valid-accessibility-component-type'),
+  'has-valid-accessibility-descriptors': require('./rules/has-valid-accessibility-descriptors'),
+  'has-valid-accessibility-ignores-invert-colors': require('./rules/has-valid-accessibility-ignores-invert-colors'),
+  'has-valid-accessibility-live-region': require('./rules/has-valid-accessibility-live-region'),
+  'has-valid-accessibility-role': require('./rules/has-valid-accessibility-role'),
+  'has-valid-accessibility-state': require('./rules/has-valid-accessibility-state'),
+  'has-valid-accessibility-states': require('./rules/has-valid-accessibility-states'),
+  'has-valid-accessibility-traits': require('./rules/has-valid-accessibility-traits'),
+  'has-valid-accessibility-value': require('./rules/has-valid-accessibility-value'),
+  'has-valid-important-for-accessibility': require('./rules/has-valid-important-for-accessibility'),
+  'no-nested-touchables': require('./rules/no-nested-touchables'),
+};
+
+const plugin = {
+  meta: {
+    name,
+    version,
   },
-  configs: {
+  rules,
+};
+
+// Flat config (ESLint >= 9, required by ESLint v10 which dropped the
+// eslintrc format entirely) needs the plugin object itself rather than a
+// plugin name string, and `languageOptions` instead of `parserOptions`.
+const flatDefaultConfig = {
+  plugins: { 'react-native-a11y': plugin },
+  languageOptions: {
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
+    },
+  },
+};
+
+plugin.configs = {
+  // Legacy eslintrc-style configs, kept for consumers still on ESLint <= 8.
+  basic: {
+    ...defaultConfig,
+    rules: basicRules,
+  },
+  ios: {
+    ...defaultConfig,
+    rules: {
+      ...basicRules,
+      ...iOSRules,
+    },
+  },
+  android: {
+    ...defaultConfig,
+    rules: {
+      ...basicRules,
+      ...AndroidRules,
+    },
+  },
+  all: {
+    ...defaultConfig,
+    rules: {
+      ...basicRules,
+      ...iOSRules,
+      ...AndroidRules,
+    },
+  },
+  // Flat configs for ESLint >= 9 (required for ESLint v10).
+  flat: {
     basic: {
-      ...defaultConfig,
+      ...flatDefaultConfig,
       rules: basicRules,
     },
     ios: {
-      ...defaultConfig,
+      ...flatDefaultConfig,
       rules: {
         ...basicRules,
         ...iOSRules,
       },
     },
     android: {
-      ...defaultConfig,
+      ...flatDefaultConfig,
       rules: {
         ...basicRules,
         ...AndroidRules,
       },
     },
     all: {
-      ...defaultConfig,
+      ...flatDefaultConfig,
       rules: {
         ...basicRules,
         ...iOSRules,
@@ -78,3 +129,5 @@ module.exports = {
     },
   },
 };
+
+module.exports = plugin;

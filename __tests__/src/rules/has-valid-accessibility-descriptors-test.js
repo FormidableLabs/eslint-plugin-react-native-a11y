@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /**
  * @fileoverview Ensures that Touchable* components have appropriate props to communicate with assistive technologies
  * @author JP Driver
@@ -21,7 +20,6 @@ const ruleTester = new RuleTester();
 const expectedError = {
   message:
     'Missing a11y props. Expected one of: accessibilityRole OR role OR BOTH accessibilityLabel + accessibilityHint OR BOTH accessibilityActions + onAccessibilityAction',
-  type: 'JSXOpeningElement',
 };
 
 ruleTester.run('has-valid-accessibility-descriptors', rule, {

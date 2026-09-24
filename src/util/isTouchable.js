@@ -30,7 +30,7 @@ export default function isTouchable(
     sourceCode: {
       text: '',
     },
-  }
+  },
 ) {
   const { options } = context;
   let extraTouchables = [];

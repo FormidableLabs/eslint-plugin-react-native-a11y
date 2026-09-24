@@ -60,7 +60,7 @@ const verifyReactNativeImage = (text: string): VerifyRNImageRes => {
   const imageSourceReactNativeRegExp = new RegExp(`${namedSelector}`, 'gs');
   const imageSourceReactNativeAliasRegExp = new RegExp(
     `${es6moduleSelector}`,
-    'gs'
+    'gs',
   );
 
   const matchedImage = text.match(imageSourceReactNativeRegExp) || [];

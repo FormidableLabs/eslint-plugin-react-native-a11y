@@ -9,17 +9,23 @@ export default function parserOptionsMapper({
   code,
   errors,
   options = [],
-  output = null,
+  output,
   parserOptions = {},
 }) {
+  const { ecmaVersion, sourceType, ...restParserOptions } = {
+    ...defaultParserOptions,
+    ...parserOptions,
+  };
+
   return {
     code,
     errors,
     options,
-    output,
-    parserOptions: {
-      ...defaultParserOptions,
-      ...parserOptions,
+    ...(output !== undefined ? { output } : {}),
+    languageOptions: {
+      ecmaVersion,
+      ...(sourceType !== undefined ? { sourceType } : {}),
+      parserOptions: restParserOptions,
     },
   };
 }

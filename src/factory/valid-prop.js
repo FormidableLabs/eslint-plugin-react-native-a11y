@@ -19,7 +19,7 @@ const createValidPropRule = (
   validValues: Array<string>,
   errorMessage: string,
   meta?: Object,
-  create?: Object
+  create?: Object,
 ) => ({
   meta: {
     docs: {},
@@ -40,7 +40,7 @@ const createValidPropRule = (
 
             if (Array.isArray(attrValue)) {
               const validate = attrValue.map((strValue) =>
-                isOneOf(strValue, validValues)
+                isOneOf(strValue, validValues),
               );
               invalid = validate.indexOf(false) > -1;
             } else {

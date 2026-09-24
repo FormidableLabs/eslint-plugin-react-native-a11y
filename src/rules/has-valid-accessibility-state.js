@@ -29,7 +29,7 @@ module.exports = {
       if (hasProp(node.attributes, PROP_NAME)) {
         const stateProp = node.attributes.find(
           // $FlowFixMe
-          (f) => f.name?.name === PROP_NAME
+          (f) => f.name?.name === PROP_NAME,
         );
         const statePropType =
           // $FlowFixMe
@@ -57,7 +57,7 @@ module.exports = {
               // $FlowFixMe
               stateProp.value.expression.properties.every(
                 // $FlowFixMe
-                (p) => p.value.type === 'Literal'
+                (p) => p.value.type === 'Literal',
               )
             ) {
               if (
@@ -65,11 +65,11 @@ module.exports = {
                 !(typeof value === 'boolean' || value === 'mixed')
               ) {
                 error(
-                  `accessibilityState object: "checked" value is not either a boolean or 'mixed'`
+                  `accessibilityState object: "checked" value is not either a boolean or 'mixed'`,
                 );
               } else if (key !== 'checked' && typeof value !== 'boolean') {
                 error(
-                  `accessibilityState object: "${key}" value is not a boolean`
+                  `accessibilityState object: "${key}" value is not a boolean`,
                 );
               }
             }

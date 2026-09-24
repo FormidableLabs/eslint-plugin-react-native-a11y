@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /**
  * @fileoverview An accessibility hint helps users understand what will happen when they perform an action on the accessibility element when that result is not apparent from the accessibility label.
  * @author JP Driver
@@ -20,7 +19,6 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message: 'has accessibilityLabel prop but no accessibilityHint',
-  type: 'JSXOpeningElement',
 };
 
 ruleTester.run('has-accessibility-hint', rule, {

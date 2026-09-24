@@ -22,5 +22,5 @@ const validValues = [
 module.exports = createValidPropRule(
   'accessibilityComponentType',
   validValues,
-  errorMessage
+  errorMessage,
 );

@@ -26,7 +26,7 @@ module.exports = {
       if (hasProp(node.attributes, PROP_NAME)) {
         const valueProp = node.attributes.find(
           // $FlowFixMe
-          (f) => f.name?.name === PROP_NAME
+          (f) => f.name?.name === PROP_NAME,
         );
         const valuePropType =
           // $FlowFixMe
@@ -50,7 +50,7 @@ module.exports = {
           if (keys.includes('text')) {
             if (keys.length > 1) {
               error(
-                'accessibilityValue object must only contain either min, now, max *or* text'
+                'accessibilityValue object must only contain either min, now, max *or* text',
               );
             }
             // $FlowFixMe
@@ -78,7 +78,7 @@ module.exports = {
               if (value.type === 'Literal' && typeof value.value !== 'number') {
                 error(
                   // $FlowFixMe
-                  `accessibilityValue ${key.name} value must be an integer`
+                  `accessibilityValue ${key.name} value must be an integer`,
                 );
               }
             });

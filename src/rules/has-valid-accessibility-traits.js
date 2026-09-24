@@ -35,5 +35,5 @@ const validValues = [
 module.exports = createValidPropRule(
   'accessibilityTraits',
   validValues,
-  errorMessage
+  errorMessage,
 );

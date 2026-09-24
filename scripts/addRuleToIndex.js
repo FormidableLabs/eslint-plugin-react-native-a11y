@@ -21,36 +21,32 @@ export default function transformer(file, api, options) {
 
   const rulePathInSrc = `./${rulePath.match(/src\/(.*)\.js/)[1]}`;
 
-  changesMade += s
-    .find(j.Identifier, {
-      name: 'rules',
-    })
-    .forEach((path, index) => {
-      // Add rule path.
-      if (index === 0) {
-        path.parentPath.value.value.properties.unshift(
-          j.property(
-            'init',
-            j.literal(ruleName),
-            j.callExpression(j.identifier('require'), [
-              j.literal(rulePathInSrc),
-            ])
-          )
-        );
-        path.parentPath.value.value.properties.sort(nameSort);
-      }
-      // Set default reporting to error.
-      if (index === 1) {
-        path.parentPath.value.value.properties.unshift(
-          j.property(
-            'init',
-            j.literal(`react-native-a11y/${ruleName}`),
-            j.literal('error')
-          )
-        );
-        path.parentPath.value.value.properties.sort(nameSort);
-      }
-    }).length;
+  const findConstObject = (name) =>
+    s.find(j.VariableDeclarator, { id: { type: 'Identifier', name } });
+
+  // Register the rule implementation in `const rules = { ... }`.
+  changesMade += findConstObject('rules').forEach((path) => {
+    path.value.init.properties.unshift(
+      j.property(
+        'init',
+        j.literal(ruleName),
+        j.callExpression(j.identifier('require'), [j.literal(rulePathInSrc)]),
+      ),
+    );
+    path.value.init.properties.sort(nameSort);
+  }).length;
+
+  // Default it to "error" in `const basicRules = { ... }`.
+  changesMade += findConstObject('basicRules').forEach((path) => {
+    path.value.init.properties.unshift(
+      j.property(
+        'init',
+        j.literal(`react-native-a11y/${ruleName}`),
+        j.literal('error'),
+      ),
+    );
+    path.value.init.properties.sort(nameSort);
+  }).length;
 
   if (changesMade === 0) {
     return null;

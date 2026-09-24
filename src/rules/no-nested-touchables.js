@@ -34,7 +34,7 @@ module.exports = {
         const clickableChild = findChild(
           parent,
           (child) =>
-            isTouchable(child, context) || elementType(child) === 'Button'
+            isTouchable(child, context) || elementType(child) === 'Button',
         );
         if (clickableChild) {
           context.report({

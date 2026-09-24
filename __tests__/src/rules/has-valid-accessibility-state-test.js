@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /**
  * @fileoverview Describes the current state of a component to the user of an assistive technology.
  * @author JP Driver
@@ -20,22 +19,18 @@ const ruleTester = new RuleTester();
 
 const propMustBeAnObject = {
   message: 'accessibilityState must be an object',
-  type: 'JSXOpeningElement',
 };
 
 const invalidObjectKey = (key) => ({
   message: `accessibilityState object: "${key}" is not a valid key`,
-  type: 'JSXOpeningElement',
 });
 
 const valueMustBeBoolean = (key) => ({
   message: `accessibilityState object: "${key}" value is not a boolean`,
-  type: 'JSXOpeningElement',
 });
 
 const checkedMustBeBooleanOrMixed = {
   message: `accessibilityState object: "checked" value is not either a boolean or 'mixed'`,
-  type: 'JSXOpeningElement',
 };
 
 ruleTester.run('has-valid-accessibility-state', rule, {

@@ -49,7 +49,7 @@ module.exports = {
           const handlerPropValue = getPropValue(handlerProp);
           if (typeof handlerPropValue !== 'function') {
             error(
-              'accessibilityActions: has accessibilityActions but onAccessibilityAction is not a function'
+              'accessibilityActions: has accessibilityActions but onAccessibilityAction is not a function',
             );
           }
         }
@@ -72,7 +72,7 @@ module.exports = {
                 !action.label
               ) {
                 error(
-                  `accessibilityActions: custom action "${action.name}" missing label`
+                  `accessibilityActions: custom action "${action.name}" missing label`,
                 );
               }
               if (
@@ -80,7 +80,7 @@ module.exports = {
                   .length > 0
               ) {
                 error(
-                  `accessibilityActions: action "${action.name}" contains unrecognised keys`
+                  `accessibilityActions: action "${action.name}" contains unrecognised keys`,
                 );
               }
             });
@@ -89,11 +89,11 @@ module.exports = {
       } else {
         if (hasProp(node.attributes, 'accessibilityActions')) {
           error(
-            'accessibilityActions: has accessibilityActions but onAccessibilityAction is not a function'
+            'accessibilityActions: has accessibilityActions but onAccessibilityAction is not a function',
           );
         } else if (hasProp(node.attributes, 'onAccessibilityAction')) {
           error(
-            'accessibilityActions: has onAccessibilityAction function but no accessibilityActions Array'
+            'accessibilityActions: has onAccessibilityAction function but no accessibilityActions Array',
           );
         }
       }

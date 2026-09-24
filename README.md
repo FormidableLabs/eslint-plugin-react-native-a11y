@@ -69,6 +69,20 @@ module.exports = {
 
 For more information on configuring behaviour of an individual rule, please refer to the [ESLint docs](react-native-a11y/rule-name)
 
+### Flat Config (ESLint >= 9)
+
+ESLint v9 and v10 use the [flat config](https://eslint.org/docs/latest/use/configure/configuration-files) system (`eslint.config.js`), which requires a different config format. Use the `flat` configs exposed by this plugin instead of the ones described above:
+
+```js
+// eslint.config.js
+
+const reactNativeA11y = require('eslint-plugin-react-native-a11y');
+
+module.exports = [reactNativeA11y.configs.flat.ios];
+```
+
+The same `basic`, `ios`, `android` and `all` configs are available under `configs.flat`.
+
 ## Supported Rules
 
 ### Basic

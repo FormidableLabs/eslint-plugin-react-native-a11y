@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /**
  * @fileoverview Ensure that accessibilityIgnoresInvertColors property value is a boolean.
  * @author Dominic Coelho
@@ -19,13 +18,11 @@ const ruleTester = new RuleTester();
 
 const typeError = {
   message: 'accessibilityIgnoresInvertColors prop is not a boolean value',
-  type: 'JSXElement',
 };
 
 const missingPropError = {
   message:
     'Found an element which will be inverted. Add the accessibilityIgnoresInvertColors prop',
-  type: 'JSXElement',
 };
 
 describe('verifyReactNativeImage', () => {

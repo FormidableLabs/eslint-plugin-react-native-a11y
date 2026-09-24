@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /**
  * @fileoverview Enforce that <Touchable\*> components only have either the accessibilityRole prop or both accessibilityTraits and accessibilityComponentType props set.
  * @author Alex Saunders
@@ -20,7 +19,6 @@ const ruleTester = new RuleTester();
 
 const expectedError = (touchable) => ({
   message: `<${touchable}> must only have either the accessibilityRole prop or both accessibilityTraits and accessibilityComponentType props set`,
-  type: 'JSXOpeningElement',
 });
 
 ruleTester.run('has-accessibility-props', rule, {
@@ -107,20 +105,8 @@ ruleTester.run('has-accessibility-props', rule, {
       errors: [expectedError('TouchableHighlight')],
     },
     {
-      code: '<TouchableHighlight accessibilityComponentType="none"/>;',
-      errors: [expectedError('TouchableHighlight')],
-    },
-    {
       code: '<TouchableWithoutFeedback accessibilityComponentType="none"/>;',
       errors: [expectedError('TouchableWithoutFeedback')],
-    },
-    {
-      code: '<TouchableWithoutFeedback accessibilityComponentType="none"/>;',
-      errors: [expectedError('TouchableWithoutFeedback')],
-    },
-    {
-      code: '<TouchableNativeFeedback accessibilityComponentType="none"/>;',
-      errors: [expectedError('TouchableNativeFeedback')],
     },
     {
       code: '<TouchableNativeFeedback accessibilityComponentType="none"/>;',

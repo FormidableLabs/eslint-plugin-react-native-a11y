@@ -51,7 +51,7 @@ module.exports = {
                 node.name.range,
                 isTouchable(node, context)
                   ? ' accessibilityRole="button"'
-                  : ' accessibilityLabel="Text input field"'
+                  : ' accessibilityLabel="Text input field"',
               );
             },
           });

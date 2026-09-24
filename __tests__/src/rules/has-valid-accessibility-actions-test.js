@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /**
  * @fileoverview Allow an assistive technology to programmatically invoke the actions of a component.
  * @author JP Driver
@@ -98,7 +97,6 @@ ruleTester.run('has-valid-accessibility-actions', rule, {
         {
           message:
             'accessibilityActions: has accessibilityActions but onAccessibilityAction is not a function',
-          type: 'JSXOpeningElement',
         },
       ],
     },
@@ -116,7 +114,6 @@ ruleTester.run('has-valid-accessibility-actions', rule, {
         {
           message:
             'accessibilityActions: has onAccessibilityAction function but no accessibilityActions Array',
-          type: 'JSXOpeningElement',
         },
       ],
     },
@@ -137,7 +134,6 @@ ruleTester.run('has-valid-accessibility-actions', rule, {
       errors: [
         {
           message: 'accessibilityActions: value must be an Array',
-          type: 'JSXOpeningElement',
         },
       ],
     },
@@ -155,7 +151,6 @@ ruleTester.run('has-valid-accessibility-actions', rule, {
       errors: [
         {
           message: 'accessibilityActions: Array cannot be empty',
-          type: 'JSXOpeningElement',
         },
       ],
     },
@@ -175,7 +170,6 @@ ruleTester.run('has-valid-accessibility-actions', rule, {
       errors: [
         {
           message: 'accessibilityActions: custom action "cut" missing label',
-          type: 'JSXOpeningElement',
         },
       ],
     },
@@ -195,7 +189,6 @@ ruleTester.run('has-valid-accessibility-actions', rule, {
       errors: [
         {
           message: 'accessibilityActions: action missing name',
-          type: 'JSXOpeningElement',
         },
       ],
     },
@@ -216,7 +209,6 @@ ruleTester.run('has-valid-accessibility-actions', rule, {
         {
           message:
             'accessibilityActions: action "cut" contains unrecognised keys',
-          type: 'JSXOpeningElement',
         },
       ],
     },

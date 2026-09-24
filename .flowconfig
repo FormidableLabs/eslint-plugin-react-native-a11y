@@ -2,6 +2,9 @@
 <PROJECT_ROOT>/lib/.*
 <PROJECT_ROOT>/docs/.*
 <PROJECT_ROOT>/reports/.*
+.*/node_modules/hermes-eslint/.*
+.*/node_modules/hermes-estree/.*
+.*/node_modules/hermes-parser/.*
 
 [options]
 esproposal.optional_chaining=enable

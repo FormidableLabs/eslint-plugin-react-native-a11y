@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /**
  * @fileoverview Enforce  property value is valid
 
@@ -21,7 +20,6 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message: 'accessibilityLiveRegion must be one of defined values',
-  type: 'JSXAttribute',
 };
 
 ruleTester.run('has-valid-accessibility-live-region', rule, {

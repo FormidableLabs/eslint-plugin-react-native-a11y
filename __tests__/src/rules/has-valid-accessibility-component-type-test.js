@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /**
  * @fileoverview Enforce accessibilityComponentType property value is valid
  * @author Alex Saunders
@@ -20,7 +19,6 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message: 'accessibilityComponentType must be one of defined values',
-  type: 'JSXAttribute',
 };
 
 ruleTester.run('has-valid-accessibility-component-type', rule, {

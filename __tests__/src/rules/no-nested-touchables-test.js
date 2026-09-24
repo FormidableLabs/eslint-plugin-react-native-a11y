@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /**
  * @fileoverview Enforce if a view has accessible={true}, that there are no clickable elements inside
  * @author Alex Saunders
@@ -21,7 +20,6 @@ const ruleTester = new RuleTester();
 const expectedError = {
   message:
     'Elements with accessible={true} must not have any clickable elements inside',
-  type: 'JSXOpeningElement',
 };
 
 ruleTester.run('no-nested-touchables', rule, {

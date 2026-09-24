@@ -22,7 +22,7 @@ const jscodeshiftMain = jscodeshiftJSON.main;
 const jscodeshiftPath = require.resolve('jscodeshift');
 const jscodeshiftRoot = jscodeshiftPath.slice(
   0,
-  jscodeshiftPath.indexOf(jscodeshiftMain)
+  jscodeshiftPath.indexOf(jscodeshiftMain),
 );
 
 // Validate
@@ -55,9 +55,9 @@ exec(
   ].join(' '),
   (error) => {
     if (error) {
-      console.error(`exec error: ${error}`); // eslint-disable-line no-console
+      console.error(`exec error: ${error}`);
     }
-  }
+  },
 );
 
 // Add the rule to README.md

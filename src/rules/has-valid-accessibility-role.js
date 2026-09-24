@@ -51,5 +51,5 @@ const validValues = [
 module.exports = createValidPropRule(
   'accessibilityRole',
   validValues,
-  errorMessage
+  errorMessage,
 );

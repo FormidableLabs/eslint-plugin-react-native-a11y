@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /* eslint global-require: 0 */
 
 import assert from 'assert';
@@ -31,10 +30,24 @@ describe('configurations', () => {
   });
 });
 
+describe('flat configurations', () => {
+  const configs = ['basic', 'ios', 'android', 'all'];
+
+  configs.forEach((name) => {
+    it(`should export a flat '${name}' configuration`, () => {
+      assert(plugin.configs.flat[name]);
+      assert.equal(
+        plugin.configs.flat[name].plugins['react-native-a11y'],
+        plugin,
+      );
+    });
+  });
+});
+
 describe('schemas', () => {
   rules.forEach((ruleName) => {
     it(`${ruleName} should export a schema with type object`, () => {
-      const rule = require(path.join('../src/rules', ruleName)); // eslint-disable-line
+      const rule = require(path.join('../src/rules', ruleName));
       const schema = rule.meta && rule.meta.schema && rule.meta.schema[0];
       const { type } = schema;
 

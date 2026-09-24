@@ -1,4 +1,3 @@
-/* eslint-env jest */
 /**
  * @fileoverview Used to tell Talkback or Voiceover the role of a UI Element
  * @author Jen Luker
@@ -20,7 +19,6 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message: 'accessibilityRole must be one of defined values',
-  type: 'JSXAttribute',
 };
 
 ruleTester.run('has-valid-accessibility-role', rule, {
