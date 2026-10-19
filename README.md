@@ -75,6 +75,7 @@ For more information on configuring behaviour of an individual rule, please refe
 
 - [has-accessibility-hint](docs/rules/has-accessibility-hint.md): Enforce `accessibilityHint` is used in conjunction with `accessibilityLabel`
 - [has-accessibility-props](docs/rules/has-accessibility-props.md): Enforce that `<Touchable\*>` components only have either the `accessibilityRole` prop or both `accessibilityTraits` and `accessibilityComponentType` props set
+- [has-autofill-props](docs/rules/has-autofill-props.md): Enforce `autoComplete` or `textContentType` is declared on a `TextInput` with `secureTextEntry`, so password managers can fill it
 - [has-valid-accessibility-actions](docs/rules/has-valid-accessibility-actions.md): Enforce both `accessibilityActions` and `onAccessibilityAction` props are valid
 - [has-valid-accessibility-role](docs/rules/has-valid-accessibility-role.md): Enforce `accessibilityRole` property value is valid
 - [has-valid-accessibility-state](docs/rules/has-valid-accessibility-state.md): Enforce `accessibilityState` property value is valid

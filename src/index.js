@@ -12,6 +12,7 @@ const defaultConfig = {
 const basicRules = {
   'react-native-a11y/has-accessibility-hint': 'error',
   'react-native-a11y/has-accessibility-props': 'error',
+  'react-native-a11y/has-autofill-props': 'error',
   'react-native-a11y/has-valid-accessibility-actions': 'error',
   'react-native-a11y/has-valid-accessibility-component-type': 'error',
   'react-native-a11y/has-valid-accessibility-descriptors': 'error',
@@ -36,6 +37,7 @@ module.exports = {
   rules: {
     'has-accessibility-hint': require('./rules/has-accessibility-hint'),
     'has-accessibility-props': require('./rules/has-accessibility-props'),
+    'has-autofill-props': require('./rules/has-autofill-props'),
     'has-valid-accessibility-actions': require('./rules/has-valid-accessibility-actions'),
     'has-valid-accessibility-component-type': require('./rules/has-valid-accessibility-component-type'),
     'has-valid-accessibility-descriptors': require('./rules/has-valid-accessibility-descriptors'),
